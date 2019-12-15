@@ -6,7 +6,7 @@ export default class Post extends Component {
         super(props);
         this.state = {
             html: "Loading",
-            metaData: {
+            metadata: {
                 title: "Loading...",
                 author: "Loading...",
                 date: "Loading..."
@@ -22,7 +22,7 @@ export default class Post extends Component {
         .then(data => 
             this.setState({
                 html: data.html,
-                metaData: data.metaData
+                metadata: data.metadata
             })
         )
         .catch(console.log);
@@ -40,13 +40,13 @@ export default class Post extends Component {
                     News
                 </div>
                 <div className="card-body text-left">
-                    <h5 className="card-title">{this.state.metaData.title}</h5>
+                    <h5 className="card-title">{this.state.metadata.title}</h5>
                     <div dangerouslySetInnerHTML={{ __html: this.state.html }}></div>
                 </div>
-                
+
                 { // Expand button
-                    this.expanded ? 
-                    null : 
+                    this.expanded ?
+                    null :
                     <div className="btn btn-primary" 
                         onClick={this.expand}>Expand...</div>
                 }
@@ -54,9 +54,9 @@ export default class Post extends Component {
                 <div className="card-footer text-muted">
                     <footer className="blockquote-footer">
                         Written by <cite title="Source Title">
-                            {this.state.metaData.author} </cite>
+                            {this.state.metadata.author} </cite>
                         <span>
-                            {calcDate(this.state.metaData.date)}
+                            {calcDate(this.state.metadata.date)}
                         </span>
                     </footer>
                 </div>

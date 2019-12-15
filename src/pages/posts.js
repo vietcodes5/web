@@ -16,7 +16,8 @@ export default class Posts extends Component {
                 <Post
                     key={`post-${i}`}
                     postTitle={title}
-                />);
+                />
+            );
             this.setState({posts});
         })
         .catch(console.log);
@@ -28,7 +29,7 @@ export default class Posts extends Component {
                 <div className="jumbotron border">
                     <div className="container">
                         <h1 className="display-4">News</h1>
-                        <p className="lead">There are posts by Vietcode bidaily.</p>
+                        <p className="lead">Stay updated with the world!</p>
                     </div>
                 </div>
                 <div id="posts">
