@@ -1,58 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-	Collapse, 
-	Navbar, 
-	NavLink,
-	NavbarToggler, 
-	NavbarBrand, 
-	Nav, 
-	Container,
-	NavItem } from 'reactstrap';
+
 
 export default function Header(props) {
-	const [isOpen, setIsOpen] = useState(false);
-
-	const toggle = () => setIsOpen(!isOpen);
-
 	return (
-		<div className="border-bottom fixed-top">
-			<Navbar color="dark" dark expand="md">
-				<Container>
-					<NavbarBrand>
-						<Link to="/">
-							<NavLink>VIETCODE</NavLink>
-						</Link>
-					</NavbarBrand>
+		<nav className="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
+			<div className="container">
+				<Link className="navbar-brand" to="/">Vietcode</Link>
+				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
+				</button>
 
-					<NavbarToggler onClick={toggle} />
-
-					<Collapse isOpen={isOpen} navbar>
-						<Nav className="mr-auto" navbar>
-							<NavItem className="mx-4">
-								<Link to="/">
-									<NavLink>Home</NavLink>
-								</Link>
-							</NavItem>
-							<NavItem className="mx-4">
-								<Link to="/about">
-									<NavLink>About</NavLink>
-								</Link>
-							</NavItem>
-							<NavItem className="mx-4">
-								<Link to="/events">
-									<NavLink>Events</NavLink>
-								</Link>
-							</NavItem>
-							<NavItem className="mx-4">
-								<Link to="/posts">
-									<NavLink>Posts</NavLink>
-								</Link>
-							</NavItem>
-						</Nav>
-					</Collapse>
-				</Container>
-			</Navbar>
-		</div>
-	)
+				<div className="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul className="navbar-nav mx-4">
+						<li className="nav-item">
+							<Link className="nav-link" to="/">Home</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/about">About</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/events">Events</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/posts">News</Link>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	);
 }

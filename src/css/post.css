@@ -1,0 +1,9 @@
+#posts {
+    min-width: 320px;
+    width: 45%;
+    float: left;
+}
+
+#posts > .card {
+    margin: 20px 0;
+}
