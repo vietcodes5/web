@@ -13,6 +13,8 @@ function calcDate(stringDate) {
     if(time_w < 5) return `${time_d} weeks ago`;
     let time_mo = Math.round(time_d / 30);
     if(time_mo < 12) return `${time_d} months ago`;
+    let time_y = Math.round(time_m / 12);
+    return `${time_y} years ago`;
 }
 
 export {

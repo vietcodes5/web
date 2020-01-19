@@ -5,6 +5,7 @@ import About from '../../pages/about.js'
 import Home from '../../pages/home.js'
 import Events from '../../pages/events.js'
 import Posts from '../../pages/posts.js'
+import EditPost from '../../pages/admin/edit_post.js'
 
 export default function Content(props) {
     return (
@@ -16,6 +17,7 @@ export default function Content(props) {
                 <Route path="/posts" component={Posts} />
                 <Route path="/events/:name" component={Event} />
                 <Route path="/events" component={Events} />
+                <Route path="/edit-post" component={EditPost} />
                 <Route path="/" component={Home} />
             </Switch>
         </div>

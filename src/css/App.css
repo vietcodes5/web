@@ -1,0 +1,11 @@
+input[type="text"],
+textarea {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline-color: aqua;
+}

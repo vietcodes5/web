@@ -1,9 +1,24 @@
 #posts {
-    min-width: 320px;
-    width: 45%;
-    float: left;
+    width: 100%;
+    background-color: white;
 }
 
 #posts > .card {
-    margin: 20px 0;
+    width: 400px;
+    margin: 0 auto;
+}
+
+#posts > .card > .card-body {
+    overflow: hidden;
+}
+
+table th,
+table td {
+    border: 1px solid #aaa;
+    box-sizing: content-box;
+    padding: 5px 10px;
+}
+
+table th {
+    background: #eee;
 }

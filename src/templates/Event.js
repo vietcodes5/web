@@ -8,7 +8,7 @@ export default class Event extends Component {
     }
 
     render() {
-        let src = `http://localhost:8080/public/events/${this.state.name}/photo/main/main-square.jpg`;
+        let src = `http://localhost:8080/events/${this.state.name}/photo/main/main-square.jpg`;
         return (
             <div className="card my-3" style={{width: "18rem"}}>
                 <img src={src} className="card-img-top" alt="..." />

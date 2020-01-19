@@ -35,19 +35,24 @@ export default class Post extends Component {
 
     render() {
         return (
-            <div className="card text-center">
+            <div className="card text-center my-3" 
+                style={{
+                    maxHeight: (this.state.expanded) ? "2000px" : "400px"
+                }}>
                 <div className="card-header">
-                    News
+                    Posts
                 </div>
                 <div className="card-body text-left">
                     <h5 className="card-title">{this.state.metadata.title}</h5>
-                    <div dangerouslySetInnerHTML={{ __html: this.state.html }}></div>
+                    <div className="card-content" 
+                        dangerouslySetInnerHTML={{ __html: this.state.html }}>
+                    </div>
                 </div>
 
                 { // Expand button
                     this.expanded ?
                     null :
-                    <div className="btn btn-primary" 
+                    <div className="btn btn-info" 
                         onClick={this.expand}>Expand...</div>
                 }
 
