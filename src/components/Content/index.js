@@ -6,6 +6,7 @@ import Home from '../../pages/home.js'
 import Events from '../../pages/events.js'
 import Posts from '../../pages/posts.js'
 import EditPost from '../../pages/admin/edit_post.js'
+import Login from '../../pages/admin/login.js'
 
 export default function Content(props) {
     return (
@@ -18,6 +19,7 @@ export default function Content(props) {
                 <Route path="/events/:name" component={Event} />
                 <Route path="/events" component={Events} />
                 <Route path="/edit-post" component={EditPost} />
+                <Route path="/admin/login" component={Login} />
                 <Route path="/" component={Home} />
             </Switch>
         </div>
