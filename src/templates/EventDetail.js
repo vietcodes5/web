@@ -28,7 +28,7 @@ export default class EventDetail extends Component {
             console.log(data);
             
             let events = data.events.map((event,i)=>{
-                if(event.title != this.state.curentEvent.title){
+                if(event._id!= this.state.curentEvent._id){
                     return <EventChild 
                     id={event._id} 
                     title={event.title} 
@@ -40,7 +40,6 @@ export default class EventDetail extends Component {
         })
 
     }
-
     render(){
         return(
             <div className="row">
@@ -51,7 +50,7 @@ export default class EventDetail extends Component {
                     <ReactMarkdown source={this.state.curentEvent.markdown}/>
                 </div>
                 <div className="col-4 bg-light p-4 shadow">
-                    <h2>Các sự kiện khác</h2>
+                    <h2>Các sự kiện khác:</h2>
                     {this.state.events}
                     
                 </div>
