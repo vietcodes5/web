@@ -11,10 +11,10 @@ export default class Posts extends Component {
         fetch("http://localhost:8080/posts")
             .then(res => res.json())
             .then(data => {
-                let posts = data.posts.map((title, i) =>
+                let posts = data.posts.map((post, i) =>
                     <Post
                         key={`post-${i}`}
-                        postTitle={title}
+                        post={post}
                     />
                 );
                 this.setState({posts});
