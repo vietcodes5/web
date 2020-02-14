@@ -11,10 +11,17 @@ export default class Events extends Component{
         fetch("http://localhost:8080/events")
         .then(res => res.json())
         .then(data => {
-            let events = data.map((name, i) => 
-                <Event name={name} key={`event-${i}`} />
+            
+            let events = data.events.map(({ _id,name, title, main_photos}, i) => 
+                <Event 
+                        subTitle={name} 
+                        title={title} 
+                        main_photos={main_photos}
+                        id={_id}
+                        key={`event-${i}`} />
             );
             this.setState({events});
+            
         })
         .catch(console.log);
     }
