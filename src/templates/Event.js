@@ -79,7 +79,7 @@ export default function Event(props) {
         }
 
       });
-  }, []);
+  }, [ id ]);
 
   return (
     <>
@@ -114,7 +114,6 @@ function SideBar(props) {
   useEffect(() => {
     console.log("Sidebar")
     const db = firebase.firestore();
-    const storage = firebase.storage();
 
     db.collection('events')
       .get()
