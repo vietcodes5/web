@@ -1,9 +1,0 @@
-{
-    "showdown_config": {
-        "noHeaderId": true, 
-        "tables": true,
-        "tablesHeaderId": false,
-        "emoji": true,
-        "parseImgDimensions": true
-    }
-}
