@@ -9,3 +9,8 @@ input[type="text"]:focus,
 textarea:focus {
     outline-color: aqua;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
