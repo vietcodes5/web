@@ -65,7 +65,7 @@ export default function Blog(props) {
             Testing
           </Typography>
           <Divider />
-          <img className={classes.cover_image} src={photoUrl} alt="Blog cover" />
+          <img className={classes.cover_image} src={photoUrl} alt="Post cover" />
           <Typography variant="subtitle1" gutterBottom>
             { blogData.opening }
           </Typography>

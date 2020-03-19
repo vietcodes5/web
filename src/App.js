@@ -12,7 +12,10 @@ import Events from './pages/events';
 
 import Series from './templates/Series';
 import Event from './templates/Event';
-import Blog from './templates/Blog';
+import Post from './templates/Post';
+
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './theme';
 
 const pages = [
   {
@@ -33,7 +36,7 @@ const pages = [
   {
     subpage: true,
     url: '/series/:seriesId/:blogId',
-    component: Blog
+    component: Post
   },
   {
     subpage: true,
@@ -58,16 +61,17 @@ const pages = [
 ]
 
 function App(props) {
-
-
+  console.log(ThemeProvider);
   return (
     <Router>
-      <Header pages={pages} />
+      <ThemeProvider theme={theme}>
+        <Header pages={pages} />
 
-      <Container>
-        <Content pages={pages} />
-        {/* <Footer /> */}
-      </Container>
+        <Container>
+          <Content pages={pages} />
+          {/* <Footer /> */}
+        </Container>
+      </ThemeProvider>
     </Router>
   );
 }
