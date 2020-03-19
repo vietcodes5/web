@@ -145,7 +145,7 @@ function Blog({ blog }) {
     const storage = firebase.storage();
 
     storage
-      .ref(`posts/${photos[0]}`)
+      .ref(`blog/${photos[0]}`)
       .getDownloadURL()
       .then(updatePhotoUrl)
   }, [ photos ]);
