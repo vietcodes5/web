@@ -49,7 +49,7 @@ export default function Blog(props) {
           loadData(doc.data());
 
           storage
-            .ref(`posts/${doc.data().photos[0]}`)
+            .ref(`blog/${doc.data().photos[0]}`)
             .getDownloadURL()
             .then(updatePhotoUrl);
         }

@@ -84,7 +84,7 @@ export default function Series(props) {
 
           // get image
           storage
-            .ref(`posts/${doc.data().cover_image.rect}`)
+            .ref(`blog/${doc.data().cover_image.rect}`)
             .getDownloadURL()
             .then(updatePhotoUrl);
 
@@ -145,7 +145,7 @@ function Blog({ blog }) {
     const storage = firebase.storage();
 
     storage
-      .ref(`posts/${photos[0]}`)
+      .ref(`blog/${photos[0]}`)
       .getDownloadURL()
       .then(updatePhotoUrl)
   }, [ photos ]);

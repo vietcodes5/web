@@ -91,7 +91,7 @@ function SeriesCard(props) {
     const storage = firebase.storage();
 
     storage
-      .ref(`posts/${cover_image.square}`)
+      .ref(`blog/${cover_image.square}`)
       .getDownloadURL()
       .then(updatePhoto)
 
