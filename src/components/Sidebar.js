@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: '100%',
     backgroundSize: '100%',
     backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
   },
   cardContent: {
     padding: '5px 0 5px 10px',
