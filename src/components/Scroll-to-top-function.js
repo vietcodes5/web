@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React, { useEffect, useRef } from "react";
 import { withRouter } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-
 
 function ScrollToTop(props) {
   const prevProps = useRef();
+  
   useEffect(() => {
     if(props.location !== prevProps.location) {
       window.scrollTo({
@@ -13,7 +12,8 @@ function ScrollToTop(props) {
       });
     }
   });
-    return props.children;
+  
+  return props.children;
 }
 
 export default withRouter(ScrollToTop);
