@@ -17,21 +17,23 @@ import Post from './templates/Post';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
 
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import ReceiptOutlinedIcon from '@material-ui/icons/ReceiptOutlined';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import EventNoteOutlinedIcon from '@material-ui/icons/EventNoteOutlined';
+
+const logo = {
+  brand: true,
+  title: 'Vietcode',
+  url: '/'
+}
+
 const pages = [
   {
     title: 'Home',
     url: '/',
+    icon: HomeOutlinedIcon,
     component: Home
-  },
-  {
-    title: 'About Us',
-    url: '/about',
-    component: About
-  },
-  {
-    brand: true,
-    title: 'Vietcode',
-    url: '/'
   },
   {
     subpage: true,
@@ -46,6 +48,7 @@ const pages = [
   {
     title: 'News',
     url: '/news',
+    icon: ReceiptOutlinedIcon,
     component: News
   },
   {
@@ -56,18 +59,26 @@ const pages = [
   {
     title: 'Events',
     url: '/events',
+    icon: EventNoteOutlinedIcon,
     component: Events
   },
+  {
+    title: 'About Us',
+    url: '/about',
+    icon: InfoOutlinedIcon,
+    component: About
+  },
 ]
+
+
 
 function App(props) {
   console.log(ThemeProvider);
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Header pages={pages} />
-
-        <Container>
+        <Header pages={pages} logo={logo}/>
+        <Container >
           <Content pages={pages} />
           {/* <Footer /> */}
         </Container>
