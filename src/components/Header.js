@@ -16,7 +16,6 @@ const useStyles = makeStyles(theme => ({
 		flexGrow: 1,
 		textDecoration: 'none',
 	},
-	//dsd s
 	toolbarLinkInner: {
 		fontWeight: "500",
 		width: "125px",
