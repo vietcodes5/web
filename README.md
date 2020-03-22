@@ -32,41 +32,52 @@ Cài Node
 
 *Tham khảo: https://www.taniarascia.com/how-to-install-and-use-node-js-and-npm-mac-and-windows/*
 
-Khởi chạy
+Cài đặt các dependencies :book:
+------------------------------
+Dependencies là các thư viện mà sản phẩm của mình sẽ cần đến, không có thì không chạy được.
+
+Chạy lệnh:
+
+```shell
+npm install
+```
+
+Khởi chạy :rocket:
 ---------------------------
 Mở thư mục chứa repo vừa clone về trong terminal và thực hiện các lệnh:
 
-#### npm start
+```shell
+npm start
+```
 Mở ứng dụng trong mode phát triển.
 Sau đó mở địa chỉ http://localhost:3000/ trong trình duyệt để xem ứng dụng đó.
 
-#### npm test
+```shell
+npm test
+```
 Khởi chạy test trong mode tương tác.
 
-#### npm run build
+```shell
+npm run build
+```
 Gộp và xây dựng project React vào trong folder 'build'
 Ứng dụng khi đó sẽ sẵn sàng để deploy!
 
-#### npm run eject
+```shell
+npm run eject
+```
 !! DANGER ZONE !!
 
 Nếu như không hài lòng với toàn bộ tất cả những cài đặt và build, chúng ta có thể xóa nó với lệnh trên. Tuy vậy các cài đặt họ đã để phù hợp hết rồi, vì vậy chúng ta sẽ không bao giờ phải dùng tới lệnh này.
 
-
-Cài đặt các dependencies
-------------------------------
-Dependency nói chung là các chức năng dùng chung có tác dụng khởi tạo các object ta muốn.
-Phải cài đặt chúng thì ta mới có thể bắt đầu build.
-
-Chạy lệnh:
-#### npm install {tên dependency}
-
-
-Các bước đóng góp code
+Các bước đóng góp code :computer:
 ==============================
 *Tuân thủ theo quy tắc GitHub Flow: https://guides.github.com/introduction/flow/*
 
 Dưới đây là tóm tắt:
+
+### Nhận issue
+Trước khi làm bất cứ thứ gì thì hãy báo với mọi người là mình đang làm phần nào đó. Vì thế việc nhận issue sẽ giúp project manager biết ai đang làm phần nào và giúp mọi người không nhận nhầm việc của nhau.
 
 ### Tạo branch
 Khi bắt đầu làm project sẽ có một branch gốc tên 'master'. Đây là branch quan trọng nhất, chỉ được thay đổi khi project đã hoàn thiện một cách đẹp đẽ và sạch sẽ.
