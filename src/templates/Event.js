@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
-  Divider,
   Grid
 } from '@material-ui/core';
 
@@ -114,10 +113,9 @@ export default function Event(props) {
     <>
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
-          <Typography align="center" variant="h3" gutterBottom>
+          <Typography align="center" variant="h1" gutterBottom>
             { event.title }
           </Typography>
-          <Divider />
           
           <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
 
@@ -129,7 +127,7 @@ export default function Event(props) {
         <Sidebar 
           header={{}}
           body={{
-            title: '',
+            title: 'Other events',
             cards: cardsData
           }}
         />

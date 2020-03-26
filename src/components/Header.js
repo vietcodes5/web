@@ -40,7 +40,6 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    position: "fixed",
     flexWrap: "nowarp",
   },
   toolBar: {
@@ -72,15 +71,15 @@ export default function Header(props) {
   const classes = useStyles();
   return (
     <AppBar
-      position="static"
+      position="fixed"
       className={classes.appBar}
     >
       <Toolbar className={classes.toolBar}>
         <Container>
-
           <img
             src={Logo}
             className={classes.logo}
+            alt="Vietcode"
           />
 
         </Container>

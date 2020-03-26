@@ -73,7 +73,6 @@ const pages = [
 
 
 function App(props) {
-  console.log(ThemeProvider);
   return (
     <Router>
       <ThemeProvider theme={theme}>
