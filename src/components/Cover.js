@@ -14,25 +14,35 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     position: 'relative',
     overflow: 'hidden',
-
+    
     "& > .mask": {
       position: 'absolute',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       width: '100%',
       height: '100%',
       top: 0,
       left: 0,
       pointerEvents: 'none',
-      backgroundColor: '#000',
+      backgroundColor: 'black',
       transition: 'opacity .3s linear',
       zIndex: '0',
     },
 
     "& > .title": {
+      color: 'white',
+      display: 'flex',
+      justifyContent: 'center',
+      textAlign: 'center',
+      alignItems: 'center',
+      flexDirection: 'column',
       position: 'absolute',
       width: '100%',
+      height: '100%',
       boxSizing: 'border-box',
       padding: "10px",
-      color: '#fff',
+      backgroundColor: 'transparent',
       background: '#000',
       bottom: '0',
       pointerEvents: 'none',
@@ -45,7 +55,7 @@ const useStyles = makeStyles(theme => ({
       height: '100%',
       backgroundSize: '100% 100%',
       backoroundRepeat: 'no-repeat'
-    }
+    },
   },
 }));
 
@@ -70,17 +80,25 @@ export default function Cover({
           }}
           onMouseOut={() => updateShow(false)}
         >
-          <img className="image" src={photoUrl} alt={title} />
+          <img className="image" 
+            src={photoUrl} 
+            alt={title} 
+            style={{
+              transform: `scale(${showMask ? "1.2" : "1"})`,
+              transitionDuration: '.3s',
+            }}
+          />
           <div className="mask"
             style={{
-              opacity: showMask ? ".3" : "0",
+              opacity: showMask ? ".7" : "0",
+              
             }}></div>
           <div className="title"
             style={{
-              transform: `translateY(${showMask ? "0" : "100%"})`
+              opacity: showMask ? "1" : "0",
             }}
           >
-            <Typography variant="h3">
+            <Typography variant="h2">
               {title}
             </Typography>
             <Typography variant="subtitle1">
