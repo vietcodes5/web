@@ -40,9 +40,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
   },
-  toolBar: {
-    display: "flex",
-  },
   rightSection: {
     width: '60%',
     display: "flex",
