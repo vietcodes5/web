@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
   },
   rightSection: {
-    width:  "50%",
+    width:  "60%",
     display: "flex",
     justifyContent: "center",
     flexDirection: "row",
