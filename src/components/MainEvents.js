@@ -6,7 +6,7 @@ import {
   Divider
 } from '@material-ui/core';
 
-import Cover from '../components/Cover';
+import Cover from './Cover';
 
 import firebase from 'firebase';
 import 'firebase/storage';
@@ -35,9 +35,7 @@ export default function MainEvents(props) {
             />
           ]))
         });
-
     });
-
   }, [ events ]);
 
   return (
