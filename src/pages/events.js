@@ -81,13 +81,16 @@ export default function Events(props) {
       <UpcomingEvent />
       <Grid container className={classes.mainGrid} spacing={3}>
         <Main events={events} />
-        <Sidebar
+        { /*
+          <Sidebar
           title={sidebar.title}
           description={sidebar.description}
           archives={sidebar.archives}
           social={sidebar.social}
         />
-      </Grid>
+
+        */ }
+        </Grid>
     </>
   );
 }

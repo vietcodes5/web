@@ -24,7 +24,7 @@ export default function Content(props) {
     <div className={useStyles().marginApp}>
       
     <Switch  >
-      <Scrolltotop>
+      { /* <Scrolltotop> */ }
       {
         pages.map(page => 
           <Route 
@@ -37,7 +37,7 @@ export default function Content(props) {
         path="/"
         component={Home}
       />
-      </Scrolltotop>
+     { /* </Scrolltotop>  */}
     </Switch></div>
   );
 }
