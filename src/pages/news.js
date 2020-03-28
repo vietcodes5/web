@@ -67,7 +67,7 @@ export default function News() {
     <>
       <FeaturedPosts />
       <Grid container spacing={5} className={classes.mainGrid}>
-        <Main title="From Vietcode" allSeries={allSeries} />
+        <Main allSeries={allSeries} />
         <Sidebar
           header={{
             title: "News",
