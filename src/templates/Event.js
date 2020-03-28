@@ -77,35 +77,32 @@ export default function Event(props) {
             .ref(`/events/${data.main_photos.rect}`)
             .getDownloadURL()
         }
-
       })
       .then(updatePhotoUrl);
-
+    
     db.collection("events")
       .get()
       .then(snapshot => {
         if (snapshot.empty) {
-          console.log('No event found!');
-        } else {
-          snapshot.docs.forEach(doc => {
-            const data = doc.data();
-
-            storage
-              .ref(`events/${data.main_photos.square}`)
-              .getDownloadURL()
-              .then(url => {
-                updateCardsData(prevState => ([
-                  ...prevState,
-                  {
-                    title: data.title,
-                    photoUrl: url
-                  }
-                ]));
-              })
-          });
-
-          
+          return console.log('No event found!');
         }
+      
+        snapshot.docs.forEach(doc => {
+          const data = doc.data();
+
+          storage
+            .ref(`events/${data.main_photos.square}`)
+            .getDownloadURL()
+            .then(url => {
+              updateCardsData(prevState => ([
+                ...prevState,
+                {
+                  title: data.title,
+                  photoUrl: url
+                }
+              ]));
+            })
+        }); 
       })
   }, [ id ]);
 
@@ -135,4 +132,3 @@ export default function Event(props) {
     </>
   );
 }
-

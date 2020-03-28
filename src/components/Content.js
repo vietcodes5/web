@@ -16,7 +16,7 @@ export default function Content(props) {
 
   return (
     <div className={useStyles().marginApp}>
-      <Switch  >
+      <Switch>
         {
           pages.map(page => 
             <Route 
