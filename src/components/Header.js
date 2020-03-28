@@ -14,16 +14,15 @@ const useStyles = makeStyles(theme => ({
   toolbarLink: {
     flexShrink: 0,
     flexGrow: 1,
+    width: "25%",
+    minWidth: '110px',
     textDecoration: 'none',
   },
   toolbarLinkInner: {
     fontWeight: "500",
-    width: "125px",
-    height: "59px",
+    height: "60px",
+    width: '100%',
     borderRadius: "0",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     color: 'white',
     fontSize: "14px",
     '&:hover': {
@@ -40,24 +39,13 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    position: "fixed",
-    flexWrap: "nowarp",
-  },
-  toolBar: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
   },
   rightSection: {
-    width: "70%",
+    width: '60%',
     display: "flex",
-    justifyContent: "center",
-    alignItems: "space-between",
-    flexDirection: "row",
   },
   logo: {
-    marginTop: "5px",
+    marginTop: '5px',
     height: "50px",
     width: "auto",
   },
@@ -72,15 +60,15 @@ export default function Header(props) {
   const classes = useStyles();
   return (
     <AppBar
-      position="static"
+      position="fixed"
       className={classes.appBar}
     >
       <Toolbar className={classes.toolBar}>
         <Container>
-
           <img
             src={Logo}
             className={classes.logo}
+            alt="Vietcode"
           />
 
         </Container>
