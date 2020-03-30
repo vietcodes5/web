@@ -1,14 +1,19 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import useWindowSize from '../components/ViewportChecker';
 import Logo from '../images/LOGO.PNG';
+import FadeMenu from '../components/Header-for-mobile';
 
 import {
   AppBar,
   Toolbar,
   Button,
+  Typography,
   Container,
 } from '@material-ui/core'
 import { Link } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles(theme => ({
   toolbarLink: {
@@ -53,11 +58,21 @@ const useStyles = makeStyles(theme => ({
     fontSize: "110%",
     marginRight: "5px",
   },
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
 }));
 
 export default function Header(props) {
+
   const pages = props.pages.filter(page => !page.subpage);
   const classes = useStyles();
+  const size = useWindowSize();
+
+  if(size.width > 768) {
   return (
     <AppBar
       position="fixed"
@@ -94,4 +109,6 @@ export default function Header(props) {
       </Toolbar>
     </AppBar>
   );
+  }
+  return <FadeMenu pages={pages}/>;
 }
