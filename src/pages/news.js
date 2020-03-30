@@ -44,8 +44,8 @@ const sidebarBodyCards = [
 const defaultValues = {
   title: 'Loading...',
   content: 'Loading...',
-  photos: "",
-  createdAt: ""
+  photos: "Loading",
+  createdAt: "Loading"
 }
 
 export default function News(props) {
@@ -76,13 +76,18 @@ export default function News(props) {
       })
 
     db.collection("posts")
+      
       .get()
       .then(snapshot => {
         if (snapshot.empty) {
           return console.log('No event found!');
         }
- 
+        let checkPoint = 0;
         snapshot.docs.forEach(doc => {
+          checkPoint++;
+            if(checkPoint === 5) {
+              return;
+            }
           const data = doc.data();
           loadEvent(data);
 
