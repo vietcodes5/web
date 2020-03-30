@@ -49,14 +49,14 @@ export default function Series(props) {
           storage
             .ref(`blog/${doc.data().cover_image.rect}`)
             .getDownloadURL()
-            .then(updatePhotoUrl);
+            .then(url => updatePhotoUrl(url));
 
-          const blogRefs = doc.data().blogs;
-          const promises = blogRefs.map(ref => ref.get());
+          const postRefs = doc.data().posts;
+          const promises = postRefs.map(ref => ref.get());
 
           Promise.all(promises)
-            .then(blogDocs => {
-              blogDocs.forEach(doc => {
+            .then(postDocs => {
+              postDocs.forEach(doc => {
                 const data = doc.data();
 
                 storage
@@ -66,6 +66,7 @@ export default function Series(props) {
                     loadPost(prevPosts => ([
                       ...prevPosts,
                       <Cover 
+                        key={doc.id}
                         id={doc.id}
                         title={data.title}
                         subtitle={data.opening}

@@ -40,10 +40,10 @@ export default function Events(props) {
             ...doc.data()
           }));
 
-          updateEvents(events)
+          updateEvents(events);
         }
       })
-  }, [ db ])
+  }, [ db ]);
 
   return (
     <>

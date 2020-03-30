@@ -60,7 +60,6 @@ export default function Event(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    console.log("Page");
     const storage = firebase.storage();
     const db = firebase.firestore();
 
@@ -73,12 +72,12 @@ export default function Event(props) {
           const data = doc.data();
           loadEvent(data);
 
-           return storage
+          storage
             .ref(`/events/${data.main_photos.rect}`)
             .getDownloadURL()
+            .then(updatePhotoUrl);
         }
       })
-      .then(updatePhotoUrl);
     
     db.collection("events")
       .get()
@@ -86,7 +85,7 @@ export default function Event(props) {
         if (snapshot.empty) {
           return console.log('No event found!');
         }
-      
+ 
         snapshot.docs.forEach(doc => {
           const data = doc.data();
 
@@ -98,7 +97,8 @@ export default function Event(props) {
                 ...prevState,
                 {
                   title: data.title,
-                  photoUrl: url
+                  photoUrl: url,
+                  url: `/events/${doc.id}`
                 }
               ]));
             })
