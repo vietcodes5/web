@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
-  Divider,
   Grid
 } from '@material-ui/core';
 
@@ -61,7 +60,6 @@ export default function Event(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    console.log("Page");
     const storage = firebase.storage();
     const db = firebase.firestore();
 
@@ -74,39 +72,37 @@ export default function Event(props) {
           const data = doc.data();
           loadEvent(data);
 
-           return storage
+          storage
             .ref(`/events/${data.main_photos.rect}`)
             .getDownloadURL()
+            .then(updatePhotoUrl);
         }
-
       })
-      .then(updatePhotoUrl);
-
+    
     db.collection("events")
       .get()
       .then(snapshot => {
         if (snapshot.empty) {
-          console.log('No event found!');
-        } else {
-          snapshot.docs.forEach(doc => {
-            const data = doc.data();
-
-            storage
-              .ref(`events/${data.main_photos.square}`)
-              .getDownloadURL()
-              .then(url => {
-                updateCardsData(prevState => ([
-                  ...prevState,
-                  {
-                    title: data.title,
-                    photoUrl: url
-                  }
-                ]));
-              })
-          });
-
-          
+          return console.log('No event found!');
         }
+ 
+        snapshot.docs.forEach(doc => {
+          const data = doc.data();
+
+          storage
+            .ref(`events/${data.main_photos.square}`)
+            .getDownloadURL()
+            .then(url => {
+              updateCardsData(prevState => ([
+                ...prevState,
+                {
+                  title: data.title,
+                  photoUrl: url,
+                  url: `/events/${doc.id}`
+                }
+              ]));
+            })
+        }); 
       })
   }, [ id ]);
 
@@ -114,10 +110,9 @@ export default function Event(props) {
     <>
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
-          <Typography align="center" variant="h3" gutterBottom>
+          <Typography align="center" variant="h1" gutterBottom>
             { event.title }
           </Typography>
-          <Divider />
           
           <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
 
@@ -129,7 +124,7 @@ export default function Event(props) {
         <Sidebar 
           header={{}}
           body={{
-            title: '',
+            title: 'Other events',
             cards: cardsData
           }}
         />
@@ -137,4 +132,3 @@ export default function Event(props) {
     </>
   );
 }
-

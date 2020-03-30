@@ -36,7 +36,6 @@ const defaultValues = {
 
 export default function UpcomingEvent(props) {
   const classes = useStyles();
-  console.log(classes);
   const [ event, loadEvent ] = useState(defaultValues)
   const [ photoUrl, updatePhotoUrl ] = useState("");
 
