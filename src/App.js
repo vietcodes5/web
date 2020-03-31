@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Header from './components/Header';
-import Content from './components/Content';
-import FadeMenu from './components/Header-for-mobile';
+import Header from './components/Header'
+import Content from './components/Content'
 import './css/App.css';
 import { Container } from '@material-ui/core';
 
@@ -64,7 +63,7 @@ const pages = [
     component: Events
   },
   {
-    title: 'About',
+    title: 'About Us',
     url: '/about',
     icon: InfoOutlinedIcon,
     component: About
@@ -78,13 +77,12 @@ function App(props) {
     <Router>
       <ThemeProvider theme={theme}>
         <Header pages={pages} logo={logo}/>
-        <Container >
-          <Content pages={pages} />
-          {/* <Footer /> */}
-        </Container>
+        <Content pages={pages} />
+        {/* <Footer /> */}
       </ThemeProvider>
     </Router>
   );
 }
 
 export default App;
+© 2020 GitHub, Inc.
