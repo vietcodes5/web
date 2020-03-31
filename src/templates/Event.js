@@ -62,6 +62,8 @@ export default function Event(props) {
   useEffect(() => {
     const storage = firebase.storage();
     const db = firebase.firestore();
+    
+    updateCardsData(() => []);
 
     db.doc(`events/${id}`)
       .get()
