@@ -85,4 +85,3 @@ function App(props) {
 }
 
 export default App;
-© 2020 GitHub, Inc.
