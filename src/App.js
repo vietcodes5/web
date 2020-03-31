@@ -77,10 +77,8 @@ function App(props) {
     <Router>
       <ThemeProvider theme={theme}>
         <Header pages={pages} logo={logo}/>
-        <Container >
-          <Content pages={pages} />
-          {/* <Footer /> */}
-        </Container>
+        <Content pages={pages} />
+        {/* <Footer /> */}
       </ThemeProvider>
     </Router>
   );
