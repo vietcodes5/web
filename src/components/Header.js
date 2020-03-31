@@ -1,9 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import useWindowSize from '../components/ViewportChecker';
 import Logo from '../images/LOGO.PNG';
 import FadeMenu from '../components/Header-for-mobile';
-
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 import {
   AppBar,
   Toolbar,
@@ -40,6 +39,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   appBar: {
+    opacity: '0.9',
     height: "60px",
     width: "100%",
     display: "flex",
@@ -66,13 +66,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Header(props) {
+function Header(props) {
 
   const pages = props.pages.filter(page => !page.subpage);
-  const classes = useStyles();
-  const size = useWindowSize();
-
-  if(size.width > 768) {
+  const classes = useStyles();  
+  if (props.width == 'lg' || props.width == 'md') {
   return (
     <AppBar
       position="fixed"
@@ -112,3 +110,5 @@ export default function Header(props) {
   }
   return <FadeMenu pages={pages}/>;
 }
+
+export default withWidth()(Header);
