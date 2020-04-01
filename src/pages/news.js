@@ -31,18 +31,18 @@ export default function News() {
     const db = firebase.firestore();
     const storage = firebase.storage();
 
-    db.collection("series")
+    db.collection("posts")
       .get()
       .then(snapshot => {
         if (snapshot.empty) {
-          return console.log('No series found!');
+          return console.log('No posts found!');
         }
  
-        snapshot.docs.forEach(doc => {
+        snapshot.docs.slice(-5).forEach(doc => {
           const data = doc.data();
 
           storage
-            .ref(`blog/${data.cover_image.square}`)
+            .ref(`blog/${data.photos}`)
             .getDownloadURL()
             .then(url => {
               updateSidebar(sidebarBodyCards => ([
@@ -50,7 +50,7 @@ export default function News() {
                 {
                   title: data.title,
                   photoUrl: url,
-                  url: `/series/${doc.id}`
+                  url: `/series/posts/${doc.id}`
                 }
               ]));
             })
