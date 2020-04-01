@@ -49,7 +49,6 @@ export default function Series(props) {
     // Clear previous state
     loadPost(() => []);
     updateCardsData(() => []);
-    var check = "";
     db.collection("series")
       .doc(id)
       .get()
