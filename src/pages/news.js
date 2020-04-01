@@ -12,10 +12,8 @@ import Sidebar from "../components/Sidebar";
 import Main from "../components/MainNews";
 
 // firebase
-import firebase from 'firebase';
-import 'firebase/firestore';
-import 'firebase/storage';
-import { useParams } from 'react-router-dom';
+import firebase from "firebase";
+import "firebase/firestore";
 
 const useStyles = makeStyles(theme => ({
   mainGrid: {
@@ -23,25 +21,31 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const defaultValues = {
-  title: 'Loading...',
-  content: 'Loading...',
-  photos: "Loading",
-  createdAt: "Loading"
-}
+const sidebarBodyCards = [
+  {
+    title: 'Post #1',
+    photoUrl: 'https://source.unsplash.com/random',
+    url: '/',
+  },
+  {
+    title: 'Post #2',
+    photoUrl: 'https://source.unsplash.com/random',
+    url: '/',
+  },
+  {
+    title: 'Post #3',
+    photoUrl: 'https://source.unsplash.com/random',
+    url: '/',
+  },
+];
 
-export default function News(props) {
-  const { id } = useParams();
-  const { seriesId } = useParams();
-  const [ allSeries, updateAllSeries ] = useState([]);
-  const [ event, loadEvent ] = useState(defaultValues)
-  const [ photoUrl, updatePhotoUrl ] = useState("");
-  const [ cardsData, updateCardsData ] = useState([])
+export default function News() {
   const classes = useStyles();
+  const [ allSeries, updateAllSeries ] = useState([]);
 
   useEffect(() => {
-    const storage = firebase.storage();
     const db = firebase.firestore();
+
     db.collection("series")
       .get()
       .then(snapshot => {
@@ -57,33 +61,7 @@ export default function News(props) {
           updateAllSeries(allSeries);
         }
       })
-
-    db.collection("posts")
-      .limit(5)
-      .get()
-      .then(snapshot => {
-        if (snapshot.empty) {
-          return console.log('No event found!');
-        }
-        snapshot.docs.forEach(doc => {
-          const data = doc.data();
-          loadEvent(data);
-
-          storage
-            .ref(`blog/${data.photos}`)
-            .getDownloadURL()
-            .then(url => {
-              updateCardsData(prevState => ([
-                ...prevState,
-                {
-                  title: data.title,
-                  photoUrl: url,
-                }
-              ]));
-            })
-        }); 
-      })
-  }, [id]);
+  }, []);
 
   return (
     <>
@@ -92,12 +70,12 @@ export default function News(props) {
         <Main allSeries={allSeries} />
         <Sidebar
           header={{
-            title: "Recent Posts",
-            // content: "Just testing"
+            title: "News",
+            content: "Just testing"
           }}
           body={{
-            title: "",
-            cards: cardsData
+            title: "Posts",
+            cards: sidebarBodyCards
           }}
         />
       </Grid>
