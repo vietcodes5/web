@@ -49,7 +49,7 @@ export default function Series(props) {
     // Clear previous state
     loadPost(() => []);
     updateCardsData(() => []);
-
+    var check = "";
     db.collection("series")
       .doc(id)
       .get()
@@ -58,7 +58,6 @@ export default function Series(props) {
           console.log("No series found");
         } else {
           updateSeries(doc.data());
-          
           // get image
           storage
             .ref(`blog/${doc.data().cover_image.rect}`)
@@ -67,12 +66,12 @@ export default function Series(props) {
 
           const postRefs = doc.data().posts;
           const promises = postRefs.map(ref => ref.get());
-
+          
           Promise.all(promises)
             .then(postDocs => {
               postDocs.forEach(doc => {
                 const data = doc.data();
-
+                
                 storage
                   .ref(`blog/${data.photos[0]}`)
                   .getDownloadURL()
@@ -90,29 +89,26 @@ export default function Series(props) {
                       />
                     ]));
                   })
+                  
               })
             })
         }
       })
 
     db.collection("series")
+      .limit(5)
       .get()
       .then(snapshot => {
         if(snapshot.empty) return console.log('No series to show');
         
-        let checkPoint = 0;
         snapshot.docs.forEach(doc => {
-          checkPoint++;
-
-          if(checkPoint === 5) {
-            return;
-          }
 
           const data = doc.data();
           storage
           .ref(`/blog/${data.cover_image.square}`)
           .getDownloadURL()
           .then(url => {
+            if(doc.id != id) {
             updateCardsData(prevState => ([
               ...prevState,
               {
@@ -121,11 +117,12 @@ export default function Series(props) {
                 url: `/series/${doc.id}`
               }
             ]));
+          }
           })
         });
       });
-    }, [ id ]);
 
+    }, [ id ]);
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} md={8}>
