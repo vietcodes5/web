@@ -70,7 +70,7 @@ function Header(props) {
 
   const pages = props.pages.filter(page => !page.subpage);
   const classes = useStyles();  
-  if (props.width == 'lg' || props.width == 'md') {
+  if (props.width == "xl" || props.width == "md") {
   return (
     <AppBar
       position="fixed"
@@ -108,7 +108,8 @@ function Header(props) {
     </AppBar>
   );
   }
-  return <FadeMenu pages={pages}/>;
+    return <FadeMenu pages={pages}/>;
+  
 }
 
 export default withWidth()(Header);
