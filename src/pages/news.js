@@ -23,24 +23,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const sidebarBodyCards = [
-  {
-    title: 'Post #1',
-    photoUrl: 'https://source.unsplash.com/random',
-    url: '/',
-  },
-  {
-    title: 'Post #2',
-    photoUrl: 'https://source.unsplash.com/random',
-    url: '/',
-  },
-  {
-    title: 'Post #3',
-    photoUrl: 'https://source.unsplash.com/random',
-    url: '/',
-  },
-];
-
 const defaultValues = {
   title: 'Loading...',
   content: 'Loading...',
@@ -76,18 +58,13 @@ export default function News(props) {
       })
 
     db.collection("posts")
-      
+      .limit(5)
       .get()
       .then(snapshot => {
         if (snapshot.empty) {
           return console.log('No event found!');
         }
-        let checkPoint = 0;
         snapshot.docs.forEach(doc => {
-          checkPoint++;
-            if(checkPoint === 5) {
-              return;
-            }
           const data = doc.data();
           loadEvent(data);
 
