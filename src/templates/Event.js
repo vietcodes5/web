@@ -95,6 +95,7 @@ export default function Event(props) {
             .ref(`events/${data.main_photos.square}`)
             .getDownloadURL()
             .then(url => {
+              if(doc.id != id){
               updateCardsData(prevState => ([
                 ...prevState,
                 {
@@ -103,6 +104,7 @@ export default function Event(props) {
                   url: `/events/${doc.id}`
                 }
               ]));
+            }
             })
         }); 
       })
