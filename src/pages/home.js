@@ -4,10 +4,10 @@ import {
     Grid,Button, Typography,Card,IconButton
   } from '@material-ui/core';
 import ArrowDownwardRoundedIcon from '@material-ui/icons/ArrowDownwardRounded';
-import EventIcon from '@material-ui/icons/Event';
 import PeopleIcon from '@material-ui/icons/People';
-import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
-import LayersIcon from '@material-ui/icons/Layers';
+import SpaIcon from '@material-ui/icons/Spa';
+import EventIcon from '@material-ui/icons/Event';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 
 //Upcoming event
 import UpcomingEvent from '../components/UpcomingEvent';
@@ -245,7 +245,7 @@ export default function Home() {
                     </Grid>
                     <Grid item md={2} xs={12}>
                         <div className={classes.iconContainer}>
-                            <LayersIcon className={classes.iconIMG}/>
+                            <SpaIcon className={classes.iconIMG}/>
                         </div>
                         <div>
                             <div className={classes.open1}>5</div>
@@ -265,7 +265,7 @@ export default function Home() {
                     </Grid>
                     <Grid item md={2} xs={12}>
                         <div className={classes.iconContainer}>
-                            <WorkOutlineIcon className={classes.iconIMG}/>
+                            <BusinessCenterIcon className={classes.iconIMG}/>
                         </div>
                         <div>
                             <div className={classes.open1}>10</div>
