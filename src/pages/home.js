@@ -174,12 +174,12 @@ export default function Home() {
                 <Grid container className={classes.bkIMG} direction="column" justify="center" alignItems="center">
                     <Typography className={classes.intro} color='primary' variant='h2'>Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam</Typography>
                     <Button className={classes.more} variant="contained" color="primary">Tìm hiểu thêm</Button>
-                    <IconButton className={classes.down}>
+                    <IconButton className={classes.down} href='#here'>
                         <ArrowDownwardRoundedIcon className={classes.iconIMG} onClick='#'/>
                     </IconButton>
                 </Grid>
             </Grid>    
-            <div className={classes.container}>
+            <div className={classes.container} id='here'>
                 <Typography variant='h2'className={classes.open}>Vietcode qua những con số</Typography>
                 <Typography variant='body1' textAlign='center' className={classes.sub}>Chặng đường Vietcode đã đi được 5 năm.<br></br> Dưới đây là những con số mà Vietcode đã để lại dấu ấn</Typography>
                 <Grid container direction="row" justify="space-evenly" alignItems="center">
