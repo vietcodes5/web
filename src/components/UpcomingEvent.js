@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   Typography,
-  Divider,
   Grid,
   Button,
 } from '@material-ui/core';
@@ -13,117 +12,79 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 const useStyles = makeStyles(theme => ({
+  allcontainer:{
+    background:'#309DBE',
+    display:'flex',
+    flexFlow:'column',
+    alignItems:'center',
+    maxWidth:'100%',
+    maxHeight:'700px',
+    height:'700px',
+    '@media screen and (max-width: 1000px)': {
+      height: '800px',
+      display:'flex',
+      flexFlow:'column',
+    },
+  },
+  container:{
+    background:"#FFFFFF",
+    borderRadius: '8px',
+    width: '80%',
+    height: 'auto',
+    padding: theme.spacing(4),
+    maxWidth:'inherit',
+  },
   coverImage: {
-    maxWidth: '100%',
-    borderRadius: '10px',
-    maxHeight: '600px',
+    borderRadius: '8px',
+    maxWidth: '80%',
+    maxHeight: '300px',
+    padding:theme.spacing(1),
   },
-  detailsContainer: {
-    width: '100%',
-    height: '100%',
-    boxSizing: 'border-box',
-    background: 'white',
-    padding: '10px',
+  intro:{
+      color:'white',
+      fontWeight:"bold",
+      marginBottom:theme.spacing(2),
+      padding:theme.spacing(1),
+      fontStyle: 'normal',
+      marginTop:theme.spacing(9),
+      fontSize:'xx-large',
   },
-  eventRegisterButton: {
-    borderRadius: '50px',
-    height: '55px',
-    width: '120px',
+  sub:{
+    color:theme.palette.text,
+  },
+  sub1:{
+    color:'grey',
+  },
+  hr:{
+    border:'1px #309DBE solid ',
+  },
+  more:{
     background: theme.palette.primary.main,
+    width: '160px',
+    height: '50px',
+    borderRadius: '50px',
     color: 'white',
     display: 'flex',
-    border: '1px solid',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: '30px',
+    fontSize: '80%',
     letterSpacing: '2px',
-    fontSize: '15px',
-    cursor: 'pointer',
-    transition: '0.5s',
+    border: '1px solid',
+    borderColor: theme.palette.primary.main,
+    transition: '.5s',
     '&:hover': {
       background: 'white',
       color: theme.palette.primary.main,
       border: '1px solid',
       borderColor: theme.palette.primary.main,
-    },
-  },
-  eventHigherPart: {
-    display: 'flex',
-    height: '100%',
-    width: '100%',
-    alignItems: 'flex-start',
-    justifyContent: 'space-around',
-    flexDirection: 'column',
-  },
-  eventText: {
-    width: '700px',
-    height: '300px',
-    //height: '100%',
-    display: 'flex',
-    //border: '1px solid black',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    color: theme.palette.text.main,
-  },
-  eventTextHorizontalLine: {
-    width: '20%',
-    marginLeft: '0',
-    background: theme.palette.primary.main,
-    height: '2px',
-  },
-  eventLowerPart: {
-    display: 'flex',
-    height: '100%',
-    width: '100%',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-  },
-  eventDate: {
-    width: '100%',
-    height: '30px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start'
-  },
-  eventDateIcon: {
-    marginRight: '5px',
-    color: theme.palette.primary.main,
-  },
-  eventLocation: {
-    width: '100%',
-    height: '30px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start'
-  },
-  eventLocationIcon: {
-    marginRight: '5px',
-    color: theme.palette.primary.main,
-  },
-  upcomingEventsContainer: {
-    color: 'white',
-    minWidth: '100%',
-    padding: '0px 30px 50px 30px',
-    height: '100%',
-    background: theme.palette.primary.main,
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: '130%',
-    justifyContent: 'center',
-    flexDirection: 'column',
-  },
-  upcomingEvents: {
-    color: theme.palette.text.main,
-    width: '90%',
-    borderRadius: '10px',
-    height: '70%',
-    boxSizing: 'border-box',
-    background: 'white',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    },  
+},
+itemcontainer:{
+    display:'flex',
+    flexFlow:'row',
+    margin: '3vh 0 0 0',
+},
 }));
 
 const defaultValues = {
@@ -164,47 +125,39 @@ export default function UpcomingEvent(props) {
   }, [])
 
   return (
-    <Grid container className={classes.upcomingEventsContainer} spacing={5}>
-      <Grid item >
-      <Typography gutterBottom variant="h1">
-        Upcoming Event
+    <Grid className={classes.allcontainer}>
+      <Typography variant="h2" className={classes.intro}>
+           Sự kiện sắp tới
       </Typography>
-      </Grid>
-      <Divider />
-      
-      <Grid container item className={classes.upcomingEvents} spacing={4}>
-        <Grid item md={3} xs={15}>
+      <Grid container className={classes.container} align="center">
+        <Grid md={4} xs={12}>
           <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
         </Grid>
-        <Grid item md={7} xs={12}>
-          <div className = {classes.eventText}>
-            <div className = {classes.eventHigherPart}>
-            <Typography align="center" gutterBottom style={{fontSize:'25px', fontWeight:'bold'}}>
+        <Grid md={8} xs={12}>
+            <Typography variant="h4" align="left" className={classes.sub}>
               { event.title }
             </Typography>
-            <Typography variant="body1" align="left">
-              { event.description }
+            <Typography variant="body1" align="left" className={classes.sub1}>
+              Description: { event.description }
             </Typography>
-            </div> 
-            <hr className={classes.eventTextHorizontalLine} />
-            <div className={classes.eventLowerPart}>
-            <Typography variant="body2" align="left" className={classes.eventDate}>
-              <AccessTimeIcon className={classes.eventDateIcon} />
-              { event.date }
-            </Typography>
-            <Typography variant="body2" align="left" gutterBottom className={classes.eventLocation}>
-              <LocationOnIcon className={classes.eventLocationIcon} />
-              { event.location }
-            </Typography>
-            <Button className={classes.eventRegisterButton}>
-              Register
-            </Button>
+            <hr className={classes.hr}></hr>
+            <div className={classes.itemcontainer}>
+              <AccessTimeIcon color='primary'/>
+              <Typography variant="body2" align="left">
+                Date: { event.date }
+              </Typography>
             </div>
-          </div>
+            <div className={classes.itemcontainer}>
+              <LocationOnIcon color='primary'/>
+              <Typography variant="body2" align="left">
+                Location: { event.location }
+              </Typography>
+            </div>
+            <Button variant="contained" color="Primary" align="center" className={classes.more}>
+                 Đăng kí
+            </Button>
         </Grid>
       </Grid>
-
-      <Divider />
     </Grid>
   )
 }
