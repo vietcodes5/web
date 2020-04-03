@@ -93,7 +93,7 @@ export default function Event(props) {
             .ref(`events/${data.main_photos.square}`)
             .getDownloadURL()
             .then(url => {
-              if(doc.id != id){
+              if(doc.id !== id){
               updateCardsData(prevState => ([
                 ...prevState,
                 {
