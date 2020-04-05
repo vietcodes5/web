@@ -31,6 +31,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '8px',
     width: '80%',
     height: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: theme.spacing(4),
     maxWidth:'inherit',
   },
@@ -82,6 +85,8 @@ const useStyles = makeStyles(theme => ({
 },
 itemcontainer:{
     display:'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     flexFlow:'row',
     margin: '3vh 0 0 0',
 },
@@ -142,13 +147,13 @@ export default function UpcomingEvent(props) {
             </Typography>
             <hr className={classes.hr}></hr>
             <div className={classes.itemcontainer}>
-              <AccessTimeIcon color='primary'/>
+              <AccessTimeIcon color='primary'/> &ensp;
               <Typography variant="body2" align="left">
                 Date: { event.date }
               </Typography>
             </div>
             <div className={classes.itemcontainer}>
-              <LocationOnIcon color='primary'/>
+              <LocationOnIcon color='primary'/> &ensp;
               <Typography variant="body2" align="left">
                 Location: { event.location }
               </Typography>
