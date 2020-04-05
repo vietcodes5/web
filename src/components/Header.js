@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Logo from '../images/LOGO.PNG';
 
@@ -7,7 +8,11 @@ import {
   Toolbar,
   Button,
   Container,
+  IconButton,
+  Hidden,
+  SwipeableDrawer
 } from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
@@ -43,6 +48,7 @@ const useStyles = makeStyles(theme => ({
   rightSection: {
     width: '60%',
     display: "flex",
+    justifyContent: "flex-end"
   },
   logo: {
     marginTop: '5px',
@@ -57,7 +63,38 @@ const useStyles = makeStyles(theme => ({
 
 export default function Header(props) {
   const pages = props.pages.filter(page => !page.subpage);
+  const [showMenu, setShowMenu] = useState(false)
   const classes = useStyles();
+  let toggleDrawer = (anchor, open) => () => {
+    setShowMenu({ ...showMenu, [anchor]: open });
+  }
+  const menu = (anchor) => (
+    <div
+
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      style={{ backgroundColor: '#2b93b6' }}
+    >
+      {
+        pages.map(page => (
+          <Link
+            className={classes.toolbarLink}
+            key={page.title}
+            to={page.url}
+          >
+            <Button
+              component="button"
+              className={classes.toolbarLinkInner}
+            >
+              <page.icon className={classes.pageIcon} />
+              {page.title}
+            </Button>
+          </Link>
+        ))
+      }
+    </div>
+  )
+
   return (
     <AppBar
       position="fixed"
@@ -73,23 +110,55 @@ export default function Header(props) {
 
         </Container>
         <Container className={classes.rightSection}>
-          {
-            pages.map(page => (
-              <Link
-                className={classes.toolbarLink}
-                key={page.title}
-                to={page.url}
-              >
-                <Button
-                  component="button"
-                  className={classes.toolbarLinkInner}
+          <Hidden only={['xs', 'sm']}>
+            {
+              pages.map(page => (
+                <Link
+                  className={classes.toolbarLink}
+                  key={page.title}
+                  to={page.url}
                 >
-                  <page.icon className={classes.pageIcon} />
-                  {page.title}
-                </Button>
-              </Link>
-            ))
-          }
+                  <Button
+                    component="button"
+                    className={classes.toolbarLinkInner}
+                  >
+                    <page.icon className={classes.pageIcon} />
+                    {page.title}
+                  </Button>
+                </Link>
+              ))
+            }
+          </Hidden>
+          <Hidden only={['md', 'lg','sm']}>
+            <React.Fragment>
+              <IconButton button="true" edge="start" onClick={toggleDrawer('top', true)} className={classes.menuButton} color="inherit" aria-label="menu">
+                <MenuIcon />
+              </IconButton>
+              <SwipeableDrawer
+                anchor={'top'}
+                open={showMenu['top']}
+                onClose={toggleDrawer('top', false)}
+                onOpen={toggleDrawer('top', true)}
+              >
+                {menu('top')}
+              </SwipeableDrawer>
+            </React.Fragment>
+          </Hidden>
+          <Hidden only={['md', 'lg', 'xs']}>
+            <React.Fragment>
+              <IconButton button="true" edge="start" onClick={toggleDrawer('right', true)} className={classes.menuButton} color="inherit" aria-label="menu">
+                <MenuIcon />
+              </IconButton>
+              <SwipeableDrawer
+                anchor={'right'}
+                open={showMenu['right']}
+                onClose={toggleDrawer('right', false)}
+                onOpen={toggleDrawer('right', true)}
+              >
+                {menu('right')}
+              </SwipeableDrawer>
+            </React.Fragment>
+          </Hidden>
         </Container>
       </Toolbar>
     </AppBar>
