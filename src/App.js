@@ -73,15 +73,12 @@ const pages = [
 
 
 function App(props) {
-  console.log(ThemeProvider);
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <Header pages={pages} logo={logo}/>
-        <Container >
-          <Content pages={pages} />
-          {/* <Footer /> */}
-        </Container>
+        <Content pages={pages} />
+        {/* <Footer /> */}
       </ThemeProvider>
     </Router>
   );
