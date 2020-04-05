@@ -107,7 +107,7 @@ export default function Series(props) {
           .ref(`/blog/${data.cover_image.square}`)
           .getDownloadURL()
           .then(url => {
-            if(doc.id != id) {
+            if(doc.id !== id) {
             updateCardsData(prevState => ([
               ...prevState,
               {
