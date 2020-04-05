@@ -119,7 +119,7 @@ export default function UpcomingEvent(props) {
           console.log("No upcoming events");
         } else {
           const data = doc.data();
-          loadEvent(data);
+          loadEvent(() => data);
           
           storage
             .ref(`events/${data.main_photos.square}`)
@@ -135,10 +135,10 @@ export default function UpcomingEvent(props) {
            Sự kiện sắp tới
       </Typography>
       <Grid container className={classes.container} align="center">
-        <Grid md={4} xs={12}>
+        <Grid item md={4} xs={12}>
           <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
         </Grid>
-        <Grid md={8} xs={12}>
+        <Grid item md={8} xs={12}>
             <Typography variant="h4" align="left" className={classes.sub}>
               { event.title }
             </Typography>
@@ -158,7 +158,7 @@ export default function UpcomingEvent(props) {
                 Location: { event.location }
               </Typography>
             </div>
-            <Button variant="contained" color="Primary" align="center" className={classes.more}>
+            <Button variant="contained" color="primary" align="center" className={classes.more}>
                  Đăng kí
             </Button>
         </Grid>
