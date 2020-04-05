@@ -211,10 +211,7 @@ function Review(props){
         </Card>
     )
 }
-// function topFunction() {
-//     const to = document.getElementById('here');
-//     console.log('1');
-//   }
+
 //Main Page
 export default function Home() {
     const classes = useStyles();
@@ -282,30 +279,13 @@ export default function Home() {
                 <Typography variant='h3' className={classes.open}>Mọi người nói gì về Vietcode</Typography>
                 <Grid container direction="row" justify="space-around" alignItems="center" spacing={4}>
                     <Grid item md={3} xs={12}>
-                        <Review review = 
-                        'Vietcode là một dự án rất thú vị và bổ ích, hỗ trợ các 
-                        học sinh THPT tiếp cận với
-                        CNTT trong tương lai. 
-                        Vietcode là một dự án rất thú vị và bổ ích, hỗ trợ các học sinh 
-                        THPT tiếp cận với CNTT tương lai'
-                        name='Triệu Sơn Hà' title ='Product Manager - Citigo'/>
+                        <Review review = 'demo'name='Triệu Sơn Hà' title ='Product Manager - Citigo'/>
                     </Grid>
                     <Grid item md={3} xs={12}>
-                        <Review review = 
-                        'Vietcode là một dự án rất thú vị và bổ ích, hỗ trợ các 
-                        học sinh THPT tiếp cận với
-                        CNTT trong tương lai. 
-                        Vietcode là một dự án rất thú vị và bổ ích, hỗ trợ các học sinh 
-                        THPT tiếp cận với CNTT tương lai'
-                        name='Triệu Sơn Hà' title ='Product Manager - Citigo'/>
+                       <Review review = 'demo'name='Triệu Sơn Hà' title ='Product Manager - Citigo'/>
                     </Grid>
                     <Grid item md={3} xs={12}>
-                        <Review review = 
-                        'Vietcode là một dự án rất thú vị và bổ ích, hỗ trợ các 
-                        học sinh THPT tiếp cận với
-                        CNTT trong tương lai. 
-                        Vietcode là một dự án rất thú vị và bổ ích, hỗ trợ các học sinh THPT tiếp cận với CNTT tương lai'
-                        name='Triệu Sơn Hà' title ='Product Manager - Citigo'/>
+                        <Review review = 'demo'name='Triệu Sơn Hà' title ='Product Manager - Citigo'/>
                     </Grid>
                 </Grid>
             </div>
