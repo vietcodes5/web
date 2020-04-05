@@ -229,7 +229,7 @@ export default function Home() {
             <div className={classes.container} id='here'>
                 <Typography variant='h2'className={classes.open}>Vietcode qua những con số</Typography>
                 <Typography variant='body1' className={classes.sub3}>Chặng đường Vietcode đã đi được 5 năm.<br></br> Dưới đây là những con số mà Vietcode đã để lại dấu ấn</Typography>
-                <Grid container direction="row" justify="space-evenly" alignItems="center">
+                <Grid container direction="row" justify="space-evenly" alignItems="center" style={{height: '450px'}}>
                     <Grid item md={2} xs={12}>
                         <div className={classes.iconContainer}>
                             <PeopleIcon className={classes.iconIMG} align='center'/>
