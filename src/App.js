@@ -36,7 +36,7 @@ const pages = [
   },
   {
     subpage: true,
-    url: '/series/:seriesId/:blogId',
+    url: '/series/:seriesId/:postId',
     component: Post
   },
   {
