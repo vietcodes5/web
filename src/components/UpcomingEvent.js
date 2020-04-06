@@ -132,7 +132,7 @@ export default function UpcomingEvent(props) {
   return (
     <Grid className={classes.allcontainer}>
       <Typography variant="h2" className={classes.intro}>
-           Sự kiện sắp tới
+         Sự kiện sắp tới
       </Typography>
       <Grid container className={classes.container} align="center">
         <Grid item md={4} xs={12}>
@@ -159,7 +159,7 @@ export default function UpcomingEvent(props) {
               </Typography>
             </div>
             <Button variant="contained" color="primary" align="center" className={classes.more}>
-                 Đăng kí
+              Đăng kí
             </Button>
         </Grid>
       </Grid>
