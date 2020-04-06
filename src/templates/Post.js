@@ -35,21 +35,22 @@ export default function Blog(props) {
   const { seriesId } = useParams();
   const [blogData, loadData] = useState(defaultData);
   const [photoUrl, updatePhotoUrl] = useState("");
-  const [posts, loadPost] = useState([]);
+  //const [posts, loadPost] = useState([]);
   const classes = useStyles();
   const [cardsData, updateCardsData] = useState([]);
+  /*
   const [series, updateSeries] = useState({
     blogs: [],
     description: "Loading...",
     title: "Loading..."
   });
-
+  */
   useEffect(() => {
     // TODO: get blog data
     const db = firebase.firestore();
     const storage = firebase.storage();
 
-    loadPost(() => []);
+    // loadPost(() => []);
     updateCardsData(() => []);
 
     db.collection("series")
@@ -59,7 +60,7 @@ export default function Blog(props) {
         if (!doc.exists) {
           console.log("No series found");
         } else {
-          updateSeries(doc.data());
+          // updateSeries(doc.data());
 
           const postRefs = doc.data().posts;
           const promises = postRefs.map(ref => ref.get());
@@ -101,7 +102,7 @@ export default function Blog(props) {
             .then(updatePhotoUrl);
         }
       })
-  }, [postId]);
+  }, [postId, seriesId]);
 
   return (
     <>
