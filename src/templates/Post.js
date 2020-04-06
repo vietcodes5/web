@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 
 import Markdown from '../components/Markdown';
+import Sidebar from '../components/Sidebar';
 
 const useStyles = makeStyles(theme => ({
   cover_image: {
@@ -30,17 +31,63 @@ const defaultData = {
 }
 
 export default function Blog(props) {
-  const { blogId } = useParams();
-  const [ blogData, loadData ] = useState(defaultData);
-  const [ photoUrl, updatePhotoUrl ] = useState("");
+  const { postId } = useParams();
+  const { seriesId } = useParams();
+  const [blogData, loadData] = useState(defaultData);
+  const [photoUrl, updatePhotoUrl] = useState("");
+  const [posts, loadPost] = useState([]);
   const classes = useStyles();
+  const [cardsData, updateCardsData] = useState([]);
+  const [series, updateSeries] = useState({
+    blogs: [],
+    description: "Loading...",
+    title: "Loading..."
+  });
 
   useEffect(() => {
     // TODO: get blog data
     const db = firebase.firestore();
     const storage = firebase.storage();
 
-    db.doc(`posts/${blogId}`)
+    loadPost(() => []);
+    updateCardsData(() => []);
+
+    db.collection("series")
+      .doc(seriesId)
+      .get()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log("No series found");
+        } else {
+          updateSeries(doc.data());
+
+          const postRefs = doc.data().posts;
+          const promises = postRefs.map(ref => ref.get());
+
+          Promise.all(promises)
+            .then(postDocs => {
+              postDocs.forEach(doc => {
+                const data = doc.data();
+                storage
+                  .ref(`blog/${data.photos[0]}`)
+                  .getDownloadURL()
+                  .then(url => {
+                    if (doc.id != postId) {
+                      updateCardsData(prevPosts => ([
+                        ...prevPosts,
+                        {
+                          title: data.title,
+                          photoUrl: url,
+                          url: `${doc.id}`,
+                        }
+                      ]));
+                    }
+                  });
+              })
+            });
+        }
+      })
+    db.doc(`posts/${postId}`)
       .get()
       .then(doc => {
         if (!doc.exists) {
@@ -54,8 +101,7 @@ export default function Blog(props) {
             .then(updatePhotoUrl);
         }
       })
-
-  }, [ blogId ]);
+  }, [postId]);
 
   return (
     <>
@@ -67,16 +113,24 @@ export default function Blog(props) {
           <Divider />
           <img className={classes.cover_image} src={photoUrl} alt="Post cover" />
           <Typography variant="subtitle1" gutterBottom>
-            { blogData.opening }
+            {blogData.opening}
           </Typography>
-          
+
           <Markdown>
-            { blogData.content }
+            {blogData.content}
           </Markdown>
         </Grid>
+        <Sidebar
+          header={{
+            title: 'Other events'
+          }}
+          body={{
+            cards: cardsData
+          }}
+        />
         <Grid item xs={12} md={4}>
         </Grid>
       </Grid>
-    </> 
+    </>
   )
 }
