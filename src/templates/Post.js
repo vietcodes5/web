@@ -72,7 +72,7 @@ export default function Blog(props) {
                   .ref(`blog/${data.photos[0]}`)
                   .getDownloadURL()
                   .then(url => {
-                    if (doc.id != postId) {
+                    if (doc.id !== postId) {
                       updateCardsData(prevPosts => ([
                         ...prevPosts,
                         {
