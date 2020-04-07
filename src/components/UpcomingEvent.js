@@ -1,27 +1,95 @@
 import React, { useState, useEffect } from 'react';
 import {
   Typography,
-  Divider,
   Grid,
   Button,
 } from '@material-ui/core';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { makeStyles } from '@material-ui/core/styles';
 import firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/storage';
 
 const useStyles = makeStyles(theme => ({
-  coverImage: {
-    maxWidth: '100%',
-    maxHeight: '400px',
+  allcontainer:{
+    background:'#309DBE',
+    display:'flex',
+    flexFlow:'column',
+    alignItems:'center',
+    maxWidth:'100%',
+    maxHeight:'700px',
+    height:'700px',
+    '@media screen and (max-width: 1000px)': {
+      height: '800px',
+      display:'flex',
+      flexFlow:'column',
+    },
   },
-  detailsContainer: {
-    width: '100%',
-    height: '100%',
-    boxSizing: 'border-box',
-    background: 'white',
-    padding: '10px',
-  }
+  container:{
+    background:"#FFFFFF",
+    borderRadius: '8px',
+    width: '80%',
+    height: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: theme.spacing(4),
+    maxWidth:'inherit',
+  },
+  coverImage: {
+    borderRadius: '8px',
+    maxWidth: '80%',
+    maxHeight: '300px',
+    padding:theme.spacing(1),
+  },
+  intro:{
+      color:'white',
+      fontWeight:"bold",
+      marginBottom:theme.spacing(2),
+      padding:theme.spacing(1),
+      fontStyle: 'normal',
+      marginTop:theme.spacing(9),
+      fontSize:'xx-large',
+  },
+  sub:{
+    color:theme.palette.text,
+  },
+  sub1:{
+    color:'grey',
+  },
+  hr:{
+    border:'1px #309DBE solid ',
+  },
+  more:{
+    background: theme.palette.primary.main,
+    width: '160px',
+    height: '50px',
+    borderRadius: '50px',
+    color: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '30px',
+    fontSize: '80%',
+    letterSpacing: '2px',
+    border: '1px solid',
+    borderColor: theme.palette.primary.main,
+    transition: '.5s',
+    '&:hover': {
+      background: 'white',
+      color: theme.palette.primary.main,
+      border: '1px solid',
+      borderColor: theme.palette.primary.main,
+    },  
+},
+itemcontainer:{
+    display:'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    flexFlow:'row',
+    margin: '3vh 0 0 0',
+},
 }));
 
 const defaultValues = {
@@ -51,10 +119,10 @@ export default function UpcomingEvent(props) {
           console.log("No upcoming events");
         } else {
           const data = doc.data();
-          loadEvent(data);
+          loadEvent(() => data);
           
           storage
-            .ref(`events/${data.main_photos.rect}`)
+            .ref(`events/${data.main_photos.square}`)
             .getDownloadURL()
             .then(updatePhotoUrl);
         }
@@ -62,38 +130,39 @@ export default function UpcomingEvent(props) {
   }, [])
 
   return (
-    <>
-      <Typography variant="h3" gutterBottom>
-        Upcoming Event
+    <Grid className={classes.allcontainer}>
+      <Typography variant="h2" className={classes.intro}>
+         Sự kiện sắp tới
       </Typography>
-      <Divider />
-      
-      <Grid container spacing={0}>
-        <Grid item md={9} xs={12}>
+      <Grid container className={classes.container} align="center">
+        <Grid item md={4} xs={12}>
           <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
         </Grid>
-        <Grid item md={3} xs={12}>
-          <div className={classes.detailsContainer}>
-            <Typography variant="h4" align="center" gutterBottom>
+        <Grid item md={8} xs={12}>
+            <Typography variant="h4" align="left" className={classes.sub}>
               { event.title }
             </Typography>
-            <Typography variant="body1" align="left">
+            <Typography variant="body1" align="left" className={classes.sub1}>
               Description: { event.description }
             </Typography>
-            <Typography variant="body2" align="left">
-              Date: { event.date }
-            </Typography>
-            <Typography variant="body2" align="left" gutterBottom>
-              Location: { event.location }
-            </Typography>
-            <Button variant="contained" color="secondary" align="center">
-              Register
+            <hr className={classes.hr}></hr>
+            <div className={classes.itemcontainer}>
+              <AccessTimeIcon color='primary'/> &ensp;
+              <Typography variant="body2" align="left">
+                Date: { event.date }
+              </Typography>
+            </div>
+            <div className={classes.itemcontainer}>
+              <LocationOnIcon color='primary'/> &ensp;
+              <Typography variant="body2" align="left">
+                Location: { event.location }
+              </Typography>
+            </div>
+            <Button variant="contained" color="primary" align="center" className={classes.more}>
+              Đăng kí
             </Button>
-          </div>
         </Grid>
       </Grid>
-
-      <Divider />
-    </>
+    </Grid>
   )
 }
