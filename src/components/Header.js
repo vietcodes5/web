@@ -63,7 +63,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function Header(props) {
   const pages = props.pages.filter(page => !page.subpage);
-  const [showMenu, setShowMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
   const classes = useStyles();
   let toggleDrawer = (anchor, open) => () => {
     setShowMenu({ ...showMenu, [anchor]: open });
@@ -129,7 +134,7 @@ export default function Header(props) {
               ))
             }
           </Hidden>
-          <Hidden only={['md', 'lg','sm']}>
+          <Hidden only={['md', 'lg', 'sm', 'xl']}>
             <React.Fragment>
               <IconButton button="true" edge="start" onClick={toggleDrawer('top', true)} className={classes.menuButton} color="inherit" aria-label="menu">
                 <MenuIcon />
@@ -144,7 +149,7 @@ export default function Header(props) {
               </SwipeableDrawer>
             </React.Fragment>
           </Hidden>
-          <Hidden only={['md', 'lg', 'xs']}>
+          <Hidden only={['md', 'lg', 'xs', 'xl']}>
             <React.Fragment>
               <IconButton button="true" edge="start" onClick={toggleDrawer('right', true)} className={classes.menuButton} color="inherit" aria-label="menu">
                 <MenuIcon />
