@@ -62,7 +62,7 @@ const pages = [
     component: Events
   },
   {
-    title: 'About Us',
+    title: 'About',
     url: '/about',
     icon: InfoOutlinedIcon,
     component: About
