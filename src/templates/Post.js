@@ -123,7 +123,7 @@ export default function Blog(props) {
         </Grid>
         <Sidebar
           header={{
-            title: 'Other events'
+            title: 'Other posts'
           }}
           body={{
             cards: cardsData
