@@ -7,7 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   marginApp: {
-    paddingTop: "65px",
+    paddingTop: "60px",
+    overflow: 'hidden'
   },
 }));
 
@@ -18,14 +19,14 @@ export default function Content(props) {
     <div className={useStyles().marginApp}>
       <Switch>
         {
-          pages.map(page => 
-            <Route 
-              path={page.url} 
-              key={page.url} 
+          pages.map(page =>
+            <Route
+              path={page.url}
+              key={page.url}
               component={page.component} />
           )
         }
-        <Route 
+        <Route
           path="/"
           component={Home}
         />

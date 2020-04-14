@@ -164,6 +164,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '100%',
     position: 'relative',
     margin: '0% auto 5% auto',
+  },
+  paddingW: {
+    padding: '50px 0px 50px 0px',
+    background: 'white'
   }
 }));
 
@@ -211,53 +215,55 @@ export default function Home() {
           </IconButton>
         </Grid>
       </Grid>
-      <Grid container className={classes.container} id='here'>
-        <Typography variant='h2' className={classes.open}>
-          Vietcode qua những con số
+      <Grid container id='here' className={classes.paddingW}>
+        <Grid container className={classes.container}>
+          <Typography variant='h2' className={classes.open}>
+            Vietcode qua những con số
         </Typography>
-        <Typography variant='body1' className={classes.sub3}>
-          Chặng đường Vietcode đã đi được 5 năm.<br></br> Dưới đây là những con số mà Vietcode đã để lại dấu ấn
+          <Typography variant='body1' className={classes.sub3}>
+            Chặng đường Vietcode đã đi được 5 năm.<br></br> Dưới đây là những con số mà Vietcode đã để lại dấu ấn
         </Typography>
-        <Grid container direction='row' justify='space-evenly' alignItems='center'>
-          <Grid item md={2} xs={12}>
-            <div className={classes.iconContainer}>
-              <PeopleIcon className={classes.iconIMG} align='center' />
-            </div>
-            <div>
-              <div className={classes.open1}>500</div>
-              <hr className={classes.hr} width='10%'></hr>
-              <div className={classes.sub1}>thành viên</div>
-            </div>
-          </Grid>
-          <Grid item md={2} xs={12}>
-            <div className={classes.iconContainer}>
-              <SpaIcon className={classes.iconIMG} />
-            </div>
-            <div>
-              <div className={classes.open1}>5</div>
-              <hr className={classes.hr} width='10%'></hr>
-              <div className={classes.sub1}>năm</div>
-            </div>
-          </Grid>
-          <Grid item md={2} xs={12}>
-            <div className={classes.iconContainer}>
-              <EventIcon className={classes.iconIMG} />
-            </div>
-            <div>
-              <div className={classes.open1}>20</div>
-              <hr className={classes.hr} width='10%'></hr>
-              <div className={classes.sub1}>sự kiện</div>
-            </div>
-          </Grid>
-          <Grid item md={2} xs={12}>
-            <div className={classes.iconContainer}>
-              <BusinessCenterIcon className={classes.iconIMG} />
-            </div>
-            <div>
-              <div className={classes.open1}>10</div>
-              <hr className={classes.hr} width='10%'></hr>
-              <div className={classes.sub1}>dự án</div>
-            </div>
+          <Grid container direction='row' justify='space-evenly' alignItems='center'>
+            <Grid item md={2} xs={12}>
+              <div className={classes.iconContainer}>
+                <PeopleIcon className={classes.iconIMG} align='center' />
+              </div>
+              <div>
+                <div className={classes.open1}>500</div>
+                <hr className={classes.hr} width='10%'></hr>
+                <div className={classes.sub1}>thành viên</div>
+              </div>
+            </Grid>
+            <Grid item md={2} xs={12}>
+              <div className={classes.iconContainer}>
+                <SpaIcon className={classes.iconIMG} />
+              </div>
+              <div>
+                <div className={classes.open1}>5</div>
+                <hr className={classes.hr} width='10%'></hr>
+                <div className={classes.sub1}>năm</div>
+              </div>
+            </Grid>
+            <Grid item md={2} xs={12}>
+              <div className={classes.iconContainer}>
+                <EventIcon className={classes.iconIMG} />
+              </div>
+              <div>
+                <div className={classes.open1}>20</div>
+                <hr className={classes.hr} width='10%'></hr>
+                <div className={classes.sub1}>sự kiện</div>
+              </div>
+            </Grid>
+            <Grid item md={2} xs={12}>
+              <div className={classes.iconContainer}>
+                <BusinessCenterIcon className={classes.iconIMG} />
+              </div>
+              <div>
+                <div className={classes.open1}>10</div>
+                <hr className={classes.hr} width='10%'></hr>
+                <div className={classes.sub1}>dự án</div>
+              </div>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
