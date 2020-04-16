@@ -52,7 +52,32 @@ export default function Blog(props) {
     // loadPost(() => []);
     updateCardsData(() => []);
 
-    
+    db.collection("posts")
+      .get()
+      .then(snapshot => {
+        if (snapshot.empty) {
+          return console.log('No posts found!');
+        }
+ 
+        snapshot.docs.slice(-5).forEach(doc => {
+          const data = doc.data();
+
+          storage
+            .ref(`blog/${data.photos}`)
+            .getDownloadURL()
+            .then(url => {
+              updateCardsData(cardsData => ([
+                ...cardsData,
+                {
+                  title: data.title,
+                  photoUrl: url,
+                  url: `/posts/${doc.id}`
+                }
+              ]));
+            })
+          }); 
+        })
+
     db.doc(`posts/${postId}`)
       .get()
       .then(doc => {
