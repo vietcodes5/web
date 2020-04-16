@@ -66,14 +66,15 @@ export default function Blog(props) {
             .ref(`blog/${data.photos}`)
             .getDownloadURL()
             .then(url => {
-              updateCardsData(cardsData => ([
-                ...cardsData,
-                {
-                  title: data.title,
-                  photoUrl: url,
-                  url: `/posts/${doc.id}`
-                }
-              ]));
+              if (doc.id !== postId)
+                updateCardsData(cardsData => ([
+                  ...cardsData,
+                  {
+                    title: data.title,
+                    photoUrl: url,
+                    url: `/posts/${doc.id}`
+                  }
+                ]));
             })
           }); 
         })
