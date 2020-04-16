@@ -6,7 +6,7 @@ import ImageGallery from 'react-image-gallery';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
-  Grid
+  Grid, Container
 } from '@material-ui/core';
 
 import firebase from 'firebase';
@@ -126,7 +126,7 @@ export default function Event(props) {
   }, [id]);
 
   return (
-    <>
+    <Container>
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
           <Typography align="center" variant="h1" gutterBottom>
@@ -148,6 +148,6 @@ export default function Event(props) {
           }}
         />
       </Grid>
-    </>
+    </Container>
   );
 }
