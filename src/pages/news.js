@@ -14,6 +14,7 @@ import Main from "../components/MainNews";
 // firebase
 import firebase from "firebase";
 import "firebase/firestore";
+import 'firebase/storage';
 
 const useStyles = makeStyles(theme => ({
   mainGrid: {
@@ -21,30 +22,40 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const sidebarBodyCards = [
-  {
-    title: 'Post #1',
-    photoUrl: 'https://source.unsplash.com/random',
-    url: '/',
-  },
-  {
-    title: 'Post #2',
-    photoUrl: 'https://source.unsplash.com/random',
-    url: '/',
-  },
-  {
-    title: 'Post #3',
-    photoUrl: 'https://source.unsplash.com/random',
-    url: '/',
-  },
-];
-
 export default function News() {
   const classes = useStyles();
   const [ allSeries, updateAllSeries ] = useState([]);
+  const [ sidebarBodyCards, updateSidebar ] = useState([]);
 
   useEffect(() => {
     const db = firebase.firestore();
+    const storage = firebase.storage();
+
+    db.collection("posts")
+      .get()
+      .then(snapshot => {
+        if (snapshot.empty) {
+          return console.log('No posts found!');
+        }
+ 
+        snapshot.docs.slice(-5).forEach(doc => {
+          const data = doc.data();
+
+          storage
+            .ref(`blog/${data.photos}`)
+            .getDownloadURL()
+            .then(url => {
+              updateSidebar(sidebarBodyCards => ([
+                ...sidebarBodyCards,
+                {
+                  title: data.title,
+                  photoUrl: url,
+                  url: `/posts/${doc.id}`
+                }
+              ]));
+            })
+          }); 
+        })
 
     db.collection("series")
       .get()
@@ -53,7 +64,7 @@ export default function News() {
           console.log("No series found");
         } else {
           let allSeries = [];
-          
+        
           snapshot.forEach(doc => allSeries.push({
             id: doc.id,
             ...doc.data()
@@ -61,6 +72,7 @@ export default function News() {
           updateAllSeries(allSeries);
         }
       })
+
   }, []);
 
   return (
@@ -71,10 +83,10 @@ export default function News() {
         <Sidebar
           header={{
             title: "News",
-            content: "Just testing"
+            content: "Bài viết của Vietcode"
           }}
           body={{
-            title: "Posts",
+            title: "Các bài viết",
             cards: sidebarBodyCards
           }}
         />

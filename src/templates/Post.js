@@ -32,7 +32,6 @@ const defaultData = {
 
 export default function Blog(props) {
   const { postId } = useParams();
-  const { seriesId } = useParams();
   const [blogData, loadData] = useState(defaultData);
   const [photoUrl, updatePhotoUrl] = useState("");
   //const [posts, loadPost] = useState([]);
@@ -53,41 +52,7 @@ export default function Blog(props) {
     // loadPost(() => []);
     updateCardsData(() => []);
 
-    db.collection("series")
-      .doc(seriesId)
-      .get()
-      .then(doc => {
-        if (!doc.exists) {
-          console.log("No series found");
-        } else {
-          // updateSeries(doc.data());
-
-          const postRefs = doc.data().posts;
-          const promises = postRefs.map(ref => ref.get());
-
-          Promise.all(promises)
-            .then(postDocs => {
-              postDocs.forEach(doc => {
-                const data = doc.data();
-                storage
-                  .ref(`blog/${data.photos[0]}`)
-                  .getDownloadURL()
-                  .then(url => {
-                    if (doc.id !== postId) {
-                      updateCardsData(prevPosts => ([
-                        ...prevPosts,
-                        {
-                          title: data.title,
-                          photoUrl: url,
-                          url: `${doc.id}`,
-                        }
-                      ]));
-                    }
-                  });
-              })
-            });
-        }
-      })
+    
     db.doc(`posts/${postId}`)
       .get()
       .then(doc => {
@@ -102,7 +67,7 @@ export default function Blog(props) {
             .then(updatePhotoUrl);
         }
       })
-  }, [postId, seriesId]);
+  }, [postId]);
 
   return (
     <>
