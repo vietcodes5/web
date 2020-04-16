@@ -66,6 +66,9 @@ export default function Event(props) {
     const storage = firebase.storage();
     const db = firebase.firestore();
 
+    updateCardsData([]);
+    updateImages([]);
+
     db.doc(`events/${id}`)
       .get()
       .then(doc => {
@@ -80,7 +83,6 @@ export default function Event(props) {
             .getDownloadURL()
             .then(updatePhotoUrl);
 
-          updateImages([]);
           let promises = data.photos.map(photoName => {
             return storage.ref(`events/${photoName}`).getDownloadURL()
           })
@@ -101,7 +103,6 @@ export default function Event(props) {
         if (snapshot.empty) {
           return console.log('No event found!');
         }
-        updateCardsData([]);
         snapshot.docs.forEach(doc => {
           const data = doc.data();
 
