@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
     alignItems:'center',
     maxWidth:'100%',
     height:'700px',
-    height:'700px',
     '@media screen and (max-width: 1000px)': {
       height: '800px',
       display:'flex',
