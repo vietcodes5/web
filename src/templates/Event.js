@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import ImageGallery from 'react-image-gallery';
+
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
-  Grid
+  Grid, Container
 } from '@material-ui/core';
 
 import firebase from 'firebase';
@@ -30,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '100%',
     margin: '5px 0',
     boxShadow: '0 0 3px #aaa',
-    
+
     '& img': {
       maxWidth: '100%',
       display: 'block',
@@ -54,14 +56,18 @@ const defaultValues = {
 
 export default function Event(props) {
   const { id } = useParams();
-  const [ event, loadEvent ] = useState(defaultValues)
-  const [ photoUrl, updatePhotoUrl ] = useState("");
-  const [ cardsData, updateCardsData ] = useState([])
+  const [event, loadEvent] = useState(defaultValues)
+  const [photoUrl, updatePhotoUrl] = useState("");
+  const [cardsData, updateCardsData] = useState([]);
+  const [images, updateImages] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
     const storage = firebase.storage();
     const db = firebase.firestore();
+
+    updateCardsData([]);
+    updateImages([]);
 
     db.doc(`events/${id}`)
       .get()
@@ -76,16 +82,27 @@ export default function Event(props) {
             .ref(`/events/${data.main_photos.rect}`)
             .getDownloadURL()
             .then(updatePhotoUrl);
+
+          let promises = data.photos.map(photoName => {
+            return storage.ref(`events/${photoName}`).getDownloadURL()
+          })
+          Promise.all(promises).then(photoUrls => {
+            photoUrls.forEach(url => {
+              updateImages((preState => [...preState, {
+                original: url,
+                thumbnail: url
+              }]))
+            })
+          })
         }
       })
-    
+
     db.collection("events")
       .get()
       .then(snapshot => {
         if (snapshot.empty) {
           return console.log('No event found!');
         }
- 
         snapshot.docs.forEach(doc => {
           const data = doc.data();
 
@@ -93,37 +110,38 @@ export default function Event(props) {
             .ref(`events/${data.main_photos.square}`)
             .getDownloadURL()
             .then(url => {
-              if(doc.id !== id){
-              updateCardsData(prevState => ([
-                ...prevState,
-                {
-                  title: data.title,
-                  photoUrl: url,
-                  url: `/events/${doc.id}`
-                }
-              ]));
-            }
+              if (doc.id !== id) {
+                updateCardsData(prevState => ([
+                  ...prevState,
+                  {
+                    title: data.title,
+                    photoUrl: url,
+                    url: `/events/${doc.id}`
+                  }
+                ]));
+              }
             })
-        }); 
+
+        });
       })
-  }, [ id ]);
+  }, [id]);
 
   return (
-    <>
+    <Container>
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
           <Typography align="center" variant="h1" gutterBottom>
-            { event.title }
+            {event.title}
           </Typography>
-          
+
           <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
 
           <Markdown>
-            { event.content }
+            {event.content}
           </Markdown>
-
+          <ImageGallery items={images} autoPlay={true} />
         </Grid>
-        <Sidebar 
+        <Sidebar
           header={{}}
           body={{
             title: 'Other events',
@@ -131,6 +149,6 @@ export default function Event(props) {
           }}
         />
       </Grid>
-    </>
+    </Container>
   );
 }
