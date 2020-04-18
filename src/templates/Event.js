@@ -6,7 +6,8 @@ import ImageGallery from 'react-image-gallery';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
-  Grid, Container
+  Grid, 
+  Container,
 } from '@material-ui/core';
 
 import firebase from 'firebase';
@@ -142,9 +143,10 @@ export default function Event(props) {
           <ImageGallery items={images} autoPlay={true} />
         </Grid>
         <Sidebar
-          header={{}}
+          header={{
+            title: 'Các sự kiện khác',
+          }}
           body={{
-            title: 'Other events',
             cards: cardsData
           }}
         />
