@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import {
   Grid, Button, Typography, Card, IconButton
 } from '@material-ui/core';
@@ -207,9 +208,14 @@ export default function Home() {
           <Typography className={classes.intro} color='primary' variant='h2'>
             Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam
           </Typography>
-          <Button className={classes.more} variant='contained' color='primary'>
-            Tìm hiểu thêm
+          <Link
+            key='About'
+            to='/about'
+          >
+            <Button className={classes.more} variant='contained' color='primary'>
+              Tìm hiểu thêm
           </Button>
+          </Link>
           <IconButton className={classes.down} href='#here'>
             <ArrowDownwardRoundedIcon className={classes.iconIMG} />
           </IconButton>

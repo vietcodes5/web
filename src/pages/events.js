@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 // MUI components
-import { 
+import {
   Grid,
+  Container,
 } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Events(props) {
   const classes = useStyles();
-  const [ events, updateEvents ] = useState([]);
+  const [events, updateEvents] = useState([]);
   const db = firebase.firestore();
 
   useEffect(() => {
@@ -43,14 +44,15 @@ export default function Events(props) {
           updateEvents(events);
         }
       })
-  }, [ db ]);
+  }, [db]);
 
   return (
     <>
       <UpcomingEvent />
-      <Grid container className={classes.mainGrid} spacing={3}>
-        <Main events={events} />
-        { /*
+      <Container maxWidth='lg'>
+        <Grid container className={classes.mainGrid} spacing={3}>
+          <Main events={events} />
+          { /*
           <Sidebar
           title={sidebar.title}
           description={sidebar.description}
@@ -60,6 +62,7 @@ export default function Events(props) {
 
         */ }
         </Grid>
+      </Container>
     </>
   );
 }

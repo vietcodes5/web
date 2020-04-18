@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
     flexFlow:'column',
     alignItems:'center',
     maxWidth:'100%',
-    maxHeight:'700px',
     height:'700px',
     '@media screen and (max-width: 1000px)': {
       height: '800px',

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 // MUI component
 import {
   Grid,
+  Container,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -24,8 +25,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function News() {
   const classes = useStyles();
-  const [ allSeries, updateAllSeries ] = useState([]);
-  const [ sidebarBodyCards, updateSidebar ] = useState([]);
+  const [allSeries, updateAllSeries] = useState([]);
+  const [sidebarBodyCards, updateSidebar] = useState([]);
 
   useEffect(() => {
     const db = firebase.firestore();
@@ -37,7 +38,7 @@ export default function News() {
         if (snapshot.empty) {
           return console.log('No posts found!');
         }
- 
+
         snapshot.docs.slice(-5).forEach(doc => {
           const data = doc.data();
 
@@ -54,8 +55,8 @@ export default function News() {
                 }
               ]));
             })
-          }); 
-        })
+        });
+      })
 
     db.collection("series")
       .get()
@@ -64,7 +65,7 @@ export default function News() {
           console.log("No series found");
         } else {
           let allSeries = [];
-        
+
           snapshot.forEach(doc => allSeries.push({
             id: doc.id,
             ...doc.data()
@@ -78,19 +79,21 @@ export default function News() {
   return (
     <>
       <FeaturedPosts />
-      <Grid container spacing={5} className={classes.mainGrid}>
-        <Main allSeries={allSeries} />
-        <Sidebar
-          header={{
-            title: "News",
-            content: "Bài viết của Vietcode"
-          }}
-          body={{
-            title: "Các bài viết",
-            cards: sidebarBodyCards
-          }}
-        />
-      </Grid>
+      <Container maxWidth='lg'>
+        <Grid container spacing={5} className={classes.mainGrid}>
+          <Main allSeries={allSeries} />
+          <Sidebar
+            header={{
+              title: "News",
+              content: "Bài viết của Vietcode"
+            }}
+            body={{
+              title: "Các bài viết",
+              cards: sidebarBodyCards
+            }}
+          />
+        </Grid>
+      </Container>
     </>
   );
 }
