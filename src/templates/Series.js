@@ -5,6 +5,7 @@ import {
   Typography,
   Divider,
   Grid,
+  Container,
 } from '@material-ui/core';
 
 import Cover from '../components/Cover';
@@ -123,30 +124,33 @@ export default function Series(props) {
 
   }, [id]);
   return (
-    <Grid container spacing={6}>
-      <Grid item xs={12} md={8}>
-        <Typography variant="h3" gutterBottom>
-          Series {series.title}
-        </Typography>
-        <Divider />
-        <img className={classes.cover_image} src={photoUrl} alt="Series' cover" />
-        <Typography variant="subtitle2">
-          {series.description}
-        </Typography>
-        <Divider />
+    <Container>
+      <Grid container spacing={10}>
 
-        <Grid container spacing={3} justify="space-around" style={{ marginTop: '10px' }}>
-          {posts}
+        <Grid item xs={12} md={8}>
+          <Typography variant="h3" gutterBottom>
+            Series {series.title}
+          </Typography>
+          <Divider />
+          <img className={classes.cover_image} src={photoUrl} alt="Series' cover" />
+          <Typography variant="subtitle2">
+            {series.description}
+          </Typography>
+          <Divider />
+
+          <Grid container spacing={3} justify="space-around" style={{ marginTop: '10px' }}>
+            {posts}
+          </Grid>
         </Grid>
+        <Sidebar
+          header={{
+            title: 'Other series'
+          }}
+          body={{
+            cards: cardsData
+          }}
+        />
       </Grid>
-      <Sidebar
-        header={{
-          title: 'Other series'
-        }}
-        body={{
-          cards: cardsData
-        }}
-      />
-    </Grid>
+    </Container>
   );
 }

@@ -9,6 +9,7 @@ import {
   Typography,
   Grid,
   Divider,
+  Container,
 } from '@material-ui/core';
 
 import Markdown from '../components/Markdown';
@@ -58,7 +59,7 @@ export default function Blog(props) {
         if (snapshot.empty) {
           return console.log('No posts found!');
         }
- 
+
         snapshot.docs.slice(-5).forEach(doc => {
           const data = doc.data();
 
@@ -76,8 +77,8 @@ export default function Blog(props) {
                   }
                 ]));
             })
-          }); 
-        })
+        });
+      })
 
     db.doc(`posts/${postId}`)
       .get()
@@ -96,7 +97,7 @@ export default function Blog(props) {
   }, [postId]);
 
   return (
-    <>
+    <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
           <Typography variant="h2" gutterBottom>
@@ -123,6 +124,6 @@ export default function Blog(props) {
         <Grid item xs={12} md={4}>
         </Grid>
       </Grid>
-    </>
+    </Container>
   )
 }
