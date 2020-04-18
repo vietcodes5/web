@@ -36,7 +36,7 @@ const pages = [
   },
   {
     subpage: true,
-    url: '/posts/:postId',
+    url: '/series/posts/:postId',
     component: Post
   },
   {
@@ -46,7 +46,7 @@ const pages = [
   },
   {
     title: 'News',
-    url: '/news',
+    url: '/series/',
     icon: ReceiptOutlinedIcon,
     component: News
   },
@@ -75,7 +75,7 @@ function App(props) {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Header pages={pages} logo={logo}/>
+        <Header pages={pages} logo={logo} />
         <Content pages={pages} />
         {/* <Footer /> */}
       </ThemeProvider>

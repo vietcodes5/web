@@ -84,7 +84,7 @@ export default function Series(props) {
                         subtitle={data.opening}
                         xs={6} sm={4}
                         photoUrl={url}
-                        to={`/posts/${doc.id}`}
+                        to={`/series/posts/${doc.id}`}
                       />
                     ]));
                   })

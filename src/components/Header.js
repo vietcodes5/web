@@ -13,7 +13,7 @@ import {
   SwipeableDrawer
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   toolbarLink: {
@@ -33,10 +33,6 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: theme.palette.hover.main,
       boxShadow: theme.shadow.hover,
-    },
-    '&:focus': {
-      backgroundColor: theme.palette.active.main,
-      boxShadow: theme.shadow.dropdown,
     }
   },
   appBar: {
@@ -59,10 +55,21 @@ const useStyles = makeStyles(theme => ({
     fontSize: "110%",
     marginRight: "5px",
   },
+  selected: {
+    backgroundColor: theme.palette.active.main,
+    boxShadow: theme.shadow.dropdown,
+    height: '60px',
+  },
+  inlineBlock: {
+    display: 'inline-block',
+    width: '100%'
+  }
 }));
 
 export default function Header(props) {
   const pages = props.pages.filter(page => !page.subpage);
+  console.log(pages);
+
   const [showMenu, setShowMenu] = useState({
     top: false,
     left: false,
@@ -82,10 +89,12 @@ export default function Header(props) {
     >
       {
         pages.map(page => (
-          <Link
+          <NavLink
             className={classes.toolbarLink}
             key={page.title}
             to={page.url}
+            activeClassName={`${classes.selected} - ${classes.inlineBlock}`}
+            exact={page.title === 'Home' ? true : false}
           >
             <Button
               component="button"
@@ -94,7 +103,7 @@ export default function Header(props) {
               <page.icon className={classes.pageIcon} />
               {page.title}
             </Button>
-          </Link>
+          </NavLink>
         ))
       }
     </div>
@@ -117,11 +126,13 @@ export default function Header(props) {
         <Container className={classes.rightSection}>
           <Hidden only={['xs', 'sm']}>
             {
-              pages.map(page => (
-                <Link
+              pages.map((page, i) => (
+                <NavLink
                   className={classes.toolbarLink}
+                  activeClassName={classes.selected}
                   key={page.title}
                   to={page.url}
+                  exact={page.title === 'Home' ? true : false}
                 >
                   <Button
                     component="button"
@@ -130,7 +141,7 @@ export default function Header(props) {
                     <page.icon className={classes.pageIcon} />
                     {page.title}
                   </Button>
-                </Link>
+                </NavLink>
               ))
             }
           </Hidden>
