@@ -13,7 +13,7 @@ import {
   SwipeableDrawer
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   toolbarLink: {
@@ -116,12 +116,13 @@ export default function Header(props) {
     >
       <Toolbar className={classes.toolBar}>
         <Container>
-          <img
-            src={Logo}
-            className={classes.logo}
-            alt="Vietcode"
-          />
-
+          <Link to="/">
+            <img
+              src={Logo}
+              className={classes.logo}
+              alt="Vietcode"
+            />
+          </Link>
         </Container>
         <Container className={classes.rightSection}>
           <Hidden only={['xs', 'sm']}>
