@@ -51,7 +51,7 @@ export default function News() {
                 {
                   title: data.title,
                   photoUrl: url,
-                  url: `/posts/${doc.id}`
+                  url: `/series/posts/${doc.id}`
                 }
               ]));
             })

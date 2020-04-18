@@ -73,7 +73,7 @@ export default function Blog(props) {
                   {
                     title: data.title,
                     photoUrl: url,
-                    url: `/posts/${doc.id}`
+                    url: `/series/posts/${doc.id}`
                   }
                 ]));
             })
