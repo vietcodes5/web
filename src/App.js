@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Header from './components/Header'
-import Content from './components/Content'
+import Header from './components/Header';
+import Content from './components/Content';
+import Footer from './components/Footer';
+import Scroll from './components/Scroll-to-top-function';
 import './css/App.css';
 
 import Home from './pages/home';
@@ -75,9 +77,11 @@ function App(props) {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Header pages={pages} logo={logo}/>
+        <Scroll>
+          <Header pages={pages} logo={logo} />
+        </Scroll>
         <Content pages={pages} />
-        {/* <Footer /> */}
+        <Footer />
       </ThemeProvider>
     </Router>
   );
