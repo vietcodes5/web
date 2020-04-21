@@ -19,6 +19,29 @@ import Avatar from '@material-ui/core/Avatar';
 
 //Style
 const useStyles = makeStyles((theme) => ({
+  pictureContainer: {
+    background: 'url(\'https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-9/87028986_1977725495706212_2381361457833967616_o.jpg?_nc_cat=106&_nc_sid=0be424&_nc_oc=AQnepcUIwbNsa4ELO7lj0cPMC64TYwel859li1-ih1lC0ERWAqIaS_eNzaBQ6vzQPGH-rOPlPSBS1ht695LrEkjK&_nc_ht=scontent.fhan3-3.fna&oh=c78a2873470495620f353bfde2c498e2&oe=5EC28FF2\')',
+    maxheight: '800px',
+    height: '500px',
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    '@media screen and (max-width: 800px)': {
+      height: '400px',
+
+    },
+  },
+  pictureContainer1: {
+    background: 'url(\'https://scontent.fhan5-7.fna.fbcdn.net/v/t1.0-9/33717427_1378719945606773_2087821359643099136_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQlqi6VGtYQvGqUeHtBUAAw--cAHcRa8K0nFdjkrOf_ecmwiQsk_d5hJD8q_rNN-IlU&_nc_ht=scontent.fhan5-7.fna&oh=82303f71fbbfaaebf025be4510635774&oe=5EC1B2A6\')',
+    maxheight: '800px',
+    height: '500px',
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    '@media screen and (max-width: 800px)': {
+      height: '400px',
+    },
+  },
   container: {
     maxWidth: '100%',
     background: '#FFFFFF',
@@ -39,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
   //text
   intro: {
+    fontFamily: 'Cabin',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -53,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   open: {
+    fontFamily: 'Cabin',
     marginTop: '3vh',
     marginBottom: '5vh',
     textAlign: 'center',
@@ -61,29 +86,35 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '250%',
   },
   open1: {
+    fontFamily: 'Cabin',
     fontSize: 'xx-large',
     textAlign: 'center',
     fontWeight: 'bold',
     color: theme.palette.text.main,
   },
   open2: {
+    fontFamily: 'Cabin',
     fontSize: 'x-large',
     fontWeight: 'bold',
     color: theme.palette.text.main,
   },
   sub1: {
+    fontFamily: 'Cabin',
     textAlign: 'center',
+    fontSize: '120%',
     marginBottom: '5vh',
     fontWeight: 'bold',
     color: theme.palette.text.main,
   },
   sub: {
+    fontFamily: 'Cabin',
     marginTop: '2vh',
     marginBottom: '4vh',
     fontSize: '20px',
     color: theme.palette.text.main,
   },
   sub3: {
+    fontFamily: 'Cabin',
     textAlign: 'center',
     marginTop: '2vh',
     marginBottom: '4vh',
@@ -91,6 +122,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.main,
   },
   sub2: {
+    fontFamily: 'Cabin',
     color: theme.palette.text.main,
     fontWeight: 'bold',
   },
@@ -108,6 +140,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   more: {
+    fontFamily: 'Cabin',
     background: theme.palette.primary.main,
     width: '160px',
     height: '50px',
@@ -125,6 +158,7 @@ const useStyles = makeStyles((theme) => ({
   },
   //For Review
   review: {
+    fontFamily: 'Cabin',
     background: '#FFFFFF',
     boxShadow: '0px 2px 40px rgba(0, 0, 0, 0.2)',
     borderRadius: '16px',
@@ -140,6 +174,7 @@ const useStyles = makeStyles((theme) => ({
     maxheight: '800px',
     height: '800px',
     backgroundSize: 'cover',
+    backgroundAttachment: 'fixed',
     background: `url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80') center no-repeat`,
   },
   bkIMG: {
@@ -172,6 +207,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+//Scroller
+function Scroller() {
+  document.getElementById('here').scrollIntoView({
+    behavior: 'smooth',
+  });
+}
+
 //Review
 function Review(props) {
   const classes = useStyles();
@@ -179,12 +221,12 @@ function Review(props) {
     <Card className={classes.review}>
       <CardContent spacing={4}>
         <Grid container spacing={2} direction="row" justify="space-between" alignItems="center">
-          <Grid item md={3} xs={12}>
+          <Grid item md={4} xs={12}>
             <Avatar className={classes.avatar}>
               <img src={props.imgSource} width='100%' height='100%' alt={props.name}></img>
             </Avatar>
           </Grid>
-          <Grid item md={8} xs={12}>
+          <Grid item md={9} xs={12}>
             <Typography className={classes.open2}>{props.name}</Typography>
             <hr className={classes.hr} width='50%' align='left'></hr>
             <Typography className={classes.sub2}>{props.title}</Typography>
@@ -216,7 +258,7 @@ export default function Home() {
               Tìm hiểu thêm
           </Button>
           </Link>
-          <IconButton className={classes.down} href='#here'>
+          <IconButton className={classes.down} onClick={Scroller} >
             <ArrowDownwardRoundedIcon className={classes.iconIMG} />
           </IconButton>
         </Grid>
@@ -273,10 +315,13 @@ export default function Home() {
           </Grid>
         </Grid>
       </Grid>
+      <div className={classes.pictureContainer}>
+      </div>
       <div className={classes.upcontainer}>
         <UpcomingEvent />
       </div>
-      <div className={classes.container}>
+      <div className={classes.pictureContainer1}></div>
+      <div className={classes.container} style={{ paddingBottom: '100px' }}>
         <Typography variant='h3' className={classes.open}>
           Mọi người nói gì về Vietcode
         </Typography>
