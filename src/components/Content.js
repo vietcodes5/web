@@ -8,7 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   marginApp: {
     paddingTop: "60px",
-    overflow: 'hidden'
+    overflow: 'hidden',
+    minHeight: '80vh',
   },
 }));
 
