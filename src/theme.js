@@ -4,6 +4,7 @@ export default createMuiTheme({
   palette: {
     primary: {
       main: '#2b93b6',
+
     },
     hover: {
       main: '#34b6cf',
@@ -34,6 +35,7 @@ export default createMuiTheme({
     popup: '0 0 6px rgba(0, 0, 0, 0.2)'
   },
   typography: {
+    fontFamily: 'Cabin',
     h1: {
       fontSize: '32px'
     },
