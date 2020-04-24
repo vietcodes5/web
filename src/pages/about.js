@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //MUI
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, IconButton, Container } from '@material-ui/core';
+import { Grid, Typography, IconButton } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 // component
 import UpcomingEvent from '../components/UpcomingEvent';
