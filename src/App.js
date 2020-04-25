@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header';
 import Content from './components/Content';
 import Scroll from './components/Scroll-to-top-function';
+import Footer from './components/Footer';
 import './css/App.css';
 
 import Home from './pages/home';
@@ -80,7 +81,7 @@ function App(props) {
           <Header pages={pages} logo={logo} />
         </Scroll>
         <Content pages={pages} />
-        {/* <Footer /> */}
+        <Footer />
       </ThemeProvider>
     </Router>
   );
