@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import {
@@ -213,6 +215,30 @@ function Scroller() {
     behavior: 'smooth',
   });
 }
+//CountUp
+
+const Ticker = ({ className, ...rest }) => {
+  const [viewPortEntered, setViewPortEntered] = useState(false);
+  return (
+    <CountUp {...rest} start={viewPortEntered ? null : 0} duration={4}>
+      {({ countUpRef }) => {
+        return (
+          <VisibilitySensor
+            active={!viewPortEntered}
+            onChange={isVisible => {
+              if (isVisible) {
+                setViewPortEntered(true);
+              }
+            }}
+            delayedCall
+          >
+            <div className={className} ref={countUpRef} />
+          </VisibilitySensor>
+        );
+      }}
+    </CountUp>
+  );
+};
 
 //Review
 function Review(props) {
@@ -277,7 +303,9 @@ export default function Home() {
                 <PeopleIcon className={classes.iconIMG} align='center' />
               </div>
               <div>
-                <div className={classes.open1}>500</div>
+                <div className={classes.open1}>
+                  <Ticker end={500} />
+                </div>
                 <hr className={classes.hr} width='10%'></hr>
                 <div className={classes.sub1}>thành viên</div>
               </div>
@@ -287,7 +315,9 @@ export default function Home() {
                 <SpaIcon className={classes.iconIMG} />
               </div>
               <div>
-                <div className={classes.open1}>5</div>
+                <div className={classes.open1}>
+                  <Ticker end={5} />
+                </div>
                 <hr className={classes.hr} width='10%'></hr>
                 <div className={classes.sub1}>năm</div>
               </div>
@@ -297,7 +327,9 @@ export default function Home() {
                 <EventIcon className={classes.iconIMG} />
               </div>
               <div>
-                <div className={classes.open1}>20</div>
+                <div className={classes.open1}>
+                  <Ticker end={20} />
+                </div>
                 <hr className={classes.hr} width='10%'></hr>
                 <div className={classes.sub1}>sự kiện</div>
               </div>
@@ -307,7 +339,9 @@ export default function Home() {
                 <BusinessCenterIcon className={classes.iconIMG} />
               </div>
               <div>
-                <div className={classes.open1}>10</div>
+                <div className={classes.open1}>
+                  <Ticker end={10} />
+                </div>
                 <hr className={classes.hr} width='10%'></hr>
                 <div className={classes.sub1}>dự án</div>
               </div>
