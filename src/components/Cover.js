@@ -11,10 +11,11 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   card: {
     width: '100%',
-    height: '100%',
+    minHeight: '100%',
     position: 'relative',
     overflow: 'hidden',
-
+    borderRadius: '20px',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
     "& > .mask": {
       position: 'absolute',
       display: 'flex',
@@ -91,8 +92,8 @@ export default function Cover({
           <div className="mask"
             style={{
               opacity: showMask ? ".7" : "0",
-            }}></div>
 
+            }}></div>
           <div className="title"
             style={{
               opacity: showMask ? "1" : "0",

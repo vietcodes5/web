@@ -13,7 +13,7 @@ import 'firebase/storage';
 
 export default function Main(props) {
   const { allSeries } = props;
-  const [ cards, loadCard ] = useState([]);
+  const [cards, loadCard] = useState([]);
 
   useEffect(() => {
     const storage = firebase.storage();
@@ -25,7 +25,7 @@ export default function Main(props) {
         .then(url => {
           loadCard(prevCards => ([
             ...prevCards,
-            <Cover 
+            <Cover
               key={series.id}
               title={series.title}
               subtitle={series.description}
@@ -36,16 +36,17 @@ export default function Main(props) {
           ]));
         });
     });
-  }, [ allSeries ]);
+  }, [allSeries]);
 
   return (
+
     <Grid item xs={12} md={8}>
       <Typography variant="h6" gutterBottom>
         Posts
       </Typography>
       <Divider />
       <Grid container spacing={2} justify="space-between">
-        { cards }
+        {cards}
       </Grid>
     </Grid>
   );
