@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import {
   Typography,
   Grid,
   Container,
-  Paper,
-  Divider
 } from '@material-ui/core';
 
 import firebase from 'firebase';
