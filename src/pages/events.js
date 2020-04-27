@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 // MUI components
 import {
   Grid,
-  Container,
 } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,8 +18,8 @@ import 'firebase/firestore';
 
 const useStyles = makeStyles(theme => ({
   mainGrid: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
+    paddingTop: theme.spacing(3),
+    backgroundColor: 'white',
   },
 }));
 
@@ -50,11 +49,9 @@ export default function Events(props) {
   return (
     <>
       <UpcomingEvent />
-      <Container maxWidth='lg'>
-        <Grid container className={classes.mainGrid} spacing={3}>
-          <Main events={events} />
-        </Grid>
-      </Container>
+      <Grid container className={classes.mainGrid} spacing={3}>
+        <Main events={events} />
+      </Grid>
     </>
   );
 }
