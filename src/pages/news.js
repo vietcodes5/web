@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 // MUI component
 import {
   Grid,
-  Container,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -49,6 +48,7 @@ export default function News() {
               updateSidebar(sidebarBodyCards => ([
                 ...sidebarBodyCards,
                 {
+                  id: doc.id,
                   title: data.title,
                   photoUrl: url,
                   url: `/posts/${doc.id}`
@@ -79,21 +79,19 @@ export default function News() {
   return (
     <>
       <FeaturedPosts />
-      <Container maxWidth='lg'>
-        <Grid container spacing={5} className={classes.mainGrid}>
-          <Main allSeries={allSeries} />
-          <Sidebar
-            header={{
-              title: "News",
-              content: "Bài viết của Vietcode"
-            }}
-            body={{
-              title: "Các bài viết",
-              cards: sidebarBodyCards
-            }}
-          />
-        </Grid>
-      </Container>
+      <Grid container spacing={5} className={classes.mainGrid}>
+        <Main allSeries={allSeries} />
+        <Sidebar
+          header={{
+            title: "Posts",
+            //content: "Bài viết của Vietcode"
+          }}
+          body={{
+            //title: "Các bài viết",
+            cards: sidebarBodyCards
+          }}
+        />
+      </Grid>
     </>
   );
 }

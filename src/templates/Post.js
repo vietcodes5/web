@@ -9,7 +9,6 @@ import {
   Typography,
   Grid,
   Divider,
-  Container,
 } from '@material-ui/core';
 
 import Markdown from '../components/Markdown';
@@ -21,7 +20,13 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '450px',
     display: 'block',
     margin: '20px auto',
-  }
+  },
+  container: {
+    margin: '30px',
+  },
+  title: {
+    fontSize: '50px',
+  },
 }));
 
 const defaultData = {
@@ -97,33 +102,40 @@ export default function Blog(props) {
   }, [postId]);
 
   return (
-    <Container>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={8}>
-          <Typography variant="h2" gutterBottom>
-            Testing
-          </Typography>
-          <Divider />
-          <img className={classes.cover_image} src={photoUrl} alt="Post cover" />
-          <Typography variant="subtitle1" gutterBottom>
-            {blogData.opening}
-          </Typography>
+    <Grid container spacing={2} className={classes.container}>
+      <Grid item xs={12} md={12}>
+        <Grid container>
 
-          <Markdown>
-            {blogData.content}
-          </Markdown>
+          <Grid item>
+            <img className={classes.cover_image} src={photoUrl} alt="Post cover" />
+          </Grid>
+
+          <Grid item>
+            <Typography variant="h1" gutterBottom className={classes.title}>
+              {blogData.title}
+            </Typography>
+          </Grid>
+
         </Grid>
-        <Sidebar
-          header={{
-            title: 'Other posts'
-          }}
-          body={{
-            cards: cardsData
-          }}
-        />
-        <Grid item xs={12} md={4}>
-        </Grid>
+
+        <Typography variant="subtitle1" gutterBottom>
+          {blogData.opening}
+        </Typography>
+
+        <Markdown>
+          {blogData.content}
+        </Markdown>
       </Grid>
-    </Container>
+      <Sidebar
+        header={{
+          title: 'Other posts'
+        }}
+        body={{
+          cards: cardsData
+        }}
+      />
+      <Grid item xs={12} md={4}>
+      </Grid>
+    </Grid>
   )
 }
