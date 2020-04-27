@@ -8,7 +8,6 @@ import 'firebase/storage';
 import {
   Typography,
   Grid,
-  Divider,
 } from '@material-ui/core';
 
 import Markdown from '../components/Markdown';
