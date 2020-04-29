@@ -5,6 +5,27 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  introContainer: {
+    backgroundAttachment: 'fixed',
+    background: `url('https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/85051707_1977725279039567_1408145121513308160_o.jpg?_nc_cat=111&_nc_sid=0debeb&_nc_ohc=1gwCcBxXgSEAX-7wE-M&_nc_ht=scontent.fhan2-1.fna&oh=e53ef3a30740d4f1061fe6c005f8f267&oe=5ED02017') center no-repeat`,
+    backgroundSize: 'cover',
+    height: '1000px',
+    '@media not all and (min-resolution:.001dpcm)': {
+      '@supports (-webkit-appearance:none)': {
+        backgroundAttachment: 'scroll',
+      },
+    },
+  },
+  chamNgonCuocSong: {
+    backgroundAttachment: 'fixed',
+    background: `url('https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/73194715_1844271372384959_833124110966980608_n.jpg?_nc_cat=109&_nc_sid=8bfeb9&_nc_ohc=5MK7W-A-XBkAX_YGp9I&_nc_ht=scontent.fhan2-4.fna&oh=04e5281549831f45957e26c25aeda038&oe=5ECE0F87') center no-repeat`,
+    backgroundSize: 'cover',
+    '@media not all and (min-resolution:.001dpcm)': {
+      '@supports (-webkit-appearance:none)': {
+        backgroundAttachment: 'scroll',
+      },
+    },
+  },
   sub2: {
     fontFamily: 'Cabin',
     color: '#F7F8FA',
@@ -23,7 +44,11 @@ const useStyles = makeStyles((theme) => ({
   membercontainer: {
     width: '300px',
     height: '400px',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.5)'
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.5)',
+    '@media screen and (max-width: 400px)': {
+      width: '200px',
+      height: '300px',
+    },
   },
   Membertext: {
     fontFamily: 'Cabin',
@@ -34,23 +59,19 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '250%',
   },
   Quotetext: {
-    fontFamily: 'Cabin',
-    padding: '5vh',
-    textAlign: 'center',
     color: '#F7F8FA',
     fontWeight: 'bold',
-    fontSize: '450%',
-    width: '100%',
-    marginTop: '10vh',
+    fontSize: '500%',
+    '@media screen and (max-width: 800px)': {
+      fontSize: '400%',
+    },
   },
   Aboutus: {
-    fontFamily: 'Cabin',
     padding: '4vh',
     textAlign: 'center',
     color: '#F7F8FA',
     fontWeight: 'bold',
     fontSize: '250%',
-    paddingTop: '10vh',
     textShadow: '0px 4px 4px rgba(0, 0, 0, 0.5)',
   },
   review: {
@@ -83,15 +104,18 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     width: '500px',
     height: '300px',
-    marginLeft: '-150px',
-    margin: 'auto'
+    marginLeft: '-300px',
+    margin: 'auto',
+    '@media screen and (max-width: 800px)': {
+      marginLeft: '-150px',
+    },
   },
   boxleft1: {
-    width: '500px',
+    width: '100%',
     padding: '3vh',
     display: 'flex',
     flexFlow: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
   }
 }))
 
@@ -99,21 +123,33 @@ function Membercard(props) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} md={4} style={{
-      width: '300px',
-      height: '400px',
-      margin: 'auto',
-      marginTop: '3vh',
-      marginBottom: '2vh'
-    }}>
-      <Card className={classes.membercontainer} style={{ margin: 'auto', background: `url('${props.memberIMG}')  no-repeat`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
+    <Grid item xs={12} md={5}
+      style={{
+        margin: 'auto',
+        marginTop: '3vh',
+        marginBottom: '2vh',
+      }}>
+      <Card className={classes.membercontainer}
+        style={{
+          margin: 'auto',
+          background: `url('${props.memberIMG}')  no-repeat`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          position: 'relative',
+        }}>
         <Grid style={{
           background: '#34B6CF',
           opacity: '0.5',
           height: 'inherit',
+          width: 'inherit',
         }}>
         </Grid>
-        <Grid style={{ position: 'absolute', left: '10%', bottom: '10px' }}>
+        <Grid
+          style={{
+            position: 'absolute',
+            left: '10%',
+            bottom: '10px'
+          }}>
           <Typography className={classes.open2}>{props.name}</Typography>
           <hr className={classes.hr} align='left'></hr>
           <Typography className={classes.sub2}>{props.title}</Typography>
@@ -128,50 +164,162 @@ export default function About(props) {
 
   return (
     <div id="about" style={{ background: '#566B72', margin: 'auto' }}>
-      <Grid style={{ height: '600px', background: `url('https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/85051707_1977725279039567_1408145121513308160_o.jpg?_nc_cat=111&_nc_sid=0debeb&_nc_ohc=1gwCcBxXgSEAX-7wE-M&_nc_ht=scontent.fhan2-1.fna&oh=e53ef3a30740d4f1061fe6c005f8f267&oe=5ED02017') center no-repeat`, backgroundSize: 'cover' }}>
-        <Grid id='opening' style={{
-          background: 'rgb(52, 182, 207,0.5)',
-          height: 'inherit'
-        }}>
-          <Typography variant='h1' className={classes.Aboutus}>About Us</Typography>
-          <Grid style={{ width: '60%', margin: 'auto' }}>
+      <Grid
+        className={classes.introContainer}
+      >
+        <Grid
+          container
+          id='opening'
+          justify='center'
+          alignContent='center'
+          alignItems='center'
+          direction='column'
+          style={{
+            background: 'rgb(52, 182, 207,0.5)',
+            height: '86%',
+          }}>
+          <Grid style={{
+            width: '60%',
+            margin: 'auto',
+
+          }}>
+            <Typography variant='h1' className={classes.Aboutus}>About Us</Typography>
             <Typography variant='h4' className={classes.review}>Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam </Typography>
           </Grid>
         </Grid>
+        <Grid
+          container
+          id='opening'
+          justify='center'
+          alignContent='center'
+          alignItems='center'
+          direction='column'
+          style={{
+            background: 'rgb(52, 182, 207,0.5)',
+            height: '14%',
+          }}>
+        </Grid>
       </Grid>
+
       <Grid>
-        <Grid id='trang1' style={{ background: '#F7F8FA', width: '80%', margin: 'auto' }}>
-          <Grid container id='section1' style={{ marginTop: '-10vh', display: 'flex', flexFlow: 'row', justifyContent: 'space-evenly' }}>
-            <Grid item xs={6} id='boxleft' align='right' className={classes.boxleft1}>
-              <Typography>HISTORY</Typography>
+        <Grid
+          id='trang1'
+          style={{
+            background: '#F7F8FA',
+            width: '80%',
+            margin: 'auto',
+            paddingBottom: '5vh',
+          }}>
+          <Grid container
+            id='section1'
+            style={{
+              marginTop: '-10vh',
+              height: '120%',
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+
+            }}>
+            <Grid item xs={12} md={6}
+              id='boxleft'
+              align='right'
+              className={classes.boxleft1}
+            >
+              <Typography variant="h4">HISTORY</Typography>
               <br></br>
               <Typography>Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam </Typography>
             </Grid>
-            <Grid item xs={6} id='boxright' className={classes.img1}></Grid>
+            <Grid item xs={12} md={6} id='boxright' className={classes.img1}></Grid>
           </Grid>
-          <Grid item id='section2' style={{ display: 'flex', flexFlow: 'row', justifyContent: 'space-evenly', padding: '7vh' }}>
-            <Grid container id='boxleft' xs={6} className={classes.img2}>
-              <Grid item className={classes.blue}></Grid>
-              <Grid item className={classes.inside}></Grid>
-            </Grid>
-            <Grid item id='boxright' xs={6} align='left' className={classes.boxleft1}>
+
+          <Grid container
+            id='section2'
+            style={{
+              display: 'flex',
+              flexDirection: 'row-reverse',
+              justifyContent: 'space-evenly',
+              '@media screen and (maxWidth: 800px)': {
+                flexDirection: 'row',
+              },
+
+            }}>
+            <Grid item id='boxright' xs={12} md={6} align='left' className={classes.boxleft1}>
               <Typography>Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam </Typography>
             </Grid>
+            <Grid item id='boxleft' className={classes.img2} xs={12} md={6}>
+              <Grid className={classes.blue}></Grid>
+              <Grid className={classes.inside}></Grid>
+            </Grid>
+
+
+
           </Grid>
+
         </Grid>
-        <Grid container id='quotes' style={{ background: `url('https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/73194715_1844271372384959_833124110966980608_n.jpg?_nc_cat=109&_nc_sid=8bfeb9&_nc_ohc=5MK7W-A-XBkAX_YGp9I&_nc_ht=scontent.fhan2-4.fna&oh=04e5281549831f45957e26c25aeda038&oe=5ECE0F87') center no-repeat`, backgroundSize: 'cover' }}>
-          <Grid container style={{
-            background: 'rgb(52, 182, 207,0.8)',
-            height: '500px'
-          }}>
-            <Typography variant='h1' className={classes.Quotetext}>Cham Ngon Cuoc song</Typography>
-            <Typography variant='h3' style={{ width: '100%', color: '#F7F8FA', paddingLeft: '70%', paddingBottom: '3vh' }}>"VietcodeS5"</Typography>
+
+        <Grid container
+          id='quotes'
+          className={classes.chamNgonCuocSong}
+          justify='center'
+          alignItems='center'
+          alignContent='center'
+        >
+          <Grid item
+            xs={12}
+            style={{
+              background: 'rgb(52, 182, 207,0.6)',
+              height: '100%',
+              width: '100%',
+            }}>
+            <Grid container
+              justify='center'
+              alignItems='center'
+              alignContent='center'
+              style={{
+                textAlign: 'center',
+                height: '300px',
+              }}
+            >
+              <Grid item>
+                <Typography
+                  variant='h3'
+                  className={classes.Quotetext}
+                >
+                  Châm ngôn cuộc sống
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container
+              justify='center'
+              alignItems='center'
+              alignContent='flex-start'
+              style={{
+                textAlign: 'center',
+                height: '150px',
+                color: '#F7F8FA'
+              }}
+            >
+              <Grid item>
+                <Typography variant='h3'>
+                  "Không làm mà đòi ăn..."
+                </Typography>
+              </Grid>
+            </Grid>
           </Grid>
+
         </Grid>
         <Grid id='trang2' style={{ background: '#F7F8FA', width: '80%', margin: 'auto' }}>
-          <Grid align='center' className={classes.Membertext}>Our member</Grid>
+          <Grid
+            align='center'
+            className={classes.Membertext}>
+            Our member
+          </Grid>
           <hr style={{ border: '1px #309DBE solid', width: '80%' }}></hr>
-          <Grid container id='membercontain' >
+          <Grid
+            container
+            id='membercontainer'
+            spacing={2}
+          >
             <Membercard name='Nguyễn Trà My' title=' Chủ Tịch' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95264672_2906574359396943_4975749123136290816_n.png?_nc_cat=101&_nc_sid=b96e70&_nc_ohc=jOHtwB-J2z4AX-K9MXc&_nc_ht=scontent.fhan2-1.fna&oh=bc5944674efb3eccabcbb042a588ec50&oe=5ECEC460'></Membercard>
             <Membercard name='Bùi Hương Giang' title='Phó Chủ Tịch/Sự Kiện' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/74238365_2412546238965631_7646729528638701568_o.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=0OwSRHvXt1gAX-4kI4L&_nc_ht=scontent.fhan2-1.fna&oh=3a6aa8caf1d44469d4168a002e3f25be&oe=5ECCA921'></Membercard>
             <Membercard name='Nguyễn Tiểu Phương' title='Chuyên Môn' memberIMG='https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/95683828_1337837803271521_5128150720465338368_n.jpg?_nc_cat=104&_nc_sid=b96e70&_nc_ohc=PE1ZLSD058QAX9n4dVp&_nc_ht=scontent.fhan2-4.fna&oh=6abe43a46b27c32fab08d1ce4ed6a856&oe=5ECECAC0'></Membercard>
