@@ -15,11 +15,16 @@ import 'firebase/storage';
 const useStyles = makeStyles(theme => ({
   container: {
     margin: '30px',
+    '@media screen and (max-width: 1024px)': {
+      margin: '10px',
+    },
   },
   cardsContainer: {
     padding: '60px',
-    '@media screen and (max-width: 750px)': {
-      padding: '20px',
+    paddingTop: '50px',
+    '@media screen and (max-width: 1024px)': {
+      padding: '10px',
+      paddingTop: '50px',
     },
   },
   divider: {

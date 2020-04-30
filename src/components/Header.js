@@ -134,7 +134,7 @@ export default function Header(props) {
               ))
             }
           </Hidden>
-          <Hidden only={['md', 'lg', 'sm', 'xl']}>
+          <Hidden only={['lg', 'xl', 'md']}>
             <React.Fragment>
               <IconButton button="true" edge="start" onClick={toggleDrawer('top', true)} className={classes.menuButton} color="inherit" aria-label="menu">
                 <MenuIcon />
@@ -149,21 +149,7 @@ export default function Header(props) {
               </SwipeableDrawer>
             </React.Fragment>
           </Hidden>
-          <Hidden only={['md', 'lg', 'xs', 'xl']}>
-            <React.Fragment>
-              <IconButton button="true" edge="start" onClick={toggleDrawer('right', true)} className={classes.menuButton} color="inherit" aria-label="menu">
-                <MenuIcon />
-              </IconButton>
-              <SwipeableDrawer
-                anchor={'right'}
-                open={showMenu['right']}
-                onClose={toggleDrawer('right', false)}
-                onOpen={toggleDrawer('right', true)}
-              >
-                {menu('right')}
-              </SwipeableDrawer>
-            </React.Fragment>
-          </Hidden>
+
         </Container>
       </Toolbar>
     </AppBar>
