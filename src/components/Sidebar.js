@@ -1,63 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import Cover from '../components/Cover';
 import {
   Typography,
   Divider,
   Grid,
-  Paper,
 } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    marginTop: '10px',
-    padding: '10px',
-    background: 'white',
-    color: 'black',
-    borderRadius: '10px',
-    boxShadow: theme.shadow.popup,
+    margin: '30px',
   },
-  sidebarCard: {
-    margin: '5px 0',
-    transitionDuration: '.3s',
-    borderRight: '6px solid white',
-    background: 'white',
-    color: 'black',
-    boxSizing: 'border-box',
-    textAlign: 'center',
-    '&:hover': {
-      boxShadow: theme.shadow.hover,
-      borderRight: '6px solid #34b6cf',
-    },
-    '&:active': {
-      background: '#34b6cf',
-      color: 'white',
-      borderRight: '6px solid #34b6cf',
+  cardsContainer: {
+    padding: '60px',
+    '@media screen and (max-width: 750px)': {
+      padding: '20px',
     },
   },
-  sidebarCardImage: {
-    paddingTop: '100%',
-    borderRadius: '15px',
-    backgroundSize: '95%',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-  },
-  cardContent: {
-    padding: '5px 0 5px 10px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'space-between',
-    flexDirection: 'column',
+  divider: {
+    height: '5px',
+    width: '100%',
+    background: '#309DBE',
   },
   title: {
-    height: '85%',
-    width: '100%',
-  },
-  subtitle: {
-    height: '15%',
-    width: '98%',
+    fontSize: '50px',
   },
 }));
 
@@ -66,20 +33,29 @@ export default function Sidebar(props) {
   const { header, body } = props;
 
   return (
-    <Grid item xs={12} md={4}>
-      <Paper className={classes.container} elevation={2} square>
-        <Typography variant="h2">
-          {header.title}
-        </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          {header.content}
-        </Typography>
-        <Divider />
+    <Grid item xs={12} md={12} className={classes.container}>
+      <Typography variant="h1" className={classes.title}>
+        {header.title}
+      </Typography>
+      <Typography variant="subtitle1" gutterBottom>
+        {header.content}
+      </Typography>
+      <Divider className={classes.divider} />
 
-        <div style={{ marginTop: '10px' }}>
-          <Typography variant="h3" gutterBottom>
-            {body.title}
-          </Typography>
+      <Grid
+        style={{ marginTop: '10px' }}
+      >
+        <Typography variant="h3" gutterBottom >
+          {body.title}
+        </Typography>
+        <Grid
+          container
+          className={classes.cardsContainer}
+          justify='space-around'
+          alignContent='center'
+          spacing={5}
+          alignItems='center'
+        >
           {
             body.cards.map(card => (
               <SidebarCard
@@ -88,55 +64,24 @@ export default function Sidebar(props) {
               />
             ))
           }
-
-        </div>
-      </Paper>
+        </Grid>
+      </Grid>
     </Grid>
   );
 }
 
 function SidebarCard(props) {
-  const classes = useStyles();
-  const { url, title, photoUrl } = props;
+  const { id, url, title, photoUrl } = props;
 
   return (
-    <Link to={url}>
-      <Grid className={classes.sidebarCard} container>
-        <Grid item xs={4}>
-          <div
-            className={classes.sidebarCardImage}
-            style={{
-              backgroundImage: `url(${photoUrl})`,
-            }}
-            alt="Event" />
-        </Grid>
-        <Grid
-          container
-          item xs={8}
-          className={classes.cardContent}
-        >
-          <Grid
-            container
-            item
-            alignItems='center'
-            justify='center'
-            className={classes.title}
-          >
-            <Typography variant="h4">
-              {title}
-            </Typography>
-          </Grid>
-          <Grid item className={classes.subtitle}>
-            <Typography
-              variant="subtitle2"
-              align="right"
-              color="textSecondary"
-            >
-              Read more
-            </Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Link>
+    <Cover
+      key={id}
+      id={id}
+      title={title}
+      xs={12}
+      md={4}
+      photoUrl={photoUrl}
+      to={url}
+    />
   );
 }
