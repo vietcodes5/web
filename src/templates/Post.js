@@ -18,10 +18,15 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '100%',
     maxHeight: '450px',
     display: 'block',
+    boxShadow: theme.shadow.hover,
+    borderRadius: '20px',
     margin: '20px auto',
   },
   container: {
-    margin: '30px',
+    margin: '70px',
+    '@media screen and (max-width: 750px)': {
+      margin: '10px',
+    },
   },
   title: {
     fontSize: '50px',
@@ -39,16 +44,9 @@ export default function Blog(props) {
   const { postId } = useParams();
   const [blogData, loadData] = useState(defaultData);
   const [photoUrl, updatePhotoUrl] = useState("");
-  //const [posts, loadPost] = useState([]);
+  const [series, loadSeries] = useState([]);
   const classes = useStyles();
   const [cardsData, updateCardsData] = useState([]);
-  /*
-  const [series, updateSeries] = useState({
-    blogs: [],
-    description: "Loading...",
-    title: "Loading..."
-  });
-  */
   useEffect(() => {
     // TODO: get blog data
     const db = firebase.firestore();
@@ -56,14 +54,25 @@ export default function Blog(props) {
 
     // loadPost(() => []);
     updateCardsData(() => []);
-
+    db.collection("posts")
+      .doc(postId)
+      .get()
+      .then(doc => {
+        if (!doc.exists) {
+          return console.log('No series found');
+        }
+        doc.data().series
+          .get()
+          .then(res => {
+            loadSeries(res.data());
+          })
+      })
     db.collection("posts")
       .get()
       .then(snapshot => {
         if (snapshot.empty) {
           return console.log('No posts found!');
         }
-
         snapshot.docs.slice(-5).forEach(doc => {
           const data = doc.data();
 
@@ -101,40 +110,56 @@ export default function Blog(props) {
   }, [postId]);
 
   return (
-    <Grid container spacing={2} className={classes.container}>
-      <Grid item xs={12} md={12}>
-        <Grid container>
+    <div className={classes.container}>
+      <Grid container spacing={2} >
+        <Grid item xs={12} md={12}>
+          <Grid container spacing={5}>
 
-          <Grid item>
-            <img className={classes.cover_image} src={photoUrl} alt="Post cover" />
+            <Grid item xs={12} md={4}>
+              <img className={classes.cover_image} src={photoUrl} alt="Post cover" />
+            </Grid>
+
+            <Grid item xs={12} md={8} style={{ marginBottom: '30px' }}>
+              <Grid container>
+                <Grid item xs={12} md={12}>
+                  <Typography variant="h1" gutterBottom className={classes.title}>
+                    {blogData.title}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={12}>
+                  <Typography variant="h1" style={{ color: '#4f4f4f' }} gutterBottom>
+                    {series.title}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={12}>
+                  <Typography variant="h4" style={{ color: '#4f4f4f' }}>
+                    Chưa có description trên database !
+                </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+
           </Grid>
 
-          <Grid item>
-            <Typography variant="h1" gutterBottom className={classes.title}>
-              {blogData.title}
-            </Typography>
-          </Grid>
+          <Typography variant="subtitle1" gutterBottom>
+            {blogData.opening}
+          </Typography>
 
+          <Markdown>
+            {blogData.content}
+          </Markdown>
         </Grid>
-
-        <Typography variant="subtitle1" gutterBottom>
-          {blogData.opening}
-        </Typography>
-
-        <Markdown>
-          {blogData.content}
-        </Markdown>
+        <Sidebar
+          header={{
+            title: 'Other posts'
+          }}
+          body={{
+            cards: cardsData
+          }}
+        />
+        <Grid item xs={12} md={4}>
+        </Grid>
       </Grid>
-      <Sidebar
-        header={{
-          title: 'Other posts'
-        }}
-        body={{
-          cards: cardsData
-        }}
-      />
-      <Grid item xs={12} md={4}>
-      </Grid>
-    </Grid>
+    </div>
   )
 }

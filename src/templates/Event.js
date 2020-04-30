@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
-
-
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import {
   Typography,
-  Grid, 
+  Grid,
   Container,
 } from '@material-ui/core';
 
@@ -19,9 +17,40 @@ import Markdown from '../components/Markdown';
 
 const useStyles = makeStyles(theme => ({
   coverImage: {
-    maxWidth: '100%',
-    maxHeight: '400px',
+    width: '150%',
     display: 'block',
+    position: 'fixed',
+    filter: 'brightness(50%)',
+    top: '0',
+    zIndex: '-1',
+    '@media screen and (max-width: 1024px)': {
+      width: '380%',
+    },
+  },
+  imgContainer: {
+    width: '100%',
+    color: 'white',
+    height: '800px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '@media screen and (max-width: 750px)': {
+      height: '400px',
+    },
+  },
+  title: {
+    fontSize: '100px',
+    '@media screen and (max-width: 750px)': {
+      fontSize: '50px',
+    },
+  },
+  container: {
+    padding: '20px',
+    background: '#FFFFFF',
+    marginBottom: '100px',
+    '@media screen and (max-width: 1024px)': {
+      marginBottom: '0px',
+    },
   },
   sidebar: {
     minHeight: '100vh',
@@ -41,7 +70,7 @@ const useStyles = makeStyles(theme => ({
   },
   cardContent: {
     padding: '15px',
-  }
+  },
 }));
 
 const defaultValues = {
@@ -128,29 +157,31 @@ export default function Event(props) {
   }, [id]);
 
   return (
-    <Container>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={8}>
-          <Typography align="center" variant="h1" gutterBottom>
-            {event.title}
-          </Typography>
-
-          <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
-
-          <Markdown>
-            {event.content}
-          </Markdown>
-          <ImageGallery items={images} autoPlay={true} />
-        </Grid>
-        <Sidebar
-          header={{
-            title: 'Các sự kiện khác',
-          }}
-          body={{
-            cards: cardsData
-          }}
-        />
+    <Grid container spacing={1}>
+      <Grid item xs={12} md={12} className={classes.imgContainer}>
+        <Typography align="center" className={classes.title}>
+          {event.title}
+        </Typography>
+        <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
       </Grid>
-    </Container>
+      <Container className={classes.container}>
+        <Markdown>
+          {event.content}
+        </Markdown>
+        <ImageGallery items={images} autoPlay={true} />
+
+        <Grid item xs={12} md={12}>
+          <Sidebar
+            header={{
+              title: 'Các sự kiện khác',
+            }}
+            body={{
+              cards: cardsData
+            }}
+          />
+        </Grid>
+      </Container>
+
+    </Grid>
   );
 }

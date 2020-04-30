@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   divider: {
-    height: '5px',
+    height: '6px',
     width: '100%',
     background: '#309DBE',
   },
@@ -63,7 +63,7 @@ export default function Main(props) {
 
   return (
     <Grid item xs={12} md={12} className={classes.container}>
-      <Typography variant="h6" gutterBottom className={classes.title}>
+      <Typography variant="h1" gutterBottom className={classes.title}>
         Series
       </Typography>
       <Divider className={classes.divider} />

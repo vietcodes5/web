@@ -4,7 +4,6 @@ export default createMuiTheme({
   palette: {
     primary: {
       main: '#2b93b6',
-
     },
     hover: {
       main: '#34b6cf',

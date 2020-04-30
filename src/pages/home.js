@@ -30,7 +30,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     '@media screen and (max-width: 800px)': {
       height: '400px',
-
+    },
+    '@media not all and (min-resolution:.001dpcm)': {
+      '@supports (-webkit-appearance:none)': {
+        backgroundAttachment: 'scroll',
+      },
     },
   },
   pictureContainer1: {
@@ -42,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     '@media screen and (max-width: 800px)': {
       height: '400px',
+    },
+    '@media not all and (min-resolution:.001dpcm)': {
+      '@supports (-webkit-appearance:none)': {
+        backgroundAttachment: 'scroll',
+      },
     },
   },
   container: {
@@ -178,6 +187,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
     background: `url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80') center no-repeat`,
+    '@media not all and (min-resolution:.001dpcm)': {
+      '@supports (-webkit-appearance:none)': {
+        backgroundAttachment: 'scroll',
+      },
+    },
   },
   bkIMG: {
     background: 'rgba(0, 0, 0, .5);',
