@@ -6,7 +6,7 @@ import ImageGallery from 'react-image-gallery';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
-  Grid, 
+  Grid,
   Container,
 } from '@material-ui/core';
 
