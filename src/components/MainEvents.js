@@ -31,7 +31,10 @@ export default function MainEvents(props) {
               title={e.title}
               subtitle={null}
               photoUrl={url}
-              xs={4}
+              xs={12}
+              sm={6}
+              md={6}
+              lg={4}
               to={`/events/${e.id}`}
             />
           ]))
