@@ -8,6 +8,7 @@ import {
 
 import Cover from './Cover';
 import EventNoteIcon from '@material-ui/icons/EventNote';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import firebase from 'firebase';
 import 'firebase/storage';
@@ -31,7 +32,7 @@ export default function MainEvents(props) {
               title={e.title}
               subtitle={null}
               photoUrl={url}
-              xs={12}
+              xs={5}
               sm={6}
               md={6}
               lg={4}
@@ -58,7 +59,7 @@ export default function MainEvents(props) {
           </Grid>
         </Grid>
       </div>
-      <Grid container spacing={5} justify="space-evenly" style={{ marginTop: '10px' }}>
+      <Grid container spacing={useMediaQuery('(max-width:700px)') ? 2 : 5} justify={useMediaQuery('(max-width:700px)') ? "center" : "space-evenly"} style={{ marginTop: '10px', marginBottom: '10px' }}>
         {cards}
       </Grid>
     </ div >
