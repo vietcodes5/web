@@ -65,34 +65,30 @@ export default function Blog(props) {
           .get()
           .then(res => {
             loadSeries(res.data());
+            const postRefs = res.data().posts;
+            const promise = postRefs.map(post => post.get());
+            Promise.all(promise)
+              .then(postDocs => {
+                postDocs.forEach(doc => {
+                  const data = doc.data();
+                  storage
+                    .ref(`blog/${data.photos}`)
+                    .getDownloadURL()
+                    .then(url => {
+                      if (doc.id !== postId)
+                        updateCardsData(cardsData => ([
+                          ...cardsData,
+                          {
+                            title: data.title,
+                            photoUrl: url,
+                            url: `/posts/${doc.id}`
+                          }
+                        ]));
+                    })
+                });
+              })
           })
       })
-    db.collection("posts")
-      .get()
-      .then(snapshot => {
-        if (snapshot.empty) {
-          return console.log('No posts found!');
-        }
-        snapshot.docs.slice(-5).forEach(doc => {
-          const data = doc.data();
-
-          storage
-            .ref(`blog/${data.photos}`)
-            .getDownloadURL()
-            .then(url => {
-              if (doc.id !== postId)
-                updateCardsData(cardsData => ([
-                  ...cardsData,
-                  {
-                    title: data.title,
-                    photoUrl: url,
-                    url: `/posts/${doc.id}`
-                  }
-                ]));
-            })
-        });
-      })
-
     db.doc(`posts/${postId}`)
       .get()
       .then(doc => {
