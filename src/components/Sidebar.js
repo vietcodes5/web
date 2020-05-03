@@ -11,15 +11,20 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   container: {
     margin: '30px',
+    '@media screen and (max-width: 1024px)': {
+      margin: '10px',
+    },
   },
   cardsContainer: {
     padding: '60px',
-    '@media screen and (max-width: 750px)': {
-      padding: '20px',
+    paddingTop: '50px',
+    '@media screen and (max-width: 1024px)': {
+      padding: '10px',
+      paddingTop: '50px',
     },
   },
   divider: {
-    height: '5px',
+    height: '6px',
     width: '100%',
     background: '#309DBE',
   },
@@ -34,7 +39,7 @@ export default function Sidebar(props) {
 
   return (
     <Grid item xs={12} md={12} className={classes.container}>
-      <Typography variant="h1" className={classes.title}>
+      <Typography variant="h1" className={classes.title} gutterBottom>
         {header.title}
       </Typography>
       <Typography variant="subtitle1" gutterBottom>

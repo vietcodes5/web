@@ -5,7 +5,6 @@ import {
   Typography,
   Divider,
   Grid,
-  Container,
 } from '@material-ui/core';
 
 import Cover from '../components/Cover';
@@ -17,10 +16,28 @@ import 'firebase/storage';
 
 const useStyles = makeStyles(theme => ({
   cover_image: {
-    maxHeight: '350px',
-    maxWidth: '100%',
+    maxHeight: '600px',
+    height: '100%',
+    minWidth: '100%',
     display: 'block',
     margin: '20px auto',
+  },
+  container: {
+    margin: '30px',
+  },
+  cardsContainer: {
+    padding: '100px',
+    '@media screen and (max-width: 750px)': {
+      padding: '20px',
+    },
+  },
+  divider: {
+    height: '5px',
+    width: '100%',
+    background: '#309DBE',
+  },
+  title: {
+    fontSize: '50px',
   },
 }));
 
@@ -50,6 +67,7 @@ export default function Series(props) {
     // Clear previous state
     loadPost(() => []);
     updateCardsData(() => []);
+
     db.collection("series")
       .doc(id)
       .get()
@@ -83,7 +101,8 @@ export default function Series(props) {
                         id={doc.id}
                         title={data.title}
                         subtitle={data.opening}
-                        xs={6} sm={4}
+                        xs={12}
+                        md={4}
                         photoUrl={url}
                         to={`/posts/${doc.id}`}
                       />
@@ -124,33 +143,38 @@ export default function Series(props) {
 
   }, [id]);
   return (
-    <Container>
-      <Grid container spacing={10}>
+    <Grid container>
+      <Grid item xs={12} md={12} className={classes.container}>
+        <Typography variant="h1" gutterBottom className={classes.title}>
+          Series {series.title}
+        </Typography>
 
-        <Grid item xs={12} md={8}>
-          <Typography variant="h3" gutterBottom>
-            Series {series.title}
-          </Typography>
-          <Divider />
-          <img className={classes.cover_image} src={photoUrl} alt="Series' cover" />
-          <Typography variant="subtitle2">
-            {series.description}
-          </Typography>
-          <Divider />
-
-          <Grid container spacing={3} justify="space-around" style={{ marginTop: '10px' }}>
-            {posts}
-          </Grid>
-        </Grid>
-        <Sidebar
-          header={{
-            title: 'Other series'
-          }}
-          body={{
-            cards: cardsData
-          }}
-        />
+        <Divider className={classes.divider} />
       </Grid>
-    </Container>
+      <Grid item xs={12} md={12}>
+        <img className={classes.cover_image} src={photoUrl} alt="Series' cover" />
+      </Grid>
+      <Divider />
+
+      <Grid
+        container
+        spacing={3}
+        justify="space-around"
+        style={{ marginTop: '10px' }}
+        className={classes.cardsContainer}
+      >
+        {posts}
+      </Grid>
+
+
+      <Sidebar
+        header={{
+          title: 'Other series'
+        }}
+        body={{
+          cards: cardsData
+        }}
+      />
+    </Grid>
   );
 }
