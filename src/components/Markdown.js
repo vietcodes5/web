@@ -7,6 +7,9 @@ let converter = new showdown.Converter();
 const useStyles = makeStyles(theme => ({
   markdownConfig: {
     textIndent: '3em',
+    font: 'Roboto',
+    fontSize: '14px',
+    color: '#0D2B36',
   }
 }));
 
