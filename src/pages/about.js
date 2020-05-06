@@ -130,7 +130,7 @@ function Membercard(props) {
         marginTop: '3vh',
         marginBottom: '2vh',
       }}>
-      <a href={props.link} target='_blank' rel="noreferrer">
+      <a href={props.link} target='_blank' rel="noopener noreferrer">
         <Card className={classes.membercontainer}
           style={{
             margin: 'auto',
