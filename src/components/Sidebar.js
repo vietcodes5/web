@@ -57,36 +57,24 @@ export default function Sidebar(props) {
           container
           className={classes.cardsContainer}
           justify='space-around'
-          alignContent='center'
           spacing={5}
-          alignItems='center'
+
         >
           {
             body.cards.map(card => (
-              <SidebarCard
-                {...card}
-                key={card.title}
+              <Cover
+                key={card.id}
+                id={card.id}
+                title={card.title}
+                xs={12}
+                md={4}
+                photoUrl={card.photoUrl}
+                to={card.url}
               />
             ))
           }
         </Grid>
       </Grid>
     </Grid>
-  );
-}
-
-function SidebarCard(props) {
-  const { id, url, title, photoUrl } = props;
-
-  return (
-    <Cover
-      key={id}
-      id={id}
-      title={title}
-      xs={12}
-      md={4}
-      photoUrl={photoUrl}
-      to={url}
-    />
   );
 }
