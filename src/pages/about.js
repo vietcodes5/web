@@ -123,39 +123,43 @@ function Membercard(props) {
   const classes = useStyles();
 
   return (
+
     <Grid item xs={12} md={5} lg={4}
       style={{
         margin: 'auto',
         marginTop: '3vh',
         marginBottom: '2vh',
       }}>
-      <Card className={classes.membercontainer}
-        style={{
-          margin: 'auto',
-          background: `url('${props.memberIMG}')  no-repeat`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          position: 'relative',
-        }}>
-        <Grid style={{
-          background: '#34B6CF',
-          opacity: '0.5',
-          height: 'inherit',
-          width: 'inherit',
-        }}>
-        </Grid>
-        <Grid
+      <a href={props.link} target='_blank' rel="noopener noreferrer">
+        <Card className={classes.membercontainer}
           style={{
-            position: 'absolute',
-            left: '10%',
-            bottom: '10px'
+            margin: 'auto',
+            background: `url('${props.memberIMG}')  no-repeat`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            position: 'relative',
           }}>
-          <Typography className={classes.open2}>{props.name}</Typography>
-          <hr className={classes.hr} align='left'></hr>
-          <Typography className={classes.sub2}>{props.title}</Typography>
-        </Grid>
-      </Card >
-    </Grid>
+          <Grid style={{
+            background: '#34B6CF',
+            opacity: '0.5',
+            height: 'inherit',
+            width: 'inherit',
+          }}>
+          </Grid>
+          <Grid
+            style={{
+              position: 'absolute',
+              left: '10%',
+              bottom: '10px'
+            }}>
+            <Typography className={classes.open2}>{props.name}</Typography>
+            <hr className={classes.hr} align='left'></hr>
+            <Typography className={classes.sub2}>{props.title}</Typography>
+          </Grid>
+        </Card >
+      </a>
+    </Grid >
+
   )
 }
 
@@ -320,14 +324,14 @@ export default function About() {
             id='membercontainer'
             spacing={2}
           >
-            <Membercard name='Nguyễn Trà My' title=' Chủ Tịch' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95264672_2906574359396943_4975749123136290816_n.png?_nc_cat=101&_nc_sid=b96e70&_nc_ohc=jOHtwB-J2z4AX-K9MXc&_nc_ht=scontent.fhan2-1.fna&oh=bc5944674efb3eccabcbb042a588ec50&oe=5ECEC460'></Membercard>
-            <Membercard name='Bùi Hương Giang' title='Phó Chủ Tịch/Sự Kiện' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/74238365_2412546238965631_7646729528638701568_o.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=0OwSRHvXt1gAX-4kI4L&_nc_ht=scontent.fhan2-1.fna&oh=3a6aa8caf1d44469d4168a002e3f25be&oe=5ECCA921'></Membercard>
-            <Membercard name='Nguyễn Tiểu Phương' title='Chuyên Môn' memberIMG='https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/95683828_1337837803271521_5128150720465338368_n.jpg?_nc_cat=104&_nc_sid=b96e70&_nc_ohc=PE1ZLSD058QAX9n4dVp&_nc_ht=scontent.fhan2-4.fna&oh=6abe43a46b27c32fab08d1ce4ed6a856&oe=5ECECAC0'></Membercard>
-            <Membercard name='Lê Nguyệt Hà' title=' Tài Chính' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/82498930_1948180958660666_3939830907153678336_o.jpg?_nc_cat=111&_nc_sid=8bfeb9&_nc_ohc=rnHMNGdeFlYAX_3R1Qb&_nc_ht=scontent.fhan2-1.fna&oh=0f2bd872931f972ef24313d0cd3a5159&oe=5ECE15BF'></Membercard>
-            <Membercard name='Trịnh Thùy Trang' title=' Truyền Thông' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/83078733_1948188875326541_8393976460011896832_o.jpg?_nc_cat=106&_nc_sid=8bfeb9&_nc_ohc=GjjSFO4Ce5AAX92D4VC&_nc_ht=scontent.fhan2-1.fna&oh=9ebfa52018272f642744749f45b389c6&oe=5ECDAA74'></Membercard>
-            <Membercard name='Dương Lâm Tuấn Anh' title='Med/Des' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95543257_244500846793559_6998439343845015552_n.jpg?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=mxUVUjxYDkAAX-KrM9e&_nc_ht=scontent.fhan2-1.fna&oh=9bb22b881667a0cac1ba3bf2bbc9eef9&oe=5ECD0252'></Membercard>
-            <Membercard name='Nguyễn Ngọc Linh Chi' title=' Hậu Cần' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95321117_2892483204205601_7917348546011987968_n.png?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=DWWQrrwT7xQAX9tUnq5&_nc_ht=scontent.fhan2-1.fna&oh=a9910cff150dea3a5b3dfd52127b6f6b&oe=5ECEF620'></Membercard>
-            <Membercard name='Nguyễn Doãn Hoàng' title='Nhân Sự' memberIMG='https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/82868852_1948180841994011_6743153196509691904_o.jpg?_nc_cat=104&_nc_sid=8bfeb9&_nc_ohc=Iy8BZ-z1RkYAX_mRmVk&_nc_ht=scontent.fhan2-4.fna&oh=c5eee2d7df42a1cfd5896e7bd459c7b6&oe=5ECCB871'></Membercard>
+            <Membercard name='Nguyễn Trà My' title=' Chủ Tịch' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95264672_2906574359396943_4975749123136290816_n.png?_nc_cat=101&_nc_sid=b96e70&_nc_ohc=jOHtwB-J2z4AX-K9MXc&_nc_ht=scontent.fhan2-1.fna&oh=bc5944674efb3eccabcbb042a588ec50&oe=5ECEC460' link='https://www.facebook.com/chiffon.nguyen'></Membercard>
+            <Membercard name='Bùi Hương Giang' title='Phó Chủ Tịch/Sự Kiện' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/74238365_2412546238965631_7646729528638701568_o.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=0OwSRHvXt1gAX-4kI4L&_nc_ht=scontent.fhan2-1.fna&oh=3a6aa8caf1d44469d4168a002e3f25be&oe=5ECCA921' link='https://www.facebook.com/zang2301'></Membercard>
+            <Membercard name='Nguyễn Tiểu Phương' title='Chuyên Môn' memberIMG='https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/95683828_1337837803271521_5128150720465338368_n.jpg?_nc_cat=104&_nc_sid=b96e70&_nc_ohc=PE1ZLSD058QAX9n4dVp&_nc_ht=scontent.fhan2-4.fna&oh=6abe43a46b27c32fab08d1ce4ed6a856&oe=5ECECAC0' link='https://www.facebook.com/tiuphun'></Membercard>
+            <Membercard name='Lê Nguyệt Hà' title=' Tài Chính' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/82498930_1948180958660666_3939830907153678336_o.jpg?_nc_cat=111&_nc_sid=8bfeb9&_nc_ohc=rnHMNGdeFlYAX_3R1Qb&_nc_ht=scontent.fhan2-1.fna&oh=0f2bd872931f972ef24313d0cd3a5159&oe=5ECE15BF' link='https://www.facebook.com/nguyethale23'></Membercard>
+            <Membercard name='Trịnh Thùy Trang' title=' Truyền Thông' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/83078733_1948188875326541_8393976460011896832_o.jpg?_nc_cat=106&_nc_sid=8bfeb9&_nc_ohc=GjjSFO4Ce5AAX92D4VC&_nc_ht=scontent.fhan2-1.fna&oh=9ebfa52018272f642744749f45b389c6&oe=5ECDAA74' link='https://www.facebook.com/SoniaTine373'></Membercard>
+            <Membercard name='Dương Lâm Tuấn Anh' title='Med/Des' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95543257_244500846793559_6998439343845015552_n.jpg?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=mxUVUjxYDkAAX-KrM9e&_nc_ht=scontent.fhan2-1.fna&oh=9bb22b881667a0cac1ba3bf2bbc9eef9&oe=5ECD0252' link='https://www.facebook.com/dlta2704'></Membercard>
+            <Membercard name='Nguyễn Ngọc Linh Chi' title=' Hậu Cần' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95321117_2892483204205601_7917348546011987968_n.png?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=DWWQrrwT7xQAX9tUnq5&_nc_ht=scontent.fhan2-1.fna&oh=a9910cff150dea3a5b3dfd52127b6f6b&oe=5ECEF620' link='https://www.facebook.com/nguyenngoc.linhchi.09'></Membercard>
+            <Membercard name='Nguyễn Doãn Hoàng' title='Nhân Sự' memberIMG='https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/82868852_1948180841994011_6743153196509691904_o.jpg?_nc_cat=104&_nc_sid=8bfeb9&_nc_ohc=Iy8BZ-z1RkYAX_mRmVk&_nc_ht=scontent.fhan2-4.fna&oh=c5eee2d7df42a1cfd5896e7bd459c7b6&oe=5ECCB871' link='https://www.facebook.com/kipiiler'></Membercard>
           </Grid>
         </Grid>
       </Grid>
