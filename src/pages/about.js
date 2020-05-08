@@ -188,8 +188,9 @@ export default function About() {
 
           }}>
             <Typography variant='h1' className={classes.Aboutus}>About Us</Typography>
-            <Typography variant='h4' className={classes.review}>Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam </Typography>
-          </Grid>
+            <Typography variant='h4' className={classes.review}>Vietcode Project - dự án giáo dục phi lợi nhuận được thành lập từ năm 2016 và phát huy bởi các bạn trẻ yêu thích Công nghệ thông tin với mong muốn được cống hiến, học hỏi, giao lưu rộng rãi trong lĩnh vực ngày càng phát triển này.<br></br>Hoạt động qua 5 mùa, Vietcode vẫn luôn giữ sứ mệnh truyền cảm hứng, đam mê, gắn kết CNTT tới các bạn trẻ; hỗ trợ những người có định hướng CNTT; đồng thời là cầu nối quan trọng cho các bạn trẻ với các dự án, công ty CNTT trên địa bàn Hà Nội.
+</Typography>
+    </Grid>
         </Grid>
         <Grid
           container
