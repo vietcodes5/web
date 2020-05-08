@@ -46,7 +46,7 @@ export default function MainEvents(props) {
   return (
     <div style={{ padding: '3vh', }}>
       < Typography variant="h1" gutterBottom align='center' >
-        Our past events
+        Các sự kiện đã tổ chức
       </Typography>
       <Divider style={{ marginTop: '3vh' }} />
       <div style={{ width: '80%', margin: 'auto', marginBottom: '15px', }}>
@@ -54,7 +54,7 @@ export default function MainEvents(props) {
           <Grid item style={{ margin: '0', display: 'flex', flexFlow: 'row', borderTop: '1px #309DBE solid', }}>
             <Button>
               <EventNoteIcon />
-              <Typography variant='h4'>ALL</Typography>
+              <Typography variant='h4'>Toàn bộ</Typography>
             </Button>
           </Grid>
         </Grid>

@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundAttachment: 'fixed',
     background: `url('https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/85051707_1977725279039567_1408145121513308160_o.jpg?_nc_cat=111&_nc_sid=0debeb&_nc_ohc=1gwCcBxXgSEAX-7wE-M&_nc_ht=scontent.fhan2-1.fna&oh=e53ef3a30740d4f1061fe6c005f8f267&oe=5ED02017') center no-repeat`,
     backgroundSize: 'cover',
-    height: '1000px',
+    height: '800px',
     '@media not all and (min-resolution:.001dpcm)': {
       '@supports (-webkit-appearance:none)': {
         backgroundAttachment: 'scroll',
@@ -130,34 +130,36 @@ function Membercard(props) {
         marginTop: '3vh',
         marginBottom: '2vh',
       }}>
-      <a href={props.link} target='_blank' rel="noopener noreferrer">
-        <Card className={classes.membercontainer}
+
+      <Card className={classes.membercontainer}
+        style={{
+          margin: 'auto',
+          background: `url('${props.memberIMG}')  no-repeat`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          position: 'relative',
+        }}>
+        <Grid style={{
+          background: '#34B6CF',
+          opacity: '0.5',
+          height: 'inherit',
+          width: 'inherit',
+        }}>
+        </Grid>
+        <Grid
           style={{
-            margin: 'auto',
-            background: `url('${props.memberIMG}')  no-repeat`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            position: 'relative',
+            position: 'absolute',
+            left: '10%',
+            bottom: '10px'
           }}>
-          <Grid style={{
-            background: '#34B6CF',
-            opacity: '0.5',
-            height: 'inherit',
-            width: 'inherit',
-          }}>
-          </Grid>
-          <Grid
-            style={{
-              position: 'absolute',
-              left: '10%',
-              bottom: '10px'
-            }}>
+          <a href={props.link} target='_blank' rel="noopener noreferrer">
             <Typography className={classes.open2}>{props.name}</Typography>
             <hr className={classes.hr} align='left'></hr>
             <Typography className={classes.sub2}>{props.title}</Typography>
-          </Grid>
-        </Card >
-      </a>
+          </a>
+        </Grid>
+      </Card >
+
     </Grid >
 
   )
@@ -167,7 +169,7 @@ export default function About() {
   const classes = useStyles();
 
   return (
-    <div id="about" style={{ background: '#566B72', margin: 'auto' }}>
+    <div id="about" style={{ background: '#D3D3D3', margin: 'auto' }}>
       <Grid
         className={classes.introContainer}
       >
@@ -179,7 +181,7 @@ export default function About() {
           alignItems='center'
           direction='column'
           style={{
-            background: 'rgb(52, 182, 207,0.5)',
+            background: 'rgb(0, 0, 0,0.3)',
             height: '86%',
           }}>
           <Grid style={{
@@ -188,9 +190,14 @@ export default function About() {
 
           }}>
             <Typography variant='h1' className={classes.Aboutus}>About Us</Typography>
-            <Typography variant='h4' className={classes.review}>Vietcode Project - dự án giáo dục phi lợi nhuận được thành lập từ năm 2016 và phát huy bởi các bạn trẻ yêu thích Công nghệ thông tin với mong muốn được cống hiến, học hỏi, giao lưu rộng rãi trong lĩnh vực ngày càng phát triển này.<br></br>Hoạt động qua 5 mùa, Vietcode vẫn luôn giữ sứ mệnh truyền cảm hứng, đam mê, gắn kết CNTT tới các bạn trẻ; hỗ trợ những người có định hướng CNTT; đồng thời là cầu nối quan trọng cho các bạn trẻ với các dự án, công ty CNTT trên địa bàn Hà Nội.
-</Typography>
-    </Grid>
+    
+            <Typography variant='h4' className={classes.review}>
+              Vietcode Project - tổ chức giáo dục phi lợi nhuận được thành lập từ năm 2016 và phát huy bởi các bạn trẻ yêu thích Công nghệ thông tin với mong muốn được cống hiến, học hỏi, giao lưu rộng rãi trong lĩnh vực ngày càng phát triển này.
+              <br></br>
+              <br></br>
+              Hoạt động qua 5 mùa, Vietcode vẫn luôn giữ sứ mệnh truyền cảm hứng, đam mê, gắn kết CNTT tới các bạn trẻ: hỗ trợ những người có định hướng CNTT, đồng thời là cầu nối quan trọng cho các bạn trẻ với các dự án, công ty CNTT trên địa bàn Hà Nội.
+            </Typography>
+          </Grid>
         </Grid>
         <Grid
           container
@@ -200,7 +207,7 @@ export default function About() {
           alignItems='center'
           direction='column'
           style={{
-            background: 'rgb(52, 182, 207,0.5)',
+            background: 'rgb(0, 0, 0,0.3)',
             height: '14%',
           }}>
         </Grid>
@@ -230,9 +237,13 @@ export default function About() {
               align='right'
               className={classes.boxleft1}
             >
-              <Typography variant="h4">HISTORY</Typography>
+              <Typography variant="h4"><b>HISTORY</b></Typography>
               <br></br>
-              <Typography>Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam </Typography>
+              <Typography>
+                Những bước đi đầu tiên
+                <br></br>
+                Năm 2016, Vietcode được thành lập và nhanh chóng đạt được sự thu hút của đông đảo các bạn học sinh, các nhà tài trợ bởi những hoạt động như Định hướng CNTT, Quyên góp sách tin học,...v.v… Đặc biệt là giải nhất cuộc thi Young Community Builders tổ chức bởi Youth Ventures Vietnam đã làm nên uy tín của tổ chức.
+                </Typography>
             </Grid>
             <Grid item xs={12} md={6} id='boxright' className={classes.img1}></Grid>
           </Grid>
@@ -249,7 +260,12 @@ export default function About() {
 
             }}>
             <Grid item id='boxright' xs={12} md={6} align='left' className={classes.boxleft1}>
-              <Typography>Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam Dự án phi lợi nhuận thành lập vào năm 2016 với mục đích tạo cơ hội tiếp cận ngành Công nghệ thông tin cho học sinh, sinh viên tại Hà Nội, Việt Nam </Typography>
+              <Typography>
+                Năm 2017 trở đi, Vietcode nhận được sự tin tưởng, bắt tay hợp tác với nhiều tổ chức, công ty công nghệ khác như Young IT, MindX (Techkid), ITPlus,..v.v… tập trung tổ chức những sự kiện thành công, uy tín, đẩy lại nhiều ấn tượng sâu sắc. Song song với việc đó là việc cùng nhau học lập trình trong nội bộ, được những dự án, tổ chức lớn nhỏ tín nhiệm giao việc xây dựng website, chatbot,...v.v...
+                <br></br>
+                <br></br>
+                Tính đến hiện tại, Vietcode đã tổ chức được rất nhiều sự kiện từ workshop, giảng dạy, trải nghiệm,... đến các cuộc thi như Hackathon,...v.v… để luôn duy trì, giữ vững sứ mệnh đưa Công nghệ thông tin tiếp cận tới giới trẻ.
+              </Typography>
             </Grid>
             <Grid item id='boxleft' className={classes.img2} xs={12} md={6}>
               <Grid className={classes.blue}></Grid>
@@ -272,7 +288,7 @@ export default function About() {
           <Grid item
             xs={12}
             style={{
-              background: 'rgb(52, 182, 207,0.6)',
+              background: 'rgb(0, 0, 0,0.6)',
               height: '100%',
               width: '100%',
             }}>
@@ -290,7 +306,7 @@ export default function About() {
                   variant='h3'
                   className={classes.Quotetext}
                 >
-                  Châm ngôn cuộc sống
+                  Code sạch lên em ơi
                 </Typography>
               </Grid>
             </Grid>
@@ -306,7 +322,7 @@ export default function About() {
             >
               <Grid item>
                 <Typography variant='h3'>
-                  "Không làm mà đòi ăn..."
+                  "VIETCODE S5"
                 </Typography>
               </Grid>
             </Grid>
@@ -325,8 +341,10 @@ export default function About() {
             id='membercontainer'
             spacing={2}
           >
-            <Membercard name='Nguyễn Trà My' title=' Chủ Tịch' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95264672_2906574359396943_4975749123136290816_n.png?_nc_cat=101&_nc_sid=b96e70&_nc_ohc=jOHtwB-J2z4AX-K9MXc&_nc_ht=scontent.fhan2-1.fna&oh=bc5944674efb3eccabcbb042a588ec50&oe=5ECEC460' link='https://www.facebook.com/chiffon.nguyen'></Membercard>
-            <Membercard name='Bùi Hương Giang' title='Phó Chủ Tịch/Sự Kiện' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/74238365_2412546238965631_7646729528638701568_o.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=0OwSRHvXt1gAX-4kI4L&_nc_ht=scontent.fhan2-1.fna&oh=3a6aa8caf1d44469d4168a002e3f25be&oe=5ECCA921' link='https://www.facebook.com/zang2301'></Membercard>
+            <Grid container style={{ width: '70%', margin: 'auto' }}>
+              <Membercard name='Nguyễn Trà My' title=' Chủ Tịch' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95264672_2906574359396943_4975749123136290816_n.png?_nc_cat=101&_nc_sid=b96e70&_nc_ohc=jOHtwB-J2z4AX-K9MXc&_nc_ht=scontent.fhan2-1.fna&oh=bc5944674efb3eccabcbb042a588ec50&oe=5ECEC460' link='https://www.facebook.com/chiffon.nguyen'></Membercard>
+              <Membercard name='Bùi Hương Giang' title='Phó Chủ Tịch/Sự Kiện' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/74238365_2412546238965631_7646729528638701568_o.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=0OwSRHvXt1gAX-4kI4L&_nc_ht=scontent.fhan2-1.fna&oh=3a6aa8caf1d44469d4168a002e3f25be&oe=5ECCA921' link='https://www.facebook.com/zang2301'></Membercard>
+            </Grid>
             <Membercard name='Nguyễn Tiểu Phương' title='Chuyên Môn' memberIMG='https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/95683828_1337837803271521_5128150720465338368_n.jpg?_nc_cat=104&_nc_sid=b96e70&_nc_ohc=PE1ZLSD058QAX9n4dVp&_nc_ht=scontent.fhan2-4.fna&oh=6abe43a46b27c32fab08d1ce4ed6a856&oe=5ECECAC0' link='https://www.facebook.com/tiuphun'></Membercard>
             <Membercard name='Lê Nguyệt Hà' title=' Tài Chính' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/82498930_1948180958660666_3939830907153678336_o.jpg?_nc_cat=111&_nc_sid=8bfeb9&_nc_ohc=rnHMNGdeFlYAX_3R1Qb&_nc_ht=scontent.fhan2-1.fna&oh=0f2bd872931f972ef24313d0cd3a5159&oe=5ECE15BF' link='https://www.facebook.com/nguyethale23'></Membercard>
             <Membercard name='Trịnh Thùy Trang' title=' Truyền Thông' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/83078733_1948188875326541_8393976460011896832_o.jpg?_nc_cat=106&_nc_sid=8bfeb9&_nc_ohc=GjjSFO4Ce5AAX92D4VC&_nc_ht=scontent.fhan2-1.fna&oh=9ebfa52018272f642744749f45b389c6&oe=5ECDAA74' link='https://www.facebook.com/SoniaTine373'></Membercard>
@@ -336,6 +354,6 @@ export default function About() {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </div >
   );
 }

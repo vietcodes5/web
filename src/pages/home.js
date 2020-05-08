@@ -375,13 +375,13 @@ export default function Home() {
         </Typography>
         <Grid container direction='row' justify='space-around' alignItems='center' spacing={4}>
           <Grid item md={3} xs={12}>
-            <Review review='demo' name='Triệu Sơn Hà' title='Product Manager - Citigo' />
+            <Review review='Im lặng là vàng' name='Lê Minh Đức' title='Cố vấn Chuyên môn' imgSource='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95663922_540938293260314_7859982166782902272_n.jpg?_nc_cat=101&_nc_sid=b96e70&_nc_ohc=jLlHOSAxKzMAX_AjwBg&_nc_ht=scontent.fhan2-1.fna&oh=b0fb414e73b986ddd30d51f320bbd0d5&oe=5ED9A22B' />
           </Grid>
           <Grid item md={3} xs={12}>
-            <Review review='demo' name='Triệu Sơn Hà' title='Product Manager - Citigo' />
+            <Review review='Có là làm thì mới có ăn, không làm mà đòi có ăn....' name='Nguyễn Mạnh Hùng' title='Thành viên ban Chuyên Môn S5' imgSource='https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/96392340_186493362460722_3150513821928390656_n.png?_nc_cat=100&_nc_sid=b96e70&_nc_ohc=G8NBfH0Be-EAX9AuP19&_nc_ht=scontent.fhan2-4.fna&oh=ec16a6084eedb342fffe1904a755a647&oe=5ED9AB53' />
           </Grid>
           <Grid item md={3} xs={12}>
-            <Review imgSource='https://atpmedia.vn/wp-content/uploads/2019/12/C%C3%A1ch-s%E1%BB%AD-d%E1%BB%A5ng-th%E1%BA%BB-IMG.jpg' review='demo' name='doggo' title='Product Manager - Citigo' />
+            <Review imgSource='https://scontent-hkt1-1.xx.fbcdn.net/v/t1.15752-9/95451678_578610833007796_1237769133295140864_n.jpg?_nc_cat=111&_nc_sid=b96e70&_nc_ohc=xCLskLb2KKUAX_mseWj&_nc_ht=scontent-hkt1-1.xx&oh=b9c93617bec0c4ae8db469ee17772306&oe=5ED91C5F' review='Hay lắm các bạn ạ' name='Mèo' title='Giám đốc sản phẩm' />
           </Grid>
         </Grid>
       </div>

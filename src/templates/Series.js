@@ -144,37 +144,39 @@ export default function Series(props) {
   }, [id]);
   return (
     <Grid container>
-      <Grid item xs={12} md={12} className={classes.container}>
-        <Typography variant="h1" gutterBottom className={classes.title}>
-          Series {series.title}
-        </Typography>
+      <Grid container style={{ width: '80%', margin: 'auto' }}>
+        <Grid item xs={12} md={12} className={classes.container}>
+          <Typography variant="h1" gutterBottom className={classes.title}>
+            Series {series.title}
+          </Typography>
 
-        <Divider className={classes.divider} />
+          <Divider className={classes.divider} />
+        </Grid>
+        <Grid item xs={12} md={12}>
+          <img className={classes.cover_image} src={photoUrl} alt="Series' cover" />
+        </Grid>
+        <Divider />
+
+        <Grid
+          container
+          spacing={3}
+          justify="space-around"
+          style={{ marginTop: '10px' }}
+          className={classes.cardsContainer}
+        >
+          {posts}
+        </Grid>
+
+
+        <Sidebar
+          header={{
+            title: 'Các series khác'
+          }}
+          body={{
+            cards: cardsData
+          }}
+        />
       </Grid>
-      <Grid item xs={12} md={12}>
-        <img className={classes.cover_image} src={photoUrl} alt="Series' cover" />
-      </Grid>
-      <Divider />
-
-      <Grid
-        container
-        spacing={3}
-        justify="space-around"
-        style={{ marginTop: '10px' }}
-        className={classes.cardsContainer}
-      >
-        {posts}
-      </Grid>
-
-
-      <Sidebar
-        header={{
-          title: 'Other series'
-        }}
-        body={{
-          cards: cardsData
-        }}
-      />
     </Grid>
   );
 }

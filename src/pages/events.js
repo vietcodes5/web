@@ -50,7 +50,9 @@ export default function Events(props) {
     <>
       <UpcomingEvent />
       <Grid container className={classes.mainGrid} spacing={3}>
-        <Main events={events} />
+        <Grid item xs={8} style={{ margin: 'auto' }}>
+          <Main events={events} />
+        </Grid>
       </Grid>
     </>
   );

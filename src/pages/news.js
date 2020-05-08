@@ -80,17 +80,19 @@ export default function News() {
     <>
       <FeaturedPosts />
       <Grid container spacing={5} className={classes.mainGrid}>
-        <Main allSeries={allSeries} />
-        <Sidebar
-          header={{
-            title: "Posts",
-            //content: "Bài viết của Vietcode"
-          }}
-          body={{
-            //title: "Các bài viết",
-            cards: sidebarBodyCards
-          }}
-        />
+        <Grid item xs={10} style={{ margin: 'auto' }}>
+          <Main allSeries={allSeries} />
+          <Sidebar
+            header={{
+              title: "Các bài viết",
+              //content: "Bài viết của Vietcode"
+            }}
+            body={{
+              //title: "Các bài viết",
+              cards: sidebarBodyCards
+            }}
+          />
+        </Grid>
       </Grid>
     </>
   );

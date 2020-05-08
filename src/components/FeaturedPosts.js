@@ -15,10 +15,11 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: 'url(https://i.pcmag.com/imagery/reviews/05cItXL96l4LE9n02WfDR0h-5.fit_scale.size_1028x578.v_1582751026.png)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    height: '400px',
   },
   overlay: {
     position: 'absolute',
@@ -35,6 +36,11 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(6),
       paddingRight: 0,
     },
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    margin: 'auto',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 }));
 
@@ -43,18 +49,18 @@ function FeaturedPosts(props) {
 
   return (
     <Paper className={classes.mainFeaturedPost}>
-      <Grid container>
-        <Grid item md={6}>
+      <Grid container justify='center' alignItems='center'>
+        <Grid item md={10}>
           <div className={classes.mainFeaturedPostContent}>
             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-              Post title
+              NETFLIX - TỪ 40$ TIỀN PHẠT ĐẾN ĐẾ CHẾ TRUYỀN HÌNH TRỰC TUYẾN 152 TỈ$
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              Some description here
+              Người ta nhắc về Netflix như một dịch vụ xem phim hàng đầu mà một người không thể không biết đến, nhắc về Netflix là nghĩ ngay tới những series làm mưa làm gió: Stranger Things, House of Cards, The Crown… Chỉ với 15 đô một tháng, người dùng Netflix toàn cầu có thể truy cập vào kho phim gần như vô tận. Xem chán chê phim của Netflix, nhưng liệu ta đã biết gì về người khổng lồ mới chỉ 20 năm tuổi này?
             </Typography>
-            <Button variant="contained" color="default">
-              <Link to="#">
-                Take me there
+            <Button variant="contained" color="primary">
+              <Link to="posts/zsmEbTYEgwUy34taENU1">
+                Đọc thêm
               </Link>
             </Button>
           </div>
