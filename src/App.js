@@ -31,7 +31,7 @@ const logo = {
 
 const pages = [
   {
-    title: 'Home',
+    title: 'Trang chủ',
     url: '/',
     icon: HomeOutlinedIcon,
     component: Home
@@ -47,7 +47,7 @@ const pages = [
     component: Series
   },
   {
-    title: 'News',
+    title: 'Bài viết',
     url: '/news',
     icon: ReceiptOutlinedIcon,
     component: News
@@ -58,13 +58,13 @@ const pages = [
     component: Event
   },
   {
-    title: 'Events',
+    title: 'Sự kiện',
     url: '/events',
     icon: EventNoteOutlinedIcon,
     component: Events
   },
   {
-    title: 'About',
+    title: 'Giới thiệu',
     url: '/about',
     icon: InfoOutlinedIcon,
     component: About

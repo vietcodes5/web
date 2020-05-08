@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
-import { makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
   Grid,
@@ -43,6 +43,7 @@ const useStyles = makeStyles(theme => ({
     '@media screen and (max-width: 750px)': {
       fontSize: '50px',
     },
+    textShadow: '5px 5px 5px  #34b6cf',
   },
   container: {
     padding: '20px',
@@ -165,11 +166,12 @@ export default function Event(props) {
         <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
       </Grid>
       <Container className={classes.container}>
-        <Markdown>
-          {event.content}
-        </Markdown>
+        <Grid style={{ margin: 'auto', width: '70%' }}>
+          <Markdown>
+            {event.content}
+          </Markdown>
+        </Grid>
         <ImageGallery items={images} autoPlay={true} />
-
         <Grid item xs={12} md={12}>
           <Sidebar
             header={{

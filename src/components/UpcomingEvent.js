@@ -142,24 +142,24 @@ export default function UpcomingEvent(props) {
             {event.title}
           </Typography>
           <Typography variant="body1" align="left" className={classes.sub1}>
-            Description: {event.description}
+            Mô tả: {event.description}
           </Typography>
           <hr className={classes.hr}></hr>
           <div className={classes.itemcontainer}>
             <AccessTimeIcon color='primary' /> &ensp;
               <Typography variant="body1" align="left">
-              Date: {event.date}
+              Thời gian: {event.date}
             </Typography>
           </div>
           <div className={classes.itemcontainer}>
             <LocationOnIcon color='primary' /> &ensp;
               <Typography variant="body1" align="left">
-              Location: {event.location}
+              Địa điểm: {event.location}
             </Typography>
           </div>
           <Button variant="contained" color="primary" align="center" className={classes.more}>
-            Đăng kí
-            </Button>
+            <a href={event.form}>Đăng kí</a>
+          </Button>
         </Grid>
       </Grid>
     </Grid>

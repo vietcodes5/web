@@ -49,7 +49,7 @@ export default function Footer(props) {
       >
         <Grid container alignItems='center' direction='column' justify='center' spacing={1}>
           <Grid item>
-            <Typography variant='h4' className={classes.textTitle}>Vietcode Project</Typography>
+            <Typography variant='h4' className={classes.textTitle}>Vietcode Organization</Typography>
           </Grid>
           <Grid item>
             <Typography variant='body1'>© {new Date().getFullYear()} Vietcode Official Website</Typography>

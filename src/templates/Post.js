@@ -12,6 +12,7 @@ import {
 
 import Markdown from '../components/Markdown';
 import Sidebar from '../components/Sidebar';
+import UpcomingEvent from '../components/UpcomingEvent';
 
 const useStyles = makeStyles(theme => ({
   cover_image: {
@@ -129,25 +130,27 @@ export default function Blog(props) {
                 </Grid>
                 <Grid item xs={12} md={12}>
                   <Typography variant="h4" style={{ color: '#4f4f4f' }}>
-                    Chưa có description trên database !
-                </Typography>
+                    {blogData.opening}
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>
 
           </Grid>
-
-          <Typography variant="subtitle1" gutterBottom>
-            {blogData.opening}
-          </Typography>
-
-          <Markdown>
-            {blogData.content}
-          </Markdown>
+          <Grid container >
+            <Grid item xs={7}>
+              <Markdown >
+                {blogData.content}
+              </Markdown>
+            </Grid>
+            <Grid item xs={5}>
+              <UpcomingEvent />
+            </Grid>
+          </Grid>
         </Grid>
         <Sidebar
           header={{
-            title: 'Other posts'
+            title: 'Các bài viết khác'
           }}
           body={{
             cards: cardsData
@@ -156,6 +159,6 @@ export default function Blog(props) {
         <Grid item xs={12} md={4}>
         </Grid>
       </Grid>
-    </div>
+    </div >
   )
 }
