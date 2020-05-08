@@ -56,7 +56,7 @@ export default function Sidebar(props) {
         <Grid
           container
           className={classes.cardsContainer}
-          justify='space-around'
+          justify='left'
           spacing={5}
 
         >

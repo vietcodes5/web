@@ -72,7 +72,7 @@ export default function Main(props) {
         Series
       </Typography>
       <Divider className={classes.divider} />
-      <Grid container spacing={5} justify="space-around" className={classes.cardsContainer}>
+      <Grid container spacing={5} justify="left" className={classes.cardsContainer}>
         {cards}
       </Grid>
     </Grid>

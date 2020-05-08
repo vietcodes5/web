@@ -160,7 +160,7 @@ export default function Series(props) {
         <Grid
           container
           spacing={3}
-          justify="space-around"
+          justify="left"
           style={{ marginTop: '10px' }}
           className={classes.cardsContainer}
         >
