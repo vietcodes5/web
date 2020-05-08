@@ -190,6 +190,7 @@ export default function About() {
 
           }}>
             <Typography variant='h1' className={classes.Aboutus}>About Us</Typography>
+    
             <Typography variant='h4' className={classes.review}>
               Vietcode Project - tổ chức giáo dục phi lợi nhuận được thành lập từ năm 2016 và phát huy bởi các bạn trẻ yêu thích Công nghệ thông tin với mong muốn được cống hiến, học hỏi, giao lưu rộng rãi trong lĩnh vực ngày càng phát triển này.
               <br></br>
