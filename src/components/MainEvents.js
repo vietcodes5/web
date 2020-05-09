@@ -58,7 +58,12 @@ export default function MainEvents(props) {
           </Grid>
         </Grid>
       </div>
-      <Grid container spacing={4} justify="space-evenly" style={{ marginTop: '10px', marginBottom: '10px' }}>
+      <Grid
+        container
+        spacing={4}
+        justify="space-evenly"
+        style={{ marginTop: '10px', marginBottom: '10px' }}
+      >
         {cards}
       </Grid>
     </ div >

@@ -13,11 +13,17 @@ const useStyles = makeStyles(theme => ({
   mainFeaturedPost: {
     position: 'relative',
     color: 'white',
-    backgroundImage: 'url(https://i.pcmag.com/imagery/reviews/05cItXL96l4LE9n02WfDR0h-5.fit_scale.size_1028x578.v_1582751026.png)',
+    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(https://i.pcmag.com/imagery/reviews/05cItXL96l4LE9n02WfDR0h-5.fit_scale.size_1028x578.v_1582751026.png)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    height: '400px',
+    padding: '100px',
+    height: '100%',
+    '@media screen and (max-width: 800px)': {
+      padding: '0px',
+      paddingTop: '30px',
+      paddingBottom: '30px',
+    },
   },
   overlay: {
     position: 'absolute',
