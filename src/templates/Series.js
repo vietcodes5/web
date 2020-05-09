@@ -25,12 +25,6 @@ const useStyles = makeStyles(theme => ({
   container: {
     margin: '30px',
   },
-  cardsContainer: {
-    padding: '100px',
-    '@media screen and (max-width: 750px)': {
-      padding: '20px',
-    },
-  },
   divider: {
     height: '5px',
     width: '100%',
@@ -102,6 +96,7 @@ export default function Series(props) {
                         title={data.title}
                         subtitle={data.opening}
                         xs={12}
+                        sm={6}
                         md={4}
                         photoUrl={url}
                         to={`/posts/${doc.id}`}
@@ -131,6 +126,7 @@ export default function Series(props) {
                 updateCardsData(prevState => ([
                   ...prevState,
                   {
+                    id: doc.id,
                     title: data.title,
                     photoUrl: url,
                     url: `/series/${doc.id}`
@@ -159,23 +155,23 @@ export default function Series(props) {
 
         <Grid
           container
-          spacing={3}
-          justify="left"
+          spacing={5}
           style={{ marginTop: '10px' }}
           className={classes.cardsContainer}
         >
           {posts}
         </Grid>
 
-
-        <Sidebar
-          header={{
-            title: 'Các series khác'
-          }}
-          body={{
-            cards: cardsData
-          }}
-        />
+        <Grid item style={{ marginTop: '100px' }}>
+          <Sidebar
+            header={{
+              title: 'Các series khác'
+            }}
+            body={{
+              cards: cardsData
+            }}
+          />
+        </Grid>
       </Grid>
     </Grid>
   );

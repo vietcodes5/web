@@ -12,9 +12,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles(theme => ({
   mainFeaturedPost: {
     position: 'relative',
-    backgroundColor: theme.palette.grey[800],
-    color: theme.palette.common.white,
-    marginBottom: theme.spacing(4),
+    color: 'white',
     backgroundImage: 'url(https://i.pcmag.com/imagery/reviews/05cItXL96l4LE9n02WfDR0h-5.fit_scale.size_1028x578.v_1582751026.png)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',

@@ -30,9 +30,8 @@ export default function MainEvents(props) {
             <Cover
               key={e.id}
               title={e.title}
-              subtitle={null}
               photoUrl={url}
-              xs={5}
+              xs={12}
               sm={6}
               md={6}
               lg={4}
@@ -44,7 +43,7 @@ export default function MainEvents(props) {
   }, [events]);
 
   return (
-    <div style={{ padding: '3vh', }}>
+    <div style={{ padding: useMediaQuery('(max-width:700px)') ? "5px" : "30px", }}>
       < Typography variant="h1" gutterBottom align='center' >
         Các sự kiện đã tổ chức
       </Typography>
@@ -59,7 +58,7 @@ export default function MainEvents(props) {
           </Grid>
         </Grid>
       </div>
-      <Grid container spacing={useMediaQuery('(max-width:700px)') ? 2 : 5} justify={useMediaQuery('(max-width:700px)') ? "center" : "space-evenly"} style={{ marginTop: '10px', marginBottom: '10px' }}>
+      <Grid container spacing={4} justify="space-evenly" style={{ marginTop: '10px', marginBottom: '10px' }}>
         {cards}
       </Grid>
     </ div >

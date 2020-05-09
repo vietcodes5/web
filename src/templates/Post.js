@@ -80,6 +80,7 @@ export default function Blog(props) {
                         updateCardsData(cardsData => ([
                           ...cardsData,
                           {
+                            id: doc.id,
                             title: data.title,
                             photoUrl: url,
                             url: `/posts/${doc.id}`
@@ -148,14 +149,16 @@ export default function Blog(props) {
             </Grid>
           </Grid>
         </Grid>
-        <Sidebar
-          header={{
-            title: 'Các bài viết khác'
-          }}
-          body={{
-            cards: cardsData
-          }}
-        />
+        <Grid item style={{ marginTop: '100px' }}>
+          <Sidebar
+            header={{
+              title: 'Các bài viết khác'
+            }}
+            body={{
+              cards: cardsData
+            }}
+          />
+        </Grid>
         <Grid item xs={12} md={4}>
         </Grid>
       </Grid>

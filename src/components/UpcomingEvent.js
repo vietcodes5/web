@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '100%',
     height: '700px',
     '@media screen and (max-width: 1000px)': {
-      height: '800px',
+      height: '900px',
       display: 'flex',
       flexFlow: 'column',
     },
