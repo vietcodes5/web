@@ -11,15 +11,20 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   mainFeaturedPost: {
+    boxShadow: theme.shadow.header,
     position: 'relative',
-    backgroundColor: theme.palette.grey[800],
-    color: theme.palette.common.white,
-    marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://i.pcmag.com/imagery/reviews/05cItXL96l4LE9n02WfDR0h-5.fit_scale.size_1028x578.v_1582751026.png)',
+    color: 'white',
+    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(https://i.pcmag.com/imagery/reviews/05cItXL96l4LE9n02WfDR0h-5.fit_scale.size_1028x578.v_1582751026.png)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    height: '400px',
+    padding: '100px',
+    height: '100%',
+    '@media screen and (max-width: 800px)': {
+      padding: '0px',
+      paddingTop: '30px',
+      paddingBottom: '30px',
+    },
   },
   overlay: {
     position: 'absolute',
@@ -55,7 +60,7 @@ function FeaturedPosts(props) {
             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
               NETFLIX - TỪ 40$ TIỀN PHẠT ĐẾN ĐẾ CHẾ TRUYỀN HÌNH TRỰC TUYẾN 152 TỈ$
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
+            <Typography variant="h5" color="inherit" paragraph align='center'>
               Người ta nhắc về Netflix như một dịch vụ xem phim hàng đầu mà một người không thể không biết đến, nhắc về Netflix là nghĩ ngay tới những series làm mưa làm gió: Stranger Things, House of Cards, The Crown… Chỉ với 15 đô một tháng, người dùng Netflix toàn cầu có thể truy cập vào kho phim gần như vô tận. Xem chán chê phim của Netflix, nhưng liệu ta đã biết gì về người khổng lồ mới chỉ 20 năm tuổi này?
             </Typography>
             <Button variant="contained" color="primary">

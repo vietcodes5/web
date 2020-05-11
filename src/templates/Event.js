@@ -145,6 +145,7 @@ export default function Event(props) {
                 updateCardsData(prevState => ([
                   ...prevState,
                   {
+                    id: doc.id,
                     title: data.title,
                     photoUrl: url,
                     url: `/events/${doc.id}`
@@ -166,7 +167,7 @@ export default function Event(props) {
         <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
       </Grid>
       <Container className={classes.container}>
-        <Grid style={{ margin: 'auto', width: '70%' }}>
+        <Grid style={{ margin: 'auto', width: '100%' }}>
           <Markdown>
             {event.content}
           </Markdown>

@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
     margin: '30px',
     '@media screen and (max-width: 1024px)': {
       margin: '10px',
+      marginBottom: '100px',
     },
   },
   cardsContainer: {
@@ -58,6 +59,7 @@ export default function Main(props) {
               subtitle={series.description}
               photoUrl={url}
               xs={12}
+              sm={6}
               md={4}
               to={`/series/${series.id}`}
             />
@@ -72,7 +74,7 @@ export default function Main(props) {
         Series
       </Typography>
       <Divider className={classes.divider} />
-      <Grid container spacing={5} justify="left" className={classes.cardsContainer}>
+      <Grid container spacing={5} className={classes.cardsContainer}>
         {cards}
       </Grid>
     </Grid>

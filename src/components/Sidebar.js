@@ -56,7 +56,6 @@ export default function Sidebar(props) {
         <Grid
           container
           className={classes.cardsContainer}
-          justify='left'
           spacing={5}
 
         >
@@ -67,6 +66,7 @@ export default function Sidebar(props) {
                 id={card.id}
                 title={card.title}
                 xs={12}
+                sm={6}
                 md={4}
                 photoUrl={card.photoUrl}
                 to={card.url}

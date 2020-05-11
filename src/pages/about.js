@@ -3,6 +3,8 @@ import {
   Grid, Typography, Card
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 
 const useStyles = makeStyles((theme) => ({
   introContainer: {
@@ -116,7 +118,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexFlow: 'column',
     justifyContent: 'center',
-  }
+  },
+  responsiveBox: {
+
+  },
 }))
 
 function Membercard(props) {
@@ -130,36 +135,37 @@ function Membercard(props) {
         marginTop: '3vh',
         marginBottom: '2vh',
       }}>
-
-      <Card className={classes.membercontainer}
-        style={{
-          margin: 'auto',
-          background: `url('${props.memberIMG}')  no-repeat`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          position: 'relative',
-        }}>
-        <Grid style={{
-          background: '#34B6CF',
-          opacity: '0.5',
-          height: 'inherit',
-          width: 'inherit',
-        }}>
-        </Grid>
-        <Grid
+      <a href={props.link} target='_blank' rel="noopener noreferrer">
+        <Card className={classes.membercontainer}
           style={{
-            position: 'absolute',
-            left: '10%',
-            bottom: '10px'
+            margin: 'auto',
+            background: `url('${props.memberIMG}')  no-repeat`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            position: 'relative',
           }}>
-          <a href={props.link} target='_blank' rel="noopener noreferrer">
+          <Grid style={{
+            background: '#34B6CF',
+            opacity: '0.5',
+            height: 'inherit',
+            width: 'inherit',
+          }}>
+          </Grid>
+          <Grid
+            style={{
+              position: 'absolute',
+              left: '10%',
+              bottom: '10px'
+            }}>
+
             <Typography className={classes.open2}>{props.name}</Typography>
             <hr className={classes.hr} align='left'></hr>
             <Typography className={classes.sub2}>{props.title}</Typography>
-          </a>
-        </Grid>
-      </Card >
 
+          </Grid>
+
+        </Card >
+      </a>
     </Grid >
 
   )
@@ -190,7 +196,7 @@ export default function About() {
 
           }}>
             <Typography variant='h1' className={classes.Aboutus}>About Us</Typography>
-    
+
             <Typography variant='h4' className={classes.review}>
               Vietcode Project - tổ chức giáo dục phi lợi nhuận được thành lập từ năm 2016 và phát huy bởi các bạn trẻ yêu thích Công nghệ thông tin với mong muốn được cống hiến, học hỏi, giao lưu rộng rãi trong lĩnh vực ngày càng phát triển này.
               <br></br>
@@ -341,7 +347,7 @@ export default function About() {
             id='membercontainer'
             spacing={2}
           >
-            <Grid container style={{ width: '70%', margin: 'auto' }}>
+            <Grid container style={useMediaQuery('(max-width: 1268px)') ? { width: '100%' } : { width: '70%', margin: 'auto' }}>
               <Membercard name='Nguyễn Trà My' title=' Chủ Tịch' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95264672_2906574359396943_4975749123136290816_n.png?_nc_cat=101&_nc_sid=b96e70&_nc_ohc=jOHtwB-J2z4AX-K9MXc&_nc_ht=scontent.fhan2-1.fna&oh=bc5944674efb3eccabcbb042a588ec50&oe=5ECEC460' link='https://www.facebook.com/chiffon.nguyen'></Membercard>
               <Membercard name='Bùi Hương Giang' title='Phó Chủ Tịch/Sự Kiện' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/74238365_2412546238965631_7646729528638701568_o.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=0OwSRHvXt1gAX-4kI4L&_nc_ht=scontent.fhan2-1.fna&oh=3a6aa8caf1d44469d4168a002e3f25be&oe=5ECCA921' link='https://www.facebook.com/zang2301'></Membercard>
             </Grid>

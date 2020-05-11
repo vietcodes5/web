@@ -12,7 +12,6 @@ import {
 
 import Markdown from '../components/Markdown';
 import Sidebar from '../components/Sidebar';
-import UpcomingEvent from '../components/UpcomingEvent';
 
 const useStyles = makeStyles(theme => ({
   cover_image: {
@@ -25,12 +24,24 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     margin: '70px',
-    '@media screen and (max-width: 750px)': {
+    '@media screen and (max-width: 800px)': {
       margin: '10px',
     },
   },
   title: {
-    fontSize: '50px',
+    fontSize: '60px',
+    '@media screen and (max-width: 800px)': {
+      fontSize: '30px',
+      fontWeight: 'bold',
+    },
+  },
+  seriesTitle: {
+    color: '#4f4f4f',
+    fontWeight: 'bold',
+    '@media screen and (max-width: 800px)': {
+      fontSize: '25px',
+      fontWeight: '100'
+    },
   },
 }));
 
@@ -80,6 +91,7 @@ export default function Blog(props) {
                         updateCardsData(cardsData => ([
                           ...cardsData,
                           {
+                            id: doc.id,
                             title: data.title,
                             photoUrl: url,
                             url: `/posts/${doc.id}`
@@ -109,6 +121,7 @@ export default function Blog(props) {
   return (
     <div className={classes.container}>
       <Grid container spacing={2} >
+
         <Grid item xs={12} md={12}>
           <Grid container spacing={5}>
 
@@ -124,7 +137,7 @@ export default function Blog(props) {
                   </Typography>
                 </Grid>
                 <Grid item xs={12} md={12}>
-                  <Typography variant="h1" style={{ color: '#4f4f4f' }} gutterBottom>
+                  <Typography variant="h1" className={classes.seriesTitle} gutterBottom>
                     {series.title}
                   </Typography>
                 </Grid>
@@ -137,25 +150,25 @@ export default function Blog(props) {
             </Grid>
 
           </Grid>
-          <Grid container >
-            <Grid item xs={7}>
-              <Markdown >
+          <Grid container justify='center'>
+            <Grid item xs={12} md={10}>
+              <Markdown>
                 {blogData.content}
               </Markdown>
             </Grid>
-            <Grid item xs={5}>
-              <UpcomingEvent />
-            </Grid>
           </Grid>
         </Grid>
-        <Sidebar
-          header={{
-            title: 'Các bài viết khác'
-          }}
-          body={{
-            cards: cardsData
-          }}
-        />
+        <Grid item xs={12} md={12} style={{ marginTop: '100px' }}>
+          <Sidebar
+            header={{
+              title: 'Các bài viết khác'
+            }}
+            body={{
+              cards: cardsData
+            }}
+          />
+        </Grid>
+
         <Grid item xs={12} md={4}>
         </Grid>
       </Grid>
