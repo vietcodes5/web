@@ -22,7 +22,6 @@ import Avatar from '@material-ui/core/Avatar';
 //Style
 const useStyles = makeStyles((theme) => ({
   pictureContainer: {
-    background: 'url(\'https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-9/87028986_1977725495706212_2381361457833967616_o.jpg?_nc_cat=106&_nc_sid=0be424&_nc_oc=AQnepcUIwbNsa4ELO7lj0cPMC64TYwel859li1-ih1lC0ERWAqIaS_eNzaBQ6vzQPGH-rOPlPSBS1ht695LrEkjK&_nc_ht=scontent.fhan3-3.fna&oh=c78a2873470495620f353bfde2c498e2&oe=5EC28FF2\')',
     maxheight: '800px',
     height: '500px',
     backgroundAttachment: 'fixed',
@@ -38,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   pictureContainer1: {
-    background: 'url(\'https://scontent.fhan5-7.fna.fbcdn.net/v/t1.0-9/33717427_1378719945606773_2087821359643099136_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQlqi6VGtYQvGqUeHtBUAAw--cAHcRa8K0nFdjkrOf_ecmwiQsk_d5hJD8q_rNN-IlU&_nc_ht=scontent.fhan5-7.fna&oh=82303f71fbbfaaebf025be4510635774&oe=5EC1B2A6\')',
     maxheight: '800px',
     height: '500px',
     backgroundAttachment: 'fixed',
