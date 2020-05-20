@@ -12,7 +12,7 @@ import firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/storage';
 
-import Sidebar from '../components/Sidebar';
+import Bottombar from '../components/Bottombar';
 import Markdown from '../components/Markdown';
 
 const useStyles = makeStyles(theme => ({
@@ -174,7 +174,7 @@ export default function Event(props) {
         </Grid>
         <ImageGallery items={images} autoPlay={true} />
         <Grid item xs={12} md={12}>
-          <Sidebar
+          <Bottombar
             header={{
               title: 'Các sự kiện khác',
             }}

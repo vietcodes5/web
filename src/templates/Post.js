@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 
 import Markdown from '../components/Markdown';
+import Bottombar from '../components/Bottombar';
 import Sidebar from '../components/Sidebar';
 
 const useStyles = makeStyles(theme => ({
@@ -29,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    fontSize: '60px',
+    fontSize: '40px',
     '@media screen and (max-width: 800px)': {
       fontSize: '30px',
       fontWeight: 'bold',
@@ -59,13 +60,37 @@ export default function Blog(props) {
   const [series, loadSeries] = useState([]);
   const classes = useStyles();
   const [cardsData, updateCardsData] = useState([]);
+  const [seriesData, updateSeriesData] = useState([]);
   useEffect(() => {
     // TODO: get blog data
     const db = firebase.firestore();
     const storage = firebase.storage();
 
-    // loadPost(() => []);
+    updateSeriesData(() => []);
     updateCardsData(() => []);
+    db.collection("series")
+      .limit(5)
+      .get()
+      .then(snapshot => {
+        if (snapshot.empty) return console.log('No series to show');
+        snapshot.docs.forEach(doc => {
+          const data = doc.data();
+          storage
+            .ref(`/blog/${data.cover_image.square}`)
+            .getDownloadURL()
+            .then(url => {
+                updateSeriesData(prevState => ([
+                  ...prevState,
+                  {
+                    id: doc.id,
+                    title: data.title,
+                    photoUrl: url,
+                    url: `/series/${doc.id}`
+                  }
+                ]));
+            })
+        });
+      })
     db.collection("posts")
       .doc(postId)
       .get()
@@ -120,9 +145,8 @@ export default function Blog(props) {
 
   return (
     <div className={classes.container}>
-      <Grid container spacing={2} >
-
-        <Grid item xs={12} md={12}>
+     <Grid container spacing={2} justify='center' style={{marginBottom:'50px'}}>
+        <Grid item xs={12} md={8}>
           <Grid container spacing={5}>
 
             <Grid item xs={12} md={4}>
@@ -148,30 +172,60 @@ export default function Blog(props) {
                 </Grid>
               </Grid>
             </Grid>
-
           </Grid>
           <Grid container justify='center'>
-            <Grid item xs={12} md={10}>
+            <Grid item xs={12} md={12}>
               <Markdown>
                 {blogData.content}
               </Markdown>
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={12} style={{ marginTop: '100px' }}>
-          <Sidebar
-            header={{
-              title: 'Các bài viết khác'
-            }}
-            body={{
-              cards: cardsData
-            }}
-          />
-        </Grid>
-
         <Grid item xs={12} md={4}>
+          <Grid container direction='column' spacing={4} justify='center'>
+            <Grid item xs={12}>
+              <div 
+                className="fb-page" 
+                data-href="https://www.facebook.com/vietcode.org/" 
+                data-tabs="like" 
+                data-width="" 
+                data-height="" 
+                data-small-header="false" 
+                data-adapt-container-width="true" 
+                data-hide-cover="false" 
+                data-show-facepile="true"
+                >
+                  <blockquote cite="https://www.facebook.com/vietcode.org/" 
+                  className="fb-xfbml-parse-ignore"
+                >
+                <a href="https://www.facebook.com/vietcode.org/">Vietcode</a></blockquote>
+              </div>
+            </Grid>
+            <Grid item>
+              <Sidebar
+                header={{
+                  title: 'Series khác'
+                }}
+                body={{
+                  cards: seriesData
+                }}
+                md={9}
+                xs={12}
+              />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
-    </div >
+      <Grid>
+        <Bottombar
+          header={{
+            title: 'Các bài viết khác'
+          }}
+          body={{
+            cards: cardsData
+          }}
+        />
+      </Grid>
+    </div>
   )
 }

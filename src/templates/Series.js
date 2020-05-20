@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 
 import Cover from '../components/Cover';
-import Sidebar from '../components/Sidebar';
+import Bottombar from '../components/Bottombar';
 
 import firebase from 'firebase';
 import 'firebase/firestore';
@@ -24,6 +24,9 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     margin: '30px',
+    '@media screen and (max-width: 800px)': {
+      margin: '0px',
+    },
   },
   divider: {
     height: '5px',
@@ -32,6 +35,9 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontSize: '50px',
+    '@media screen and (max-width: 800px)': {
+      fontSize: '40px',
+    },
   },
 }));
 
@@ -48,7 +54,6 @@ const defaultValues = {
 
 export default function Series(props) {
   const { id } = useParams();
-  const [photoUrl, updatePhotoUrl] = useState("");
   const [posts, loadPost] = useState([]);
   const [cardsData, updateCardsData] = useState([]);
   const [series, updateSeries] = useState(defaultValues);
@@ -70,11 +75,6 @@ export default function Series(props) {
           console.log("No series found");
         } else {
           updateSeries(doc.data());
-          // get image
-          storage
-            .ref(`blog/${doc.data().cover_image.rect}`)
-            .getDownloadURL()
-            .then(url => updatePhotoUrl(url));
 
           const postRefs = doc.data().posts;
           const promises = postRefs.map(ref => ref.get());
@@ -142,14 +142,11 @@ export default function Series(props) {
     <Grid container>
       <Grid container style={{ width: '80%', margin: 'auto' }}>
         <Grid item xs={12} md={12} className={classes.container}>
-          <Typography variant="h1" gutterBottom className={classes.title}>
+          <Typography gutterBottom className={classes.title}>
             Series {series.title}
           </Typography>
 
           <Divider className={classes.divider} />
-        </Grid>
-        <Grid item xs={12} md={12}>
-          <img className={classes.cover_image} src={photoUrl} alt="Series' cover" />
         </Grid>
         <Divider />
 
@@ -163,7 +160,7 @@ export default function Series(props) {
         </Grid>
 
         <Grid item style={{ marginTop: '100px' }}>
-          <Sidebar
+          <Bottombar
             header={{
               title: 'Các series khác'
             }}

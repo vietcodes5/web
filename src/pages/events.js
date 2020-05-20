@@ -10,7 +10,6 @@ import { makeStyles } from '@material-ui/core/styles';
 // components
 import Main from '../components/MainEvents';
 import UpcomingEvent from '../components/UpcomingEvent';
-// import Sidebar from "../components/Sidebar";
 
 // firebase
 import firebase from 'firebase';
