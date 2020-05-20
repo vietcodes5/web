@@ -184,7 +184,23 @@ export default function Blog(props) {
         <Grid item xs={12} md={4}>
           <Grid container direction='column' spacing={4} justify='center'>
             <Grid item xs={12}>
-              
+              <div 
+                className="fb-page" 
+                data-href="https://www.facebook.com/vietcode.org/" 
+                data-tabs="like" 
+                data-width="" 
+                data-height="" 
+                data-small-header="false" 
+                data-adapt-container-width="true" 
+                data-hide-cover="false" 
+                data-show-facepile="true"
+                >
+                  <blockquote cite="https://www.facebook.com/vietcode.org/" 
+                  className="fb-xfbml-parse-ignore"
+                >
+                <a href="https://www.facebook.com/vietcode.org/">Vietcode</a>
+                </blockquote>
+              </div>
             </Grid>
             <Grid item>
               <Sidebar
