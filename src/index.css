@@ -10,4 +10,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
 @import "~react-image-gallery/styles/css/image-gallery.css";

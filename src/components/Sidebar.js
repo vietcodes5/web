@@ -11,10 +11,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   container: {
+    width: '100%',
     padding: '10px',
     background: 'white',
     color: 'black',
-    marginBottom: '30px',
+    marginBottom: '10px',
   },
   sidebarCard: {
     margin: '5px 0',
@@ -51,10 +52,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function Sidebar(props) {
   const classes = useStyles();
-  const { header, body, md, xs, lg, sm } = props;
+  const { header, body } = props;
 
   return (
-    <Grid item md={md} xs={xs} lg={lg} sm={sm}>
       <div className={classes.container}>
         <Typography variant="h2" style={{
             fontSize: '40px',
@@ -86,7 +86,6 @@ export default function Sidebar(props) {
 
         </div>
       </div>
-    </Grid>
   );
 }
 
@@ -95,34 +94,34 @@ function SidebarCard(props) {
   const { url, title, photoUrl } = props;
 
   return (
-    <Link to={url}>
-      <Grid className={classes.sidebarCard} container>
-        <Grid item xs={4}>
-          <div
-            className={classes.sidebarCardImage}
-            style={{
-              backgroundImage: `url(${photoUrl})`,
-            }}
-            alt="Event" />
-        </Grid>
-        <Grid
-          container
-          item xs={8}
-          className={classes.cardContent}
-        >
+      <Link to={url}>
+        <Grid className={classes.sidebarCard} container>
+          <Grid item xs={4}>
+            <div
+              className={classes.sidebarCardImage}
+              style={{
+                backgroundImage: `url(${photoUrl})`,
+              }}
+              alt="Event" />
+          </Grid>
           <Grid
             container
-            item
-            alignItems='center'
-            justify='center'
-            className={classes.title}
+            item xs={8}
+            className={classes.cardContent}
           >
-            <Typography variant="h4">
-              {title}
-            </Typography>
+            <Grid
+              container
+              item
+              alignItems='center'
+              justify='center'
+              className={classes.title}
+            >
+              <Typography variant="h4">
+                {title}
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Link>
+      </Link>
   );
 }

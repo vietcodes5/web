@@ -145,7 +145,7 @@ export default function Blog(props) {
 
   return (
     <div className={classes.container}>
-     <Grid container spacing={2} justify='center' style={{marginBottom:'50px'}}>
+     <Grid container spacing={2} justify='center' style={{marginBottom:'50px', height: '100% '}}>
         <Grid item xs={12} md={8}>
           <Grid container spacing={5}>
 
@@ -180,15 +180,14 @@ export default function Blog(props) {
               </Markdown>
             </Grid>
           </Grid>
+          
         </Grid>
-        <Grid item xs={12} md={4}>
-          <Grid container direction='column' spacing={4} justify='center'>
-            <Grid item xs={12}>
-              <div 
+        <Grid item xs={12} md={4} style={{maxWidth: '400px'}}>
+              <Grid item xs={12}
                 className="fb-page" 
                 data-href="https://www.facebook.com/vietcode.org/" 
                 data-tabs="like" 
-                data-width="" 
+                data-width='1000px'
                 data-height="" 
                 data-small-header="false" 
                 data-adapt-container-width="true" 
@@ -200,24 +199,20 @@ export default function Blog(props) {
                 >
                 <a href="https://www.facebook.com/vietcode.org/">Vietcode</a>
                 </blockquote>
-              </div>
-            </Grid>
-            <Grid item>
-              <Sidebar
-                header={{
-                  title: 'Series khác'
-                }}
-                body={{
-                  cards: seriesData
-                }}
-                md={9}
-                xs={12}
-              />
-            </Grid>
-          </Grid>
+              </Grid>
+                <Sidebar 
+                  header={{
+                    title: 'Các series'
+                  }}
+                  body={{
+                    cards: seriesData
+                  }}
+                />
         </Grid>
+        
       </Grid>
-      <Grid>
+      
+      <Grid item md={12}>
         <Bottombar
           header={{
             title: 'Các bài viết khác'
