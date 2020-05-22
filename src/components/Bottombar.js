@@ -11,8 +11,10 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   container: {
     margin: '30px',
+    marginBottom: '40px',
     '@media screen and (max-width: 1024px)': {
       margin: '10px',
+      marginBottom: '40px',
     },
   },
   cardsContainer: {

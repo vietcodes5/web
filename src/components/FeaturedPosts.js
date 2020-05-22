@@ -34,16 +34,44 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     backgroundColor: 'rgba(0,0,0,.3)',
   },
+  more: {
+    fontFamily: 'Cabin',
+    background: theme.palette.primary.main,
+    width: '120px',
+    height: '40px',
+    borderRadius: '50px',
+    color: 'white',
+    fontSize: '70%',
+    letterSpacing: '2px',
+    transition: '.5s',
+    '&:hover': {
+      background: 'white',
+      color: theme.palette.primary.main,
+      border: '1px solid',
+    },
+  },
+  mainFeaturedPostBox: {
+    padding: theme.spacing(4),
+    display: 'flex',
+    margin: 'auto',
+    flexFlow: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: theme.spacing(20),
+    paddingRight: theme.spacing(20),
+    '@media screen and (max-width: 800px)': {
+      paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    },
+  },
   mainFeaturedPostContent: {
     position: 'relative',
-    padding: theme.spacing(3),
+    padding: theme.spacing(4),
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(6),
       paddingRight: 0,
     },
     display: 'flex',
-    flexFlow: 'column nowrap',
-    margin: 'auto',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -56,19 +84,38 @@ function FeaturedPosts(props) {
     <Paper className={classes.mainFeaturedPost}>
       <Grid container justify='center' alignItems='center'>
         <Grid item md={10}>
+          
           <div className={classes.mainFeaturedPostContent}>
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+          <Paper className={classes.mainFeaturedPostBox}>
+            <Typography 
+              variant="h3" 
+              color="inherit" 
+              align='center'
+              style={{
+                marginBottom: '20px', 
+                color: '#707070', 
+                fontWeight: 'bold',
+              }}
+            >
+              Những gã khổng lồ giới công nghệ
+            </Typography>
+            <Typography component="h1" variant="h2" color="inherit" gutterBottom align='center'
+            style={{
+              fontWeight: 'bold',
+            }}>
               NETFLIX - TỪ 40$ TIỀN PHẠT ĐẾN ĐẾ CHẾ TRUYỀN HÌNH TRỰC TUYẾN 152 TỈ$
             </Typography>
             <Typography variant="h5" color="inherit" paragraph align='center'>
               Người ta nhắc về Netflix như một dịch vụ xem phim hàng đầu mà một người không thể không biết đến, nhắc về Netflix là nghĩ ngay tới những series làm mưa làm gió: Stranger Things, House of Cards, The Crown… Chỉ với 15 đô một tháng, người dùng Netflix toàn cầu có thể truy cập vào kho phim gần như vô tận. Xem chán chê phim của Netflix, nhưng liệu ta đã biết gì về người khổng lồ mới chỉ 20 năm tuổi này?
             </Typography>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" className={classes.more}>
               <Link to="posts/zsmEbTYEgwUy34taENU1">
                 Đọc thêm
               </Link>
             </Button>
+            </Paper>
           </div>
+          
         </Grid>
       </Grid>
     </Paper>

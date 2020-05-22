@@ -84,7 +84,7 @@ export default function News() {
           <Main allSeries={allSeries} />
           <Bottombar
             header={{
-              title: "Các bài viết",
+              title: "Bài viết gần đây",
               //content: "Bài viết của Vietcode"
             }}
             body={{

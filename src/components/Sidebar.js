@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
   },
   title: {
-    height: '85%',
+    height: '100%',
     width: '100%',
   },
 }));
