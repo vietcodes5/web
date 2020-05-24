@@ -18,16 +18,16 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     transition: '1s',
-    '@media screen and (min-width: 800px)': {
+    '@media screen and (min-width: 1400px)': {
       '&:hover': {
         padding: '250px',
         backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(https://lh3.googleusercontent.com/D88VPn13kN3AVtuqOuTWkXkZsk3MdlC2R11irE3Z1dpWWJDGU-Cqr-PiCR31VoUb1wc)',
       },
     },
-    '@media screen and (max-width: 800px)': {
+    '@media screen and (max-width: 1400px)': {
       padding: '0px',
-      paddingTop: '30px',
-      paddingBottom: '30px',
+      paddingTop: '5px',
+      paddingBottom: '5px',
       '&:hover': {
         backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(https://lh3.googleusercontent.com/D88VPn13kN3AVtuqOuTWkXkZsk3MdlC2R11irE3Z1dpWWJDGU-Cqr-PiCR31VoUb1wc)',
       },
@@ -53,8 +53,8 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(20),
     paddingRight: theme.spacing(20),
     '@media screen and (max-width: 800px)': {
-      paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
+      paddingLeft: theme.spacing(0),
+      paddingRight: theme.spacing(0),
     },
   },
   mainFeaturedPostContent: {

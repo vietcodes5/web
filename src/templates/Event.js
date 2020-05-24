@@ -150,7 +150,7 @@ export default function Event(props) {
         <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
       </Grid>
       <Container className={classes.container}>
-        <Grid style={{ margin: 'auto', width: '100%' }}>
+        <Grid style={{ margin: 'auto', width: '95%' }}>
           <Markdown>
             {event.content}
           </Markdown>
@@ -159,7 +159,7 @@ export default function Event(props) {
         <Grid item xs={12} md={12}>
           <Bottombar
             header={{
-              title: 'Các sự kiện khác',
+              title: 'Sự kiện khác',
             }}
             body={{
               cards: cardsData

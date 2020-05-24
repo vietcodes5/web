@@ -145,7 +145,7 @@ export default function UpcomingEvent(props) {
             {event.title}
           </Typography>
           <Typography variant="body1" align="left" className={classes.sub1}>
-            Mô tả: {event.description}
+            {event.description}
           </Typography>
           <hr className={classes.hr}></hr>
           <div className={classes.itemcontainer}>

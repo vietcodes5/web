@@ -26,8 +26,7 @@ const useStyles = makeStyles(theme => ({
     boxSizing: 'border-box',
     textAlign: 'center',
     '&:hover': {
-      boxShadow: theme.shadow.hover,
-      borderRight: '4px solid #34b6cf',
+      boxShadow: theme.shadow.hover,  
     },
   },
   sidebarCardImage: {

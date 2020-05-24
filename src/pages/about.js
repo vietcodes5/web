@@ -28,6 +28,16 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  cardMask: {
+    
+    height: 'inherit',
+    width: 'inherit',
+    transition: '.5s',
+    '&:hover': {
+      background: 'black',
+      opacity: '0.4',
+    },
+  },
   sub2: {
     fontFamily: 'Cabin',
     color: '#F7F8FA',
@@ -119,16 +129,11 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: 'column',
     justifyContent: 'center',
   },
-  responsiveBox: {
-
-  },
 }))
 
 function Membercard(props) {
   const classes = useStyles();
-
   return (
-
     <Grid item xs={12} md={5} lg={4}
       style={{
         margin: 'auto',
@@ -144,12 +149,7 @@ function Membercard(props) {
             backgroundPosition: 'center',
             position: 'relative',
           }}>
-          <Grid style={{
-            background: '#34B6CF',
-            opacity: '0.5',
-            height: 'inherit',
-            width: 'inherit',
-          }}>
+          <Grid className={classes.cardMask}>
           </Grid>
           <Grid
             style={{
