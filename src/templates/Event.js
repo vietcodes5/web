@@ -16,6 +16,7 @@ import Bottombar from '../components/Bottombar';
 import Markdown from '../components/Markdown';
 
 const useStyles = makeStyles(theme => ({
+  // Containers
   coverImage: {
     width: '150%',
     display: 'block',
@@ -38,13 +39,6 @@ const useStyles = makeStyles(theme => ({
       height: '400px',
     },
   },
-  title: {
-    fontSize: '100px',
-    '@media screen and (max-width: 750px)': {
-      fontSize: '50px',
-    },
-    textShadow: '5px 5px 5px  #34b6cf',
-  },
   container: {
     padding: '20px',
     background: '#FFFFFF',
@@ -53,24 +47,13 @@ const useStyles = makeStyles(theme => ({
       marginBottom: '0px',
     },
   },
-  sidebar: {
-    minHeight: '100vh',
-    background: 'white',
-    boxShadow: '0 0 5px black',
-    padding: '15px 15px'
-  },
-  sidebarCard: {
-    maxWidth: '100%',
-    margin: '5px 0',
-    boxShadow: '0 0 3px #aaa',
-
-    '& img': {
-      maxWidth: '100%',
-      display: 'block',
-    }
-  },
-  cardContent: {
-    padding: '15px',
+  // Texts
+  title: {
+    fontSize: '100px',
+    '@media screen and (max-width: 750px)': {
+      fontSize: '50px',
+    },
+    textShadow: '5px 5px 5px  #34b6cf',
   },
 }));
 

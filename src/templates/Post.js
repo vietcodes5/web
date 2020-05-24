@@ -15,6 +15,7 @@ import Bottombar from '../components/Bottombar';
 import Sidebar from '../components/Sidebar';
 
 const useStyles = makeStyles(theme => ({
+  // Containers
   cover_image: {
     maxWidth: '100%',
     maxHeight: '450px',
@@ -29,6 +30,7 @@ const useStyles = makeStyles(theme => ({
       margin: '10px',
     },
   },
+  // Texts
   title: {
     fontSize: '40px',
     '@media screen and (max-width: 800px)': {

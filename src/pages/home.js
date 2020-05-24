@@ -1,3 +1,4 @@
+  
 import React, { useState } from 'react';
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -54,8 +55,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   container: {
-    width: '100%',
-    background: 'white',
+    maxWidth: '100%',
+    background: '#FFFFFF',
     display: 'flex',
     flexFlow: 'column wrap',
     padding: theme.spacing(2),
@@ -63,17 +64,13 @@ const useStyles = makeStyles((theme) => ({
       flexFlow: 'column nowrap',
     },
   },
-  paddingW: {
-    padding: '50px 0px 50px 0px',
-  },
   upcontainer: {
-    width: '100%',
+    maxwidth: '100%',
     background: '#309DBE',
     padding: theme.spacing(2),
   },
   hr: {
     border: '1px #309DBE solid',
-    background: '#309DBE',
   },
   //text
   intro: {
@@ -221,6 +218,10 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     margin: '0% auto 5% auto',
   },
+  paddingW: {
+    padding: '50px 0px 50px 0px',
+    background: 'white'
+  }
 }));
 
 //Scroller
@@ -378,7 +379,7 @@ export default function Home() {
             <Review review='Im lặng là vàng' name='Lê Minh Đức' title='Cố vấn Chuyên môn' imgSource='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95663922_540938293260314_7859982166782902272_n.jpg?_nc_cat=101&_nc_sid=b96e70&_nc_ohc=jLlHOSAxKzMAX_AjwBg&_nc_ht=scontent.fhan2-1.fna&oh=b0fb414e73b986ddd30d51f320bbd0d5&oe=5ED9A22B' />
           </Grid>
           <Grid item md={3} xs={12}>
-            <Review review='Có làm thì mới có ăn' name='Mạnh Hùng' title='Thành viên ban Chuyên Môn' imgSource='https://scontent.fhan5-3.fna.fbcdn.net/v/t1.0-0/p206x206/80534645_733505860492225_7696095758184873984_n.jpg?_nc_cat=106&_nc_sid=7aed08&_nc_oc=AQlQUjDVCSaI-cKW8T1XfOqXiyevOCvhtZzpd_Lo4025l6Y35sgzDLg1ysGAkJ92E8o&_nc_ht=scontent.fhan5-3.fna&_nc_tp=6&oh=c02e709948670951f5f85dc817a5bb3b&oe=5EDC7724' />
+            <Review review='Có làm thì mới có ăn' name='Nguyễn Mạnh Hùng' title='Thành viên ban Chuyên Môn S5' imgSource='https://scontent.fhan5-3.fna.fbcdn.net/v/t1.0-0/p206x206/80534645_733505860492225_7696095758184873984_n.jpg?_nc_cat=106&_nc_sid=7aed08&_nc_oc=AQlQUjDVCSaI-cKW8T1XfOqXiyevOCvhtZzpd_Lo4025l6Y35sgzDLg1ysGAkJ92E8o&_nc_ht=scontent.fhan5-3.fna&_nc_tp=6&oh=c02e709948670951f5f85dc817a5bb3b&oe=5EDC7724' />
           </Grid>
           <Grid item md={3} xs={12}>
             <Review imgSource='https://scontent-hkt1-1.xx.fbcdn.net/v/t1.15752-9/95451678_578610833007796_1237769133295140864_n.jpg?_nc_cat=111&_nc_sid=b96e70&_nc_ohc=xCLskLb2KKUAX_mseWj&_nc_ht=scontent-hkt1-1.xx&oh=b9c93617bec0c4ae8db469ee17772306&oe=5ED91C5F' review='Hay lắm các bạn ạ' name='Mèo' title='Giám đốc sản phẩm' />

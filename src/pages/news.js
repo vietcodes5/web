@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // components
 import FeaturedPosts from "../components/FeaturedPosts";
 import Bottombar from "../components/Bottombar";
-import Main from "../components/MainNews";
+import Main from "../templates/MainNews";
 
 // firebase
 import firebase from "firebase";
@@ -38,7 +38,7 @@ export default function News() {
           return console.log('No posts found!');
         }
 
-        snapshot.docs.slice(-5).forEach(doc => {
+        snapshot.docs.slice(-3).forEach(doc => {
           const data = doc.data();
 
           storage

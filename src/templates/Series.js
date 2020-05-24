@@ -15,6 +15,7 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 const useStyles = makeStyles(theme => ({
+  // Containers
   cover_image: {
     maxHeight: '600px',
     height: '100%',
@@ -28,16 +29,18 @@ const useStyles = makeStyles(theme => ({
       margin: '0px',
     },
   },
-  divider: {
-    height: '5px',
-    width: '100%',
-    background: '#309DBE',
-  },
+  // Texts
   title: {
     fontSize: '50px',
     '@media screen and (max-width: 800px)': {
       fontSize: '40px',
     },
+  },
+  // Others
+  divider: {
+    height: '5px',
+    width: '100%',
+    background: '#309DBE',
   },
 }));
 

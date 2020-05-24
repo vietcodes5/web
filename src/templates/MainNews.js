@@ -7,12 +7,13 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 
-import Cover from './Cover';
+import Cover from '../components/Cover';
 
 import firebase from 'firebase';
 import 'firebase/storage';
 
 const useStyles = makeStyles(theme => ({
+  //Containers
   container: {
     margin: '30px',
     '@media screen and (max-width: 1024px)': {
@@ -28,13 +29,15 @@ const useStyles = makeStyles(theme => ({
       paddingTop: '50px',
     },
   },
+  // Texts
+  title: {
+    fontSize: '50px',
+  },
+  // Others
   divider: {
     height: '6px',
     width: '100%',
     background: '#309DBE',
-  },
-  title: {
-    fontSize: '50px',
   },
 }));
 

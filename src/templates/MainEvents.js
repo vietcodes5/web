@@ -6,7 +6,7 @@ import {
   Divider, Button
 } from '@material-ui/core';
 
-import Cover from './Cover';
+import Cover from '../components/Cover';
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 

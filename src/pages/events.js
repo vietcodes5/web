@@ -8,7 +8,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 // components
-import Main from '../components/MainEvents';
+import Main from '../templates/MainEvents';
 import UpcomingEvent from '../components/UpcomingEvent';
 
 // firebase
