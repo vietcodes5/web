@@ -48,8 +48,7 @@ const pages = [
   },
   {
     title: 'Bài viết',
-    // url: '/news',
-    url: '/',
+    url: '/news',
     icon: ReceiptOutlinedIcon,
     component: News
   },

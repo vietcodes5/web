@@ -7,7 +7,7 @@ let converter = new showdown.Converter();
 const useStyles = makeStyles(theme => ({
   markdownConfig: {
     padding: theme.spacing(1),
-    fontFamily: `'Courier New', Courier, monospace`,
+    lineHeight: '30px',
   }
 }));
 

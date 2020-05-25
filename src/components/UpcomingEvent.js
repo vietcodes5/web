@@ -12,6 +12,7 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 const useStyles = makeStyles(theme => ({
+  //Containers
   allcontainer: {
     background: '#309DBE',
     display: 'flex',
@@ -36,12 +37,14 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(4),
     maxWidth: 'inherit',
   },
-  coverImage: {
-    borderRadius: '8px',
-    maxWidth: '80%',
-    maxHeight: '300px',
-    padding: theme.spacing(1),
+  itemcontainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    flexFlow: 'row',
+    margin: '3vh 0 0 0',
   },
+  // Texts
   intro: {
     color: 'white',
     fontWeight: "bold",
@@ -56,6 +59,13 @@ const useStyles = makeStyles(theme => ({
   },
   sub1: {
     color: 'grey',
+  },
+  // Others
+  coverImage: {
+    borderRadius: '8px',
+    maxWidth: '80%',
+    maxHeight: '300px',
+    padding: theme.spacing(1),
   },
   hr: {
     border: '1px #309DBE solid ',
@@ -81,13 +91,6 @@ const useStyles = makeStyles(theme => ({
       border: '1px solid',
       borderColor: theme.palette.primary.main,
     },
-  },
-  itemcontainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexFlow: 'row',
-    margin: '3vh 0 0 0',
   },
 }));
 
@@ -142,7 +145,7 @@ export default function UpcomingEvent(props) {
             {event.title}
           </Typography>
           <Typography variant="body1" align="left" className={classes.sub1}>
-            Mô tả: {event.description}
+            {event.description}
           </Typography>
           <hr className={classes.hr}></hr>
           <div className={classes.itemcontainer}>

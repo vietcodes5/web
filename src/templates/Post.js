@@ -8,41 +8,60 @@ import 'firebase/storage';
 import {
   Typography,
   Grid,
+  Container,
+  Breadcrumbs,
 } from '@material-ui/core';
 
 import Markdown from '../components/Markdown';
-import Sidebar from '../components/Sidebar';
+import Bottombar from '../components/Bottombar';
 
 const useStyles = makeStyles(theme => ({
-  cover_image: {
-    maxWidth: '100%',
-    maxHeight: '450px',
+  // Containers
+  coverImage: {
+    width: '100%',
     display: 'block',
-    boxShadow: theme.shadow.hover,
-    borderRadius: '20px',
-    margin: '20px auto',
+    position: 'fixed',
+    filter: 'brightness(50%)',
+    top: '0',
+    zIndex: '-1',
+    '@media screen and (max-width: 1024px)': {
+      width: '150%',
+    },
+  },
+  imgContainer: {
+    width: '100%',
+    color: 'white',
+    height: '800px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '@media screen and (max-width: 750px)': {
+      height: '400px',
+    },
   },
   container: {
-    margin: '70px',
-    '@media screen and (max-width: 800px)': {
-      margin: '10px',
+    padding: '0px',
+    background: '#FFFFFF',
+    marginBottom: '100px',
+    '@media screen and (max-width: 1024px)': {
+      marginBottom: '0px',
     },
   },
+  // Texts
   title: {
-    fontSize: '60px',
-    '@media screen and (max-width: 800px)': {
+    fontSize: '70px',
+    '@media screen and (max-width: 750px)': {
       fontSize: '30px',
-      fontWeight: 'bold',
     },
+    textShadow: '5px 5px 5px  #34b6cf',
   },
-  seriesTitle: {
-    color: '#4f4f4f',
-    fontWeight: 'bold',
-    '@media screen and (max-width: 800px)': {
-      fontSize: '25px',
-      fontWeight: '100'
+  subtitle: {
+    fontSize: '60px',
+    '@media screen and (max-width: 750px)': {
+      fontSize: '20px',
     },
-  },
+    textShadow: '5px 5px 5px  #34b6cf',
+  }
 }));
 
 const defaultData = {
@@ -63,8 +82,6 @@ export default function Blog(props) {
     // TODO: get blog data
     const db = firebase.firestore();
     const storage = firebase.storage();
-
-    // loadPost(() => []);
     updateCardsData(() => []);
     db.collection("posts")
       .doc(postId)
@@ -117,61 +134,54 @@ export default function Blog(props) {
         }
       })
   }, [postId]);
-
   return (
-    <div className={classes.container}>
-      <Grid container spacing={2} >
-
-        <Grid item xs={12} md={12}>
-          <Grid container spacing={5}>
-
-            <Grid item xs={12} md={4}>
-              <img className={classes.cover_image} src={photoUrl} alt="Post cover" />
-            </Grid>
-
-            <Grid item xs={12} md={8} style={{ marginBottom: '30px' }}>
-              <Grid container>
-                <Grid item xs={12} md={12}>
-                  <Typography variant="h1" gutterBottom className={classes.title}>
-                    {blogData.title}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} md={12}>
-                  <Typography variant="h1" className={classes.seriesTitle} gutterBottom>
-                    {series.title}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} md={12}>
-                  <Typography variant="h4" style={{ color: '#4f4f4f' }}>
-                    {blogData.opening}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-
-          </Grid>
-          <Grid container justify='center'>
-            <Grid item xs={12} md={10}>
-              <Markdown>
-                {blogData.content}
-              </Markdown>
-            </Grid>
-          </Grid>
+<Grid container spacing={1}>
+  <Grid item xs={12} className={classes.imgContainer} >
+    <Grid container direciton='column' spacing={4} justify='center'>
+      <Grid item xs={10} md={12}>
+        <Typography align="center" className={classes.title}>
+          {blogData.title}
+        </Typography>
         </Grid>
-        <Grid item xs={12} md={12} style={{ marginTop: '100px' }}>
-          <Sidebar
-            header={{
-              title: 'Các bài viết khác'
-            }}
-            body={{
-              cards: cardsData
-            }}
-          />
-        </Grid>
-
-        <Grid item xs={12} md={4}>
+        <Grid item xs={10} md={12}>
+          <Typography align="center" className={classes.subtitle}>  
+            {series.title}
+          </Typography>
         </Grid>
       </Grid>
-    </div >
+        <img className={classes.coverImage} src={photoUrl} alt="Event cover" />
+    </Grid>
+    <Container className={classes.container} >
+    
+      <Grid style={{ margin: 'auto', width: '95%' }}>
+        <Grid style={{background: 'transparent', width: '100%'}}>
+        <Breadcrumbs style={{color: 'black', margin: '10px'}}>
+        <a href="/news">
+          Bài Viết
+        </a>
+        <a href = {'/series/' + series.id}>
+          {series.title}
+        </a>
+        <Typography style={{fontWeight: 'bold'}}>
+          {blogData.title}
+        </Typography>
+        </Breadcrumbs>
+      </Grid>
+        <Markdown>
+          {blogData.content}
+        </Markdown>
+      </Grid>
+      <Grid item md={12}>
+      <Bottombar
+        header={{
+          title: 'Các bài viết khác'
+        }}
+        body={{
+          cards: cardsData
+        }}
+      />
+      </Grid>
+    </Container>
+  </Grid>
   )
 }

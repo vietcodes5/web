@@ -8,8 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // components
 import FeaturedPosts from "../components/FeaturedPosts";
-import Sidebar from "../components/Sidebar";
-import Main from "../components/MainNews";
+import Bottombar from "../components/Bottombar";
+import Main from "../templates/MainNews";
 
 // firebase
 import firebase from "firebase";
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 export default function News() {
   const classes = useStyles();
   const [allSeries, updateAllSeries] = useState([]);
-  const [sidebarBodyCards, updateSidebar] = useState([]);
+  const [bottombarBodyCards, updateSidebar] = useState([]);
 
   useEffect(() => {
     const db = firebase.firestore();
@@ -38,15 +38,15 @@ export default function News() {
           return console.log('No posts found!');
         }
 
-        snapshot.docs.slice(-5).forEach(doc => {
+        snapshot.docs.slice(-3).forEach(doc => {
           const data = doc.data();
 
           storage
             .ref(`blog/${data.photos}`)
             .getDownloadURL()
             .then(url => {
-              updateSidebar(sidebarBodyCards => ([
-                ...sidebarBodyCards,
+              updateSidebar(bottombarBodyCards => ([
+                ...bottombarBodyCards,
                 {
                   id: doc.id,
                   title: data.title,
@@ -82,14 +82,14 @@ export default function News() {
       <Grid container spacing={5} className={classes.mainGrid}>
         <Grid item xs={10} style={{ margin: 'auto' }}>
           <Main allSeries={allSeries} />
-          <Sidebar
+          <Bottombar
             header={{
-              title: "Các bài viết",
+              title: "Bài viết gần đây",
               //content: "Bài viết của Vietcode"
             }}
             body={{
               //title: "Các bài viết",
-              cards: sidebarBodyCards
+              cards: bottombarBodyCards
             }}
           />
         </Grid>

@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Cover({
   title = "Loading...",
-  subtitle = "Loading...",
+  subtitle = "",
   photoUrl = "",
   to,
   xs, sm, md, lg }) {

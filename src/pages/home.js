@@ -1,3 +1,4 @@
+  
 import React, { useState } from 'react';
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -22,7 +23,7 @@ import Avatar from '@material-ui/core/Avatar';
 //Style
 const useStyles = makeStyles((theme) => ({
   pictureContainer: {
-    background: 'url(\'https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-9/87028986_1977725495706212_2381361457833967616_o.jpg?_nc_cat=106&_nc_sid=0be424&_nc_oc=AQnepcUIwbNsa4ELO7lj0cPMC64TYwel859li1-ih1lC0ERWAqIaS_eNzaBQ6vzQPGH-rOPlPSBS1ht695LrEkjK&_nc_ht=scontent.fhan3-3.fna&oh=c78a2873470495620f353bfde2c498e2&oe=5EC28FF2\')',
+    background: `url('https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-9/87028986_1977725495706212_2381361457833967616_o.jpg?_nc_cat=106&_nc_sid=0be424&_nc_oc=AQlpbILB8SFSO2mulzJEzWbzy0536n0dq4j3klGXuawADeI0M9t_sz57rL2GCII9cQrEkIeNqtpzcaGv696RZrRV&_nc_ht=scontent.fhan3-3.fna&oh=446fe9e1fc3132ed8396cfc275a51f50&oe=5EEA1CF2')`,
     maxheight: '800px',
     height: '500px',
     backgroundAttachment: 'fixed',
@@ -31,14 +32,16 @@ const useStyles = makeStyles((theme) => ({
     '@media screen and (max-width: 800px)': {
       height: '400px',
     },
+    // Can cai nay neu khong o tren safari no se bi loi 
     '@media not all and (min-resolution:.001dpcm)': {
       '@supports (-webkit-appearance:none)': {
         backgroundAttachment: 'scroll',
       },
     },
+    //
   },
   pictureContainer1: {
-    background: 'url(\'https://scontent.fhan5-7.fna.fbcdn.net/v/t1.0-9/33717427_1378719945606773_2087821359643099136_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQlqi6VGtYQvGqUeHtBUAAw--cAHcRa8K0nFdjkrOf_ecmwiQsk_d5hJD8q_rNN-IlU&_nc_ht=scontent.fhan5-7.fna&oh=82303f71fbbfaaebf025be4510635774&oe=5EC1B2A6\')',
+    background: `url('https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/33717427_1378719945606773_2087821359643099136_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQmZqbExpJwYIIsxTdiubni8aP4Q-i_XOsz7_UbWnocwMyzjl1qna-1MFnUn3VktbUMnImt0S1TpKEttfxsIrn5p&_nc_ht=scontent.fhan3-2.fna&oh=d9b77162a37f8a8371eb4bcd0a1a45f6&oe=5EE93FA6')`,
     maxheight: '800px',
     height: '500px',
     backgroundAttachment: 'fixed',
@@ -182,11 +185,13 @@ const useStyles = makeStyles((theme) => ({
   },
   //For Intro Section
   coverImg: {
-    maxheight: '800px',
     height: '800px',
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
     background: `url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80') center no-repeat`,
+    '@media screen and (max-width: 750px)': {
+      height: '600px',
+    },
     '@media not all and (min-resolution:.001dpcm)': {
       '@supports (-webkit-appearance:none)': {
         backgroundAttachment: 'scroll',
@@ -378,7 +383,7 @@ export default function Home() {
             <Review review='Im lặng là vàng' name='Lê Minh Đức' title='Cố vấn Chuyên môn' imgSource='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95663922_540938293260314_7859982166782902272_n.jpg?_nc_cat=101&_nc_sid=b96e70&_nc_ohc=jLlHOSAxKzMAX_AjwBg&_nc_ht=scontent.fhan2-1.fna&oh=b0fb414e73b986ddd30d51f320bbd0d5&oe=5ED9A22B' />
           </Grid>
           <Grid item md={3} xs={12}>
-            <Review review='Có làm thì mới có ăn, không làm mà đòi ăn thì ăn <3 ăn <3' name='Nguyễn Mạnh Hùng' title='Thành viên ban Chuyên Môn S5' imgSource='https://scontent.fhan5-3.fna.fbcdn.net/v/t1.0-0/p206x206/80534645_733505860492225_7696095758184873984_n.jpg?_nc_cat=106&_nc_sid=7aed08&_nc_oc=AQlQUjDVCSaI-cKW8T1XfOqXiyevOCvhtZzpd_Lo4025l6Y35sgzDLg1ysGAkJ92E8o&_nc_ht=scontent.fhan5-3.fna&_nc_tp=6&oh=c02e709948670951f5f85dc817a5bb3b&oe=5EDC7724' />
+            <Review review='Có làm thì mới có ăn' name='Nguyễn Mạnh Hùng' title='Thành viên ban Chuyên Môn S5' imgSource='https://scontent.fhan5-3.fna.fbcdn.net/v/t1.0-0/p206x206/80534645_733505860492225_7696095758184873984_n.jpg?_nc_cat=106&_nc_sid=7aed08&_nc_oc=AQlQUjDVCSaI-cKW8T1XfOqXiyevOCvhtZzpd_Lo4025l6Y35sgzDLg1ysGAkJ92E8o&_nc_ht=scontent.fhan5-3.fna&_nc_tp=6&oh=c02e709948670951f5f85dc817a5bb3b&oe=5EDC7724' />
           </Grid>
           <Grid item md={3} xs={12}>
             <Review imgSource='https://scontent-hkt1-1.xx.fbcdn.net/v/t1.15752-9/95451678_578610833007796_1237769133295140864_n.jpg?_nc_cat=111&_nc_sid=b96e70&_nc_ohc=xCLskLb2KKUAX_mseWj&_nc_ht=scontent-hkt1-1.xx&oh=b9c93617bec0c4ae8db469ee17772306&oe=5ED91C5F' review='Hay lắm các bạn ạ' name='Mèo' title='Giám đốc sản phẩm' />

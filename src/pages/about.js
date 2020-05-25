@@ -28,6 +28,16 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  cardMask: {
+    
+    height: 'inherit',
+    width: 'inherit',
+    transition: '.5s',
+    '&:hover': {
+      background: 'black',
+      opacity: '0.4',
+    },
+  },
   sub2: {
     fontFamily: 'Cabin',
     color: '#F7F8FA',
@@ -119,16 +129,11 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: 'column',
     justifyContent: 'center',
   },
-  responsiveBox: {
-
-  },
 }))
 
 function Membercard(props) {
   const classes = useStyles();
-
   return (
-
     <Grid item xs={12} md={5} lg={4}
       style={{
         margin: 'auto',
@@ -144,12 +149,7 @@ function Membercard(props) {
             backgroundPosition: 'center',
             position: 'relative',
           }}>
-          <Grid style={{
-            background: '#34B6CF',
-            opacity: '0.5',
-            height: 'inherit',
-            width: 'inherit',
-          }}>
+          <Grid className={classes.cardMask}>
           </Grid>
           <Grid
             style={{
@@ -353,7 +353,7 @@ export default function About() {
             </Grid>
             <Membercard name='Nguyễn Tiểu Phương' title='Chuyên Môn' memberIMG='https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/95683828_1337837803271521_5128150720465338368_n.jpg?_nc_cat=104&_nc_sid=b96e70&_nc_ohc=PE1ZLSD058QAX9n4dVp&_nc_ht=scontent.fhan2-4.fna&oh=6abe43a46b27c32fab08d1ce4ed6a856&oe=5ECECAC0' link='https://www.facebook.com/tiuphun'></Membercard>
             <Membercard name='Lê Nguyệt Hà' title=' Tài Chính' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/82498930_1948180958660666_3939830907153678336_o.jpg?_nc_cat=111&_nc_sid=8bfeb9&_nc_ohc=rnHMNGdeFlYAX_3R1Qb&_nc_ht=scontent.fhan2-1.fna&oh=0f2bd872931f972ef24313d0cd3a5159&oe=5ECE15BF' link='https://www.facebook.com/nguyethale23'></Membercard>
-            <Membercard name='Trịnh Thùy Trang' title=' Truyền Thông' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/83078733_1948188875326541_8393976460011896832_o.jpg?_nc_cat=106&_nc_sid=8bfeb9&_nc_ohc=GjjSFO4Ce5AAX92D4VC&_nc_ht=scontent.fhan2-1.fna&oh=9ebfa52018272f642744749f45b389c6&oe=5ECDAA74' link='https://www.facebook.com/SoniaTine373'></Membercard>
+            <Membercard name='Trịnh Thùy Trang' title=' Truyền Thông' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/83078733_1948188875326541_8393976460011896832_o.jpg?_nc_cat=106&_nc_sid=8bfeb9&_nc_ohc=GjjSFO4Ce5AAX92D4VC&_nc_ht=scontent.fhan2-1.fna&oh=9ebfa52018272f642744749f45b389c6&oe=5ECDAA74' link='https://www.facebook.com/Chang.Typo.373'></Membercard>
             <Membercard name='Dương Lâm Tuấn Anh' title='Med/Des' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95543257_244500846793559_6998439343845015552_n.jpg?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=mxUVUjxYDkAAX-KrM9e&_nc_ht=scontent.fhan2-1.fna&oh=9bb22b881667a0cac1ba3bf2bbc9eef9&oe=5ECD0252' link='https://www.facebook.com/dlta2704'></Membercard>
             <Membercard name='Nguyễn Ngọc Linh Chi' title=' Hậu Cần' memberIMG='https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/95321117_2892483204205601_7917348546011987968_n.png?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=DWWQrrwT7xQAX9tUnq5&_nc_ht=scontent.fhan2-1.fna&oh=a9910cff150dea3a5b3dfd52127b6f6b&oe=5ECEF620' link='https://www.facebook.com/nguyenngoc.linhchi.09'></Membercard>
             <Membercard name='Nguyễn Doãn Hoàng' title='Nhân Sự' memberIMG='https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/82868852_1948180841994011_6743153196509691904_o.jpg?_nc_cat=104&_nc_sid=8bfeb9&_nc_ohc=Iy8BZ-z1RkYAX_mRmVk&_nc_ht=scontent.fhan2-4.fna&oh=c5eee2d7df42a1cfd5896e7bd459c7b6&oe=5ECCB871' link='https://www.facebook.com/kipiiler'></Membercard>
