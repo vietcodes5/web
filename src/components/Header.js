@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     width: "auto",
   },
   pageIcon: {
-    fontSize: "110%",
+    fontSize: "93.5%",
     marginRight: "5px",
   },
 }));
@@ -75,7 +75,6 @@ export default function Header(props) {
   }
   const menu = (anchor) => (
     <div
-
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       style={{ backgroundColor: '#2b93b6' }}

@@ -32,11 +32,13 @@ const useStyles = makeStyles((theme) => ({
     '@media screen and (max-width: 800px)': {
       height: '400px',
     },
+    // Can cai nay neu khong o tren safari no se bi loi 
     '@media not all and (min-resolution:.001dpcm)': {
       '@supports (-webkit-appearance:none)': {
         backgroundAttachment: 'scroll',
       },
     },
+    //
   },
   pictureContainer1: {
     background: `url('https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/33717427_1378719945606773_2087821359643099136_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQmZqbExpJwYIIsxTdiubni8aP4Q-i_XOsz7_UbWnocwMyzjl1qna-1MFnUn3VktbUMnImt0S1TpKEttfxsIrn5p&_nc_ht=scontent.fhan3-2.fna&oh=d9b77162a37f8a8371eb4bcd0a1a45f6&oe=5EE93FA6')`,
@@ -183,11 +185,13 @@ const useStyles = makeStyles((theme) => ({
   },
   //For Intro Section
   coverImg: {
-    maxheight: '800px',
     height: '800px',
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
     background: `url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80') center no-repeat`,
+    '@media screen and (max-width: 750px)': {
+      height: '600px',
+    },
     '@media not all and (min-resolution:.001dpcm)': {
       '@supports (-webkit-appearance:none)': {
         backgroundAttachment: 'scroll',
