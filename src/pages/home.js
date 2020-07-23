@@ -1,4 +1,4 @@
-  
+
 import React, { useState } from 'react';
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -20,10 +20,15 @@ import UpcomingEvent from '../components/UpcomingEvent';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 
+//Pictures
+import homeImg from '../images/Home/homeImg.jpg';
+import homeImg2 from '../images/Home/homeImg2.jpg';
+import coverImg from '../images/Home/coverImg.jpg';
+
 //Style
 const useStyles = makeStyles((theme) => ({
   pictureContainer: {
-    background: `url('https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-9/87028986_1977725495706212_2381361457833967616_o.jpg?_nc_cat=106&_nc_sid=0be424&_nc_oc=AQlpbILB8SFSO2mulzJEzWbzy0536n0dq4j3klGXuawADeI0M9t_sz57rL2GCII9cQrEkIeNqtpzcaGv696RZrRV&_nc_ht=scontent.fhan3-3.fna&oh=446fe9e1fc3132ed8396cfc275a51f50&oe=5EEA1CF2')`,
+    background: `url(${homeImg})`,
     maxheight: '800px',
     height: '500px',
     backgroundAttachment: 'fixed',
@@ -41,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     //
   },
   pictureContainer1: {
-    background: `url('https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/33717427_1378719945606773_2087821359643099136_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQmZqbExpJwYIIsxTdiubni8aP4Q-i_XOsz7_UbWnocwMyzjl1qna-1MFnUn3VktbUMnImt0S1TpKEttfxsIrn5p&_nc_ht=scontent.fhan3-2.fna&oh=d9b77162a37f8a8371eb4bcd0a1a45f6&oe=5EE93FA6')`,
+    background: `url(${homeImg2})`,
     maxheight: '800px',
     height: '500px',
     backgroundAttachment: 'fixed',
@@ -73,6 +78,27 @@ const useStyles = makeStyles((theme) => ({
   },
   hr: {
     border: '1px #309DBE solid',
+  },
+
+  //For Intro Section
+  coverImg: {
+    height: '800px',
+    backgroundSize: 'cover',
+    backgroundAttachment: 'fixed',
+    background: `url(${coverImg}) center no-repeat`,
+    '@media screen and (max-width: 750px)': {
+      height: '600px',
+    },
+    '@media not all and (min-resolution:.001dpcm)': {
+      '@supports (-webkit-appearance:none)': {
+        backgroundAttachment: 'scroll',
+      },
+    },
+  },
+  bkIMG: {
+    background: 'rgba(0, 0, 0, .5);',
+    width: '100%',
+    position: 'relative',
   },
   //text
   intro: {
@@ -182,26 +208,6 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     height: '8vh',
     width: '8vh',
-  },
-  //For Intro Section
-  coverImg: {
-    height: '800px',
-    backgroundSize: 'cover',
-    backgroundAttachment: 'fixed',
-    background: `url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80') center no-repeat`,
-    '@media screen and (max-width: 750px)': {
-      height: '600px',
-    },
-    '@media not all and (min-resolution:.001dpcm)': {
-      '@supports (-webkit-appearance:none)': {
-        backgroundAttachment: 'scroll',
-      },
-    },
-  },
-  bkIMG: {
-    background: 'rgba(0, 0, 0, .5);',
-    width: '100%',
-    position: 'relative',
   },
   //For Icon Section
   iconIMG: {
